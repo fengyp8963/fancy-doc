@@ -1,0 +1,49 @@
+##缓存 node_modules/目录 下次构建不会删除
+cache:
+  key: ${CI_BUILD_REF_NAME}
+  paths:
+    - node_modules/
+    - dist/
+    - .vitepress/dist/
+
+stages:
+  - build
+  - run
+  - clean
+
+build:
+  stage: build
+  only:
+    - master #哪个分支触发
+  tags:
+    - node
+  script:
+    - pwd #打印当前目录
+    - yarn && yarn build #打包
+    - tar -zcvf .vitepress/dist/serein-cloud-doc.tar.gz -C .vitepress/dist/ . --warning=no-file-changed && true=0 || false=1 #打包
+    - cp .vitepress/dist/serein-cloud-doc.tar.gz docker/app #把内容到docker目录下
+    - cd docker/app #切换到docker目录下
+    - docker build -t serein-cloud/serein-cloud-doc:latest .
+    - echo "docker done"
+
+run:
+  stage: run
+  only:
+    - master #哪个分支触发
+  tags:
+    - node
+  script:
+    - cd docker/app # 移动到docker-compose.yml文件夹下面
+    - docker-compose down # 先去关闭以up来运行的容器
+    - docker-compose up -d # 启动容器
+    - echo "run done"
+
+clean:
+  stage: clean
+  only:
+    - master #哪个分支触发
+  tags:
+    - node
+  script:
+    - docker image prune -f # 删除为none的虚悬镜像
+    - echo "clean done"

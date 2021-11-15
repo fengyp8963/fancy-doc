@@ -1,0 +1,17 @@
+version: '3.6'
+
+services:
+  serein-cloud-doc:
+    container_name: serein-cloud-doc
+    image: serein-cloud/serein-cloud-doc:latest
+    restart: always
+    ports:
+      - '3100:80'
+    networks:
+      - app_serein_net
+    environment:
+      - TZ=Asia/Shanghai
+# docker network create app_serein_net
+networks:
+  app_serein_net:
+    external: true
