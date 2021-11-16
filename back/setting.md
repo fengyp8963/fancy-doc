@@ -1,38 +1,36 @@
-# Setting
+# 配置
 
-::: tip
-The config reference is incomplete since the config format may still receive further changes. For a complete reference of the current available options, refer to [config.ts](https://github.com/vuejs/vitepress/blob/master/src/node/config.ts#L15).
+::: tip 提示
+`serein-cloud-config`配置中心服务，系统所有服务都通过它进行配置，`serien-cloud-common-*.yml`为公共配置文件；配置文件分为：
+`local`、`dev`、`test`、`prod` 四个环境。
 :::
 
-## 配置文件
+## 项目配置
 
-- Type: `string`
-- Default: `/`
+![img.png](/back/images/setting-001.png)
 
-The base URL the site will be deployed at. You will need to set this if you plan to deploy your site under a sub path, for example, GitHub pages. If you plan to deploy your site to `https://foo.github.io/bar/`, then you should set base to `'/bar/'`. It should always start and end with a slash.
+## 存储配置
 
-The `base` is automatically prepended to all the URLs that start with `/` in other options, so you only need to specify it once.
+`serein-cloud-component` 组件服务加入以下配置：
 
-```js
-module.exports = {
-  base: '/base/'
-}
+```yml
+serein:
+  oss:
+    enabled: true
 ```
 
-## 启动方式
+## 短信配置
 
-- Type: `string`
-- Default: `en-US`
-- Type: `string`
-- Default: `en-US`
-- Type: `string`
-- Default: `en-US`
+`serein-cloud-component` 组件服务加入以下配置：
 
-The `lang` attribute for the site. This will render as a `<html lang="en-US">` tag in the page HTML.
-
-```js
-module.exports = {
-  lang: 'en-US'
-}
+```yml
+spring:
+  jackieonway:
+    sms:
+      sms-type: ali #可以不填，默认是ali
+      security-key: security-key # 短信的私钥
+      appid: appid # 短信的应用id
+      limit:
+        enable: true # 允许限制 默认: false
+        limit-time: 60000 # 一次请求限制1分钟 默认: 一分钟
 ```
-
