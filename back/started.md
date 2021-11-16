@@ -1,10 +1,10 @@
-# App Config: Basics
+# Get started quickly
 
 ::: tip
 The config reference is incomplete since the config format may still receive further changes. For a complete reference of the current available options, refer to [config.ts](https://github.com/vuejs/vitepress/blob/master/src/node/config.ts#L15).
 :::
 
-## base
+## 依赖环境
 
 - Type: `string`
 - Default: `/`
@@ -19,8 +19,12 @@ module.exports = {
 }
 ```
 
-## lang
+## 手动安装
 
+- Type: `string`
+- Default: `en-US`
+- Type: `string`
+- Default: `en-US`
 - Type: `string`
 - Default: `en-US`
 
@@ -32,28 +36,3 @@ module.exports = {
 }
 ```
 
-## title
-
-- Type: `string`
-- Default: `VitePress`
-
-Title for the site. This will be the suffix for all page titles, and displayed in the navbar.
-
-```js
-module.exports = {
-  title: 'VitePress'
-}
-```
-
-## description
-
-- Type: `string`
-- Default: `A VitePress site`
-
-Description for the site. This will render as a `<meta>` tag in the page HTML.
-
-```js
-module.exports = {
-  description: 'A VitePress site'
-}
-```

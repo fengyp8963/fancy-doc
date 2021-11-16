@@ -1,20 +1,19 @@
 export default {
-  lang: 'zh-CN',
-  title: 'serein cloud',
-  description: 'spring cloud 开发文档',
-
+  lang: "zh-CN",
+  title: "serein cloud",
+  description: "spring cloud 开发文档",
   themeConfig: {
-    repo: 'vuejs/vitepress',
-    docsDir: 'docs',
+    repo: "https://gitlab.vipklm.com/serein/",
+    docsDir: "docs",
 
-    editLinks: true,
-    editLinkText: '为此页提供修改建议',
-    lastUpdated: 'Last Updated',
+    editLinks: false,
+    editLinkText: "为此页提供修改建议",
+    lastUpdated: "Last Updated",
 
     algolia: {
-      appId: '8J64VVRP8K',
-      apiKey: 'a18e2f4cc5665f6602c5631fd868adfd',
-      indexName: 'vitepress'
+      appId: "8J64VVRP8K",
+      apiKey: "a18e2f4cc5665f6602c5631fd868adfd",
+      indexName: "vitepress",
     },
 
     // carbonAds: {
@@ -24,68 +23,91 @@ export default {
     // },
 
     nav: [
-      { text: 'Guide', link: '/', activeMatch: '^/$|^/guide/' },
+      { text: "前端", link: "/", activeMatch: "^/$|^/front/" },
       {
-        text: 'Config Reference',
-        link: '/config/basics',
-        activeMatch: '^/config/'
+        text: "后端",
+        link: "/back/basics",
+        activeMatch: "^/back/",
       },
       {
-        text: 'Release Notes',
-        link: 'https://github.com/vuejs/vitepress/releases'
-      }
+        text: "相关链接",
+        link: "https://gitlab.vipklm.com/serein/",
+        items: [
+          {
+            text: "前端源码",
+            link: "https://gitlab.vipklm.com/serein/vue-serein-admin.git",
+          },
+          {
+            text: "后端源码",
+            link: "https://gitlab.vipklm.com/serein/serein-cloud.git",
+          },
+          {
+            text: "配置源码",
+            link: "https://gitlab.vipklm.com/serein/serein-cloud-config.git",
+          },
+          {
+            text: "文档源码",
+            link: "https://gitlab.vipklm.com/serein/serein-cloud-doc.git",
+          },
+        ],
+      },
     ],
 
     sidebar: {
-      '/guide/': getGuideSidebar(),
-      '/config/': getConfigSidebar(),
-      '/': getGuideSidebar()
-    }
-  }
-}
+      "/front/": getFrontSidebar(),
+      "/back/": getBackSidebar(),
+      "/": getFrontSidebar(),
+    },
+  },
+};
 
-function getGuideSidebar() {
+function getFrontSidebar() {
   return [
     {
-      text: 'Introduction',
+      text: "介绍",
       children: [
-        { text: 'What is VitePress?', link: '/' },
-        { text: 'Getting Started', link: '/guide/getting-started' },
-        { text: 'Configuration', link: '/guide/configuration' },
-        { text: 'Asset Handling', link: '/guide/assets' },
-        { text: 'Markdown Extensions', link: '/guide/markdown' },
-        { text: 'Using Vue in Markdown', link: '/guide/using-vue' },
-        { text: 'Deploying', link: '/guide/deploy' }
-      ]
+        { text: "什么是 VitePress？", link: "/" },
+        { text: "入门", link: "/front/getting-started" },
+        { text: "配置", link: "/front/backuration" },
+        { text: "资产处理", link: "/front/assets" },
+        { text: "降价扩展", link: "/front/markdown" },
+        { text: "在 Markdown 中使用 Vue", link: "/front/using-vue" },
+        { text: "部署", link: "/front/deploy" },
+      ],
     },
     {
-      text: 'Advanced',
+      text: "先进的",
       children: [
-        { text: 'Frontmatter', link: '/guide/frontmatter' },
-        { text: 'Theming', link: '/guide/theming' },
-        { text: 'API Reference', link: '/guide/api' },
+        { text: "前垫", link: "/front/frontmatter" },
+        { text: "主题化", link: "/front/theming" },
+        { text: "API 参考", link: "/front/api" },
         {
-          text: 'Differences from Vuepress',
-          link: '/guide/differences-from-vuepress'
-        }
-      ]
-    }
-  ]
+          text: "与 Vuepress 的区别",
+          link: "/front/differences-from-vuepress",
+        },
+      ],
+    },
+  ];
 }
 
-function getConfigSidebar() {
+function getBackSidebar() {
   return [
     {
-      text: 'App Config',
-      children: [{ text: 'Basics', link: '/config/basics' }]
+      text: "介绍",
+      children: [
+        { text: "什么是serein cloud？", link: "/back/basics" },
+        { text: "快速上手", link: "/back/started" },
+        { text: "配置", link: "/back/setting" },
+        { text: "部署", link: "/back/deploy" },
+      ],
     },
     {
-      text: 'Theme Config',
+      text: "先进的",
       children: [
-        { text: 'Homepage', link: '/config/homepage' },
-        { text: 'Algolia Search', link: '/config/algolia-search' },
-        // { text: 'Carbon Ads', link: '/config/carbon-ads' }
-      ]
-    }
-  ]
+        { text: "前垫", link: "/back/homepage" },
+        { text: "API 参考 ", link: "/back/algolia-search" },
+        // { text: 'Carbon Ads', link: '/back/carbon-ads' }
+      ],
+    },
+  ];
 }

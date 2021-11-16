@@ -40,7 +40,7 @@ Directives also work:
 
 ### Access to Site & Page Data
 
-You can use the [`useData` helper](/guide/api.html#usedata) in a `<script>` block and expose the data to the page.
+You can use the [`useData` helper](/front/api.html#usedata) in a `<script>` block and expose the data to the page.
 
 **Input**
 
