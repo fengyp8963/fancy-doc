@@ -13,7 +13,7 @@
 
 `serein-cloud-component` 组件服务加入以下配置：
 
-```yml
+```yaml
 serein:
   oss:
     enabled: true
@@ -23,7 +23,7 @@ serein:
 
 `serein-cloud-component` 组件服务加入以下配置：
 
-```yml
+```yaml
 spring:
   jackieonway:
     sms:

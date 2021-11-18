@@ -4,8 +4,8 @@ sidebarDepth: 3
 
 # 规范
 
-::: tip
-The config reference is incomplete since the config format may still receive further changes. For a complete reference of the current available options, refer to [config.ts](https://github.com/vuejs/vitepress/blob/master/src/node/config.ts#L15).
+::: info 介绍
+项目遵从规范，约定。
 :::
 
 ## 技术开发规范

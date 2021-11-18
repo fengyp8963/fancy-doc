@@ -1,7 +1,7 @@
 # 名词参考
 
-::: tip
-The config reference is incomplete since the config format may still receive further changes. For a complete reference of the current available options, refer to [config.ts](https://github.com/vuejs/vitepress/blob/master/src/node/config.ts#L15).
+::: info 介绍
+系统版本，专有名词，错误编码。
 :::
 
 ## 附1：版本历史

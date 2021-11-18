@@ -27,24 +27,32 @@ sidebarDepth: 2
 
 ``` lua
 .Serein Cloud
-├── docker
 ├── serein-cloud-admin -- 监控服务
+├── serein-cloud-authorization -- 验证服务
 ├── serein-cloud-config -- 配置服务
 ├── serein-cloud-eureka -- 注册服务
 ├── serein-cloud-gateway -- 网关服务
 ├── serein-cloud-platform -- 平台服务
+│   ├── serein-cloud-business -- 业务服务
+│   ├── serein-cloud-business-api
 │   ├── serein-cloud-component -- 组件服务
 │   ├── serein-cloud-component-api
+│   ├── serein-cloud-pay -- 支付服务
+│   ├── serein-cloud-pay-api
 │   ├── serein-cloud-system -- 系统服务
 │   ├── serein-cloud-system-api
+│   ├── serein-cloud-websocket -- websocket服务
+│   ├── serein-cloud-websocket-api
 │   ├── serein-cloud-weixin -- 微信服务
 │   └── serein-cloud-weixin-api
-├── serein-cloud-support -- 支持服务
+└── serein-cloud-support -- 支持服务
 │   ├── serein-cloud-generator -- 代码生成
 │   ├── serein-cloud-generator-api
+│   ├── serein-cloud-search -- 搜索引擎
+│   ├── serein-cloud-search-api
+│   ├── serein-cloud-transaction -- 分布式事务
 │   ├── serein-cloud-xxl-job -- 定时任务
-│   └── serein-cloud-xxl-job-executor
-└── serein-cloud-authorization -- 验证服务
+└── └── serein-cloud-xxl-job-executor
 ```
 
 ## 技术选型
@@ -64,7 +72,6 @@ sidebarDepth: 2
 | Redis                  | 分布式缓存           | https://redis.io/                                    |
 | Docker                 | 应用容器引擎         | https://www.docker.com/                              |
 | OSS                    | 对象存储             | https://github.com/aliyun/aliyun-oss-java-sdk        |
-| MinIO                  | 对象存储             | https://github.com/minio/minio                       |
 | JWT                    | JWT登录支持          | https://github.com/jwtk/jjwt                         |
 | LogStash               | 日志收集             | https://github.com/logstash/logstash-logback-encoder |
 | Lombok                 | 简化对象封装工具     | https://github.com/rzwitserloot/lombok               |

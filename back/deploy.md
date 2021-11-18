@@ -56,7 +56,7 @@ mkdir ~/serein && touch docker-compose.yml
 vi ~/serein/docker-compose.yml
 ```
 
-```yml
+```yaml
 version: "3.6"
 
 services:
@@ -179,7 +179,7 @@ docker-compose ps
 
 - 配置文件配置 `serein-cloud-component` 组件服务加入以下配置
 
-```yml
+```yaml
 serein:
   oss:
     endpoint: oss-cn-shenzhen.aliyuncs.com #对象存储服务的URL
@@ -198,7 +198,7 @@ serein:
 - 阿里云申请开通 域名和域名证书：详细参考官方文档
 - 需要申请的域名
 
-```txt
+```text
 admin.serein.vipklm.com #监控服务
 eureka.serein.vipklm.com #注册中心服务
 portainer.vipklm.com #容器服务
