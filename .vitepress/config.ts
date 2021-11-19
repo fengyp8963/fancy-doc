@@ -24,7 +24,7 @@ export default {
     },
     // 导航栏配置
     nav: [
-      { text: "前端", link: "/", activeMatch: "^/$|^/front/" },
+      { text: "前端", link: "/front/basics", activeMatch: "^/$|^/front/" },
       {
         text: "后端",
         link: "/back/basics",
@@ -67,26 +67,31 @@ function getFrontSidebar() {
     {
       text: "介绍",
       children: [
-        { text: "什么是 VitePress？", link: "/" },
-        { text: "入门", link: "/front/getting-started" },
-        { text: "配置", link: "/front/backuration" },
-        { text: "资产处理", link: "/front/assets" },
-        { text: "降价扩展", link: "/front/markdown" },
-        { text: "在 Markdown 中使用 Vue", link: "/front/using-vue" },
+        { text: "简介", link: "/front/basics" },
+        { text: "入门", link: "/front/started" },
+        { text: "配置", link: "/front/configuration" },
         { text: "部署", link: "/front/deploy" },
       ],
     },
     {
       text: "深入",
       children: [
-        { text: "前垫", link: "/front/frontmatter" },
-        { text: "主题化", link: "/front/theming" },
-        { text: "API 参考", link: "/front/api" },
-        {
-          text: "与 Vuepress 的区别",
-          link: "/front/differences-from-vuepress",
-        },
+        { text: "进阶", link: "/front/advanced" },
+        { text: "规范", link: "/front/specification" },
+        { text: "API 参考", link: "/front/api-reference" },
       ],
+    },
+    {
+      text: "其它",
+      children: [
+        { text: "名词参考", link: "/front/noun-reference" },
+        { text: "常见问题", link: "/front/common-problem" },
+        { text: "常见疑点", link: "/front/common-doubts" },
+      ],
+    },
+    {
+      text: "版本",
+      children: [{ text: "更新日志", link: "/back/version" }],
     },
   ];
 }
@@ -97,8 +102,8 @@ function getBackSidebar() {
       text: "介绍",
       children: [
         { text: "简介", link: "/back/basics" },
-        { text: "快速上手", link: "/back/started" },
-        { text: "配置", link: "/back/setting" },
+        { text: "入门", link: "/back/started" },
+        { text: "配置", link: "/back/configuration" },
         { text: "部署", link: "/back/deploy" },
       ],
     },
@@ -107,7 +112,7 @@ function getBackSidebar() {
       children: [
         { text: "进阶", link: "/back/advanced" },
         { text: "规范", link: "/back/specification" },
-        { text: "API 参考 ", link: "/back/api-reference" },
+        { text: "API 参考", link: "/back/api-reference" },
       ],
     },
     {
@@ -120,7 +125,7 @@ function getBackSidebar() {
     },
     {
       text: "版本",
-      children: [{ text: "更新日志", link: "/back/update-logs" }],
+      children: [{ text: "更新日志", link: "/back/version" }],
     },
   ];
 }
