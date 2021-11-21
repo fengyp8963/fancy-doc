@@ -3,7 +3,7 @@
   "name": "serein-docs",
   "version": "1.0.0",
   "repository": "https://gitlab.vipklm.com/serein/serein-cloud-docs",
-  "author": "serein <serein@126.com>",
+  "author": "serein <fengyp8963@hotmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "vitepress dev --port=3000",
