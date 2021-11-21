@@ -12,7 +12,7 @@ sidebarDepth: 3
 - 前端: VS Code
 - 后端: IntelliJ IDEA
 - 数据库设计: CHINER
-- 数据库客户端: DBeaver
+- 数据库客户端: DataGrip
 
 ## IDEA 推荐安装插件
 - Lombok：自动生成get set等方法
@@ -42,12 +42,11 @@ sidebarDepth: 3
 - 任何表至少包含3个字段： bigint id、 datetime create_time、bigint created_by (可以自行修改 EntityType)
 - 关于状态字段根据业务含义命名为: enabled
 - 如（隐藏、显示），（是、否），（可用、不可用）、(启用、禁用) 等字段用 enabled
-- 如 OrderedStatus, ShippingStatus,ReceiptedStatus 等字段用 status
-- 界面上要显示成树形结构的表, 至少需要4个字段: id、parent_id、label、sort_value
+- 界面上要显示成树形结构的表, 至少需要3个字段: id、parent_id、sort
 - 表中有以下含义的字段, 尽可能的采用同样的命名规则:
 - 名称: name (树型结构用: label)
 - 编码: code
-- 描述: describe_
+- 描述: descripttion
 - 最后修改数据的用户ID: updated_by
 - 最后修改数据的时间: update_time
 - 是否内置数据: readonly_
