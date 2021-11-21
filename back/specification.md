@@ -39,16 +39,16 @@ sidebarDepth: 3
 ## 数据库设计 (参考sys_user表)
 - 使用CHINER来设计表结构
 - 必须显式指定主键, 勿用复合主键. 主键的命名统一为: id
-- 任何表至少包含3个字段： bigint id、 datetime create_time、bigint created_by (可以自行修改 EntityType)
+- 任何表至少包含3个字段： bigint id、 varchar createdBy、varchar lastModifiedBy、datetime createdDate、datetime lastModifiedDate (可以自行修改 EntityType)
 - 关于状态字段根据业务含义命名为: enabled
 - 如（隐藏、显示），（是、否），（可用、不可用）、(启用、禁用) 等字段用 enabled
 - 界面上要显示成树形结构的表, 至少需要3个字段: id、parent_id、sort
 - 表中有以下含义的字段, 尽可能的采用同样的命名规则:
 - 名称: name (树型结构用: label)
 - 编码: code
-- 描述: descripttion
-- 最后修改数据的用户ID: updated_by
-- 最后修改数据的时间: update_time
+- 描述: description
+- 最后修改数据的用户ID: lastModifiedBy
+- 最后修改数据的时间: lastModifiedDate
 - 是否内置数据: readonly_
 - 不得使用外键与级联，一切外键概念必须在应用层解决
 - 不用存储过程
