@@ -74,9 +74,9 @@ export PATH=$PATH:$M2_HOME/bin
     <developers>
         <developer>
             <name>fengyp</name>
-            <email>fengyp@163.com</email>
-            <organizationUrl>https://github.com/fengyp</organizationUrl>
-            <url>https://blog.fengyp.com/</url>
+            <email>fengyp8963@hotmail.com</email>
+            <organizationUrl>https://gitlab.vipklm.com/</organizationUrl>
+            <url>https://gitlab.vipklm.com/</url>
         </developer>
     </developers>
 
