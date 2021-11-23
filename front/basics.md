@@ -1,118 +1,50 @@
 ---
 sidebarDepth: 2
 ---
-# Differences from VuePress
 
-VitePress and VuePress have different [design goals](../index.md). Both projects share similar config naming conventions. VitePress aims to have the bare minimum features needed for authoring docs. Other features are pushed to Themes. On the other hand, VuePress has more features out-of-the-box or enabled by its ecosystem of plugins.
+# 简介
 
-::: tip
-If you are using VuePress, there is no need to migrate to VitePress. Both projects are going to continue to co-exist for the foreseeable future.
+![Vue](https://img.shields.io/badge/Vue3.0-blue)&nbsp;
+![Vite](https://img.shields.io/badge/Vite-green)&nbsp;
+![Ant-Design-Vue](https://img.shields.io/badge/Ant%20Design%20Vue-orange.svg)&nbsp;
+![TypeScript](https://img.shields.io/badge/TypeScript-blue.svg)&nbsp;
+
+::: info 简介
+`Serein Admin` 是一个基于 [Vue3.0](https://github.com/vuejs/vue-next)、[Vite](https://github.com/vitejs/vite)、 [Ant-Design-Vue](https://2x.antdv.com/docs/vue/introduce-cn/)、[TypeScript](https://www.typescriptlang.org/) 的后台解决方案。包括二次封装组件、utils、hooks、动态菜单、权限校验、按钮级别权限控制等功能。项目会使用前端较新的技术栈，可以作为项目的启动模版，以帮助你快速搭建企业级中后台产品原型。也可以作为一个示例，用于学习 `vue3`、`vite`、`ts` 等主流技术。该项目会持续跟进最新技术，并将其应用在项目中。
 :::
 
-::: warning
-Note this is early WIP! Currently, the focus is on making Vite stable and feature-complete first. It is not recommended to use this for anything serious yet.
-:::
+## 需要掌握的基础知识
 
-In case you decide to move your project to VitePress, this is a list of differences from [VuePress v1.7.1](https://github.com/vuejs/vuepress/releases/tag/v1.7.1) that you need to take into account.
+本项目需要一定前端基础知识，请确保掌握 Vue 的基础知识，以便能处理一些常见的问题。
+建议在开发前先学一下以下内容，提前了解和学习这些知识，会对项目理解非常有帮助:
 
-## General
+- [Vue3 文档](https://v3.vuejs.org/)
+- [Vue-RFCS](https://github.com/vuejs/rfcs)
+- [Vue2 迁移到 3](https://v3.vuejs.org/guide/migration/introduction.html)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vue-router](https://next.router.vuejs.org/)
+- [Ant-Design-Vue](https://2x.antdv.com/docs/vue/introduce-cn/)
+- [Es6](https://es6.ruanyifeng.com/)
+- [Vitejs](https://vitejs.dev/)
+- [WindiCss](https://windicss.netlify.app/)
 
-- Missing
-  - YAML and TOML are not supported formats for site config. Only javascript is supported for `.vitepress/config.js`
-  - [Plugins](https://vuepress.vuejs.org/plugin/) support, features are implemented in themes
-  - [permalink support](https://vuepress.vuejs.org/guide/permalinks.html)
-  - `.vitepress/templates`
-  - Components in `.vitepress/components` [are not auto registered as global components](https://vuepress.vuejs.org/)
-- Differences
-  - [Public files](https://vuepress.vuejs.org/guide/assets.html#public-files) that are directly copied to dist root moved from `.vitepress/public/` is `public/`
-  - [styling](https://vuepress.vuejs.org/config/#styling) `.vitepress/styles/index.styl` and `.vitepress/styles/palette.styl` is not supported. See [Customizing CSS](/front/theming.html#customizing-css).
-  - [App Level Enhancements](https://vuepress.vuejs.org/guide/basic-config.html#app-level-enhancements) API, app enhancements `.vitepress/enhanceApp.js` is now done in `.vitepress/theme/index.js`. See [Extending the Default Theme](/front/theming.html#extending-the-default-theme).
+## vite 插件推荐
 
-## Markdown
+- [vite-plugin-mock](https://github.com/anncwb/vite-plugin-mock) - 用于本地及开发环境数据 `mock`
+- [vite-plugin-html](https://github.com/anncwb/vite-plugin-html) - 用于 `html` 模版转换，可以在`html`文件内进行书写模版语法
+- [vite-plugin-style-import](https://github.com/anncwb/vite-plugin-style-import) - 用于组件库样式按需引入
+- [vite-plugin-imagemin](https://github.com/anncwb/vite-plugin-imagemin) - 用于打包压缩图片资源
+- [vite-plugin-theme](https://github.com/anncwb/vite-plugin-theme) - 用于在线切换主题色/黑暗主题适配等主题相关配置
+- [vite-plugin-compression](https://github.com/anncwb/vite-plugin-compression) - 用于打包输出`.gz`|`.br`文件
+- [vite-plugin-svg-icons](https://github.com/anncwb/vite-plugin-svg-icons) - 快速生成 `svg sprite`
 
-- Missing
-  - Support for [toml in frontmatter](https://vuepress.vuejs.org/guide/frontmatter.html#alternative-frontmatter-formats)
-  - [details block](https://vuepress.vuejs.org/guide/markdown.html#custom-containers)
-  - [markdown slots](https://vuepress.vuejs.org/guide/markdown-slot.html)
-  - `~` prefix to explicitly specify a url is a [webpack module request](https://vuepress.vuejs.org/guide/assets.html#relative-urls)
+## 浏览器支持
 
-## Site Config
+**本地开发**推荐使用`Chrome 最新版`浏览器，**不支持**`Chrome 80`以下版本。
 
-- Missing
-  - `temp`
-  - `dest`
-  - [`theme` from a dependency](https://vuepress.vuejs.org/theme/using-a-theme.html#using-a-theme-from-a-dependency)
-  - `permalink`
-  - [`port`](https://vuepress.vuejs.org/config/#port)
-  - [`shouldPrefetch`](https://vuepress.vuejs.org/config/#shouldprefetch)
-  - [`cache`](https://vuepress.vuejs.org/config/#cache)
-  - [`extraWatchFiles`](https://vuepress.vuejs.org/config/#extrawatchfiles)
-  - [`patterns`](https://vuepress.vuejs.org/config/#patterns)
-  - [`plugins`](https://vuepress.vuejs.org/config/#pluggable)
-  - [`markdown.pageSuffix`](https://vuepress.vuejs.org/config/#markdown-pagesuffix)
-  - [`markdown.slugify`](https://vuepress.vuejs.org/config/#markdown-slugify)
-  - [`markdown.plugins`](https://vuepress.vuejs.org/config/#markdown-plugins)
-  - [`markdown.extractHeaders`](https://vuepress.vuejs.org/config/#markdown-extractheaders)
-  - `markdown.extendMarkdown` to `markdown.config`
-  - `configureWebpack`, `chainWebpack`, `postcss`, `Stylus`, `scss`, `Sass`, `less` configs
-  - [`evergreen`](https://vuepress.vuejs.org/config/#evergreen)
+**生产环境**支持现代浏览器，不支持 IE。
 
-## Default Theme Config
+| [<img src="/front/images/basics-ie.png" alt="IE" width="24px" height="24px"  />](http://godban.github.io/browsers-support-badges/)IE | [<img src="/front/images/basics-edge.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)Edge | [<img src="/front/images/basics-firefox.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)Firefox | [<img src="/front/images/basics-chrome.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)Chrome | [<img src="/front/images/basics-safari.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)Safari |
+| :-: | :-: | :-: | :-: | :-: |
+| not support | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
 
-- Missing
-  - [`smoothScroll`](https://vuepress.vuejs.org/theme/default-theme-config.html#smooth-scrolling)
-  - [`displayAllHeaders`](https://vuepress.vuejs.org/theme/default-theme-config.html#displaying-header-links-of-all-pages)
-  - [`activeHeaderLinks`](https://vuepress.vuejs.org/theme/default-theme-config.html#active-header-links)
-  - `sidebarDepth` and `initialOpenGroupIndex` for [sidebar groups](https://vuepress.vuejs.org/theme/default-theme-config.html#sidebar-groups)
-- Differences
-  - `searchMaxSuggestions` is `search.maxSuggestions`
-  - `algolia` is `search.algolia`
-  - `searchPlaceholder` is `search.placeholder`
-
-## Default Theme
-
-- Missing
-  - [`<code-group>` and `<code-block>`](https://vuepress.vuejs.org/theme/default-theme-config.html#code-groups-and-code-blocks)
-
-## Computed Globals
-
-- Missing
-  - `$lang`
-  - `$localePath`
-
-## Frontmatter Predefined Variables
-
-- Missing
-  - `description`
-  - [`meta`](https://vuepress.vuejs.org/guide/frontmatter.html#meta)
-  - [`metaTitle`](https://vuepress.vuejs.org/guide/frontmatter.html#predefined-variables)
-  - `lang`
-  - [`layout`](https://vuepress.vuejs.org/guide/frontmatter.html#layout)
-  - [`permalink`](https://vuepress.vuejs.org/guide/frontmatter.html#predefined-variables)
-  - [`canonicalUrl`](https://vuepress.vuejs.org/guide/frontmatter.html#predefined-variables)
-
-## Frontmatter Default Theme Variables
-
-- Missing
-  - `prev`, `next`
-  - [`search`](https://vuepress.vuejs.org/guide/frontmatter.html#search)
-  - [`tags`](https://vuepress.vuejs.org/guide/frontmatter.html#tags)
-  - [`pageClass`](https://vuepress.vuejs.org/theme/default-theme-config.html#custom-page-class)
-  - [`layout`](https://vuepress.vuejs.org/theme/default-theme-config.html#custom-layout-for-specific-pages)
-
-## siteData
-
-- Missing
-  - [`pages`](https://vuepress.vuejs.org/theme/writing-a-theme.html#site-and-page-metadata)
-
-## pageData
-
-- Missing
-  - `key`
-  - `path`
-  - `regularPath`
-
-## Global Components
-
-- Missing
-  - [`<Badge>`](https://vuepress.vuejs.org/guide/using-vue.html#badge)

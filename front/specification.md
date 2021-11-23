@@ -1,425 +1,85 @@
 ---
-sidebarDepth: 3
+sidebarDepth: 4
 ---
+# Lint
 
-# Markdown Extensions
+## 介绍
 
-## Header Anchors
+::: tip 使用 lint 的好处
 
-Headers automatically get anchor links applied. Rendering of anchors can be configured using the `markdown.anchor` option.
+具备基本工程素养的同学都会注重编码规范，而代码风格检查（Code Linting，简称 Lint）是保障代码规范一致性的重要手段。
 
-## Links
+遵循相应的代码规范有以下好处
 
-### Internal Links
+- 较少 bug 错误率
+- 高效的开发效率
+- 更高的可读性
 
-Internal links are converted to router link for SPA navigation. Also, every `index.md` contained in each sub-directory will automatically be converted to `index.html`, with corresponding URL `/`.
-
-For example, given the following directory structure:
-
-```
-.
-├─ index.md
-├─ foo
-│  ├─ index.md
-│  ├─ one.md
-│  └─ two.md
-└─ bar
-   ├─ index.md
-   ├─ three.md
-   └─ four.md
-```
-
-And providing you are in `foo/one.md`:
-
-```md
-[Home](/) <!-- sends the user to the root index.md -->
-[foo](/foo/) <!-- sends the user to index.html of directory foo -->
-[foo heading](./#heading) <!-- anchors user to a heading in the foo index file -->
-[bar - three](../bar/three) <!-- you can omit extention -->
-[bar - three](../bar/three.md) <!-- you can append .md -->
-[bar - four](../bar/four.html) <!-- or you can append .html -->
-```
-
-### Page Suffix
-
-Pages and internal links get generated with the `.html` suffix by default.
-
-### External Links
-
-Outbound links automatically get `target="_blank" rel="noopener noreferrer"`:
-
-- [vuejs.org](https://vuejs.org)
-- [VitePress on GitHub](https://github.com/vuejs/vitepress)
-
-## Frontmatter
-
-[YAML frontmatter](https://jekyllrb.com/docs/frontmatter/) is supported out of the box:
-
-```yaml
----
-title: Blogging Like a Hacker
-lang: en-US
----
-```
-
-This data will be available to the rest of the page, along with all custom and theming components.
-
-For more details, see [Frontmatter](./frontmatter.md).
-
-## GitHub-Style Tables
-
-**Input**
-
-```
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-```
-
-**Output**
-
-| Tables        |      Are      |   Cool |
-| ------------- | :-----------: | -----: |
-| col 3 is      | right-aligned | \$1600 |
-| col 2 is      |   centered    |   \$12 |
-| zebra stripes |   are neat    |    \$1 |
-
-## Emoji :tada:
-
-**Input**
-
-```
-:tada: :100:
-```
-
-**Output**
-
-:tada: :100:
-
-A [list of all emojis](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json) is available.
-
-## Table of Contents
-
-**Input**
-
-```
-[[toc]]
-```
-
-**Output**
-
-[[toc]]
-
-Rendering of the TOC can be configured using the `markdown.toc` option.
-
-## Custom Containers
-
-Custom containers can be defined by their types, titles, and contents.
-
-### Default Title
-
-**Input**
-
-```md
-::: tip
-This is a tip
 :::
 
-::: info
-This is an info box
-:::
+项目内集成了以下几种代码校验方式
+
+1. eslint 用于校验代码格式规范
+2. commitlint 用于校验 git 提交信息规范
+3. stylelint 用于校验 css/less 规范
+4. prettier 代码格式化
 
 ::: warning
-This is a warning
+
+lint 不是必须的，但是很有必要，一个项目做大了以后或者参与人员过多后，就会出现各种风格迥异的代码，对后续的维护造成了一定的麻烦
+
 :::
 
-::: danger
-This is a dangerous warning
-:::
+## ESLint
+
+ESLint 是一个代码规范和错误检查工具
+### 手动校验代码
+
+```bash
+# 执行下面代码.能修复的会自动修复，不能修复的需要手动修改
+yarn run lint:eslint
 ```
 
-**Output**
+## CommitLint
 
-::: tip
-This is a tip
-:::
+commitlint 用于校验 git 提交信息规范
 
-::: info
-This is an info box
-:::
+### Git 提交规范
 
-::: warning
-This is a warning
-:::
+- 参考 [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) 规范 ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
 
-::: danger
-This is a dangerous warning
-:::
+  - `feat` 增加新功能
+  - `fix` 修复问题/BUG
+  - `style` 代码风格相关无影响运行结果的
+  - `perf` 优化/性能提升
+  - `refactor` 重构
+  - `revert` 撤销修改
+  - `test` 测试相关
+  - `docs` 文档/注释
+  - `chore` 依赖更新/脚手架配置修改等
+  - `workflow` 工作流改进
+  - `ci` 持续集成
+  - `mod` 不确定分类的修改
+  - `wip` 开发中
+  - `types` 类型修改
 
-### Custom Title
+## Stylelint
 
-**Input**
+stylelint 用于校验项目内部 css 的风格,加上编辑器的自动修复，可以很好的统一项目内部 css 风格
 
-```md
-::: danger STOP
-Danger zone, do not proceed
-:::
-```
+## Prettier
 
-**Output**
+prettier 可以用于统一项目代码风格，统一的缩进，单双引号，尾逗号等等风格
 
-::: danger STOP
-Danger zone, do not proceed
-:::
+## Git Hook
 
-## Syntax Highlighting in Code Blocks
+git hook 一般结合各种 lint，在 git 提交代码的时候进行代码风格校验，如果校验没通过，则不会进行提交。需要开发者自行修改后再次进行提交
 
-VitePress uses [Prism](https://prismjs.com/) to highlight language syntax in Markdown code blocks, using coloured text. Prism supports a wide variety of programming languages. All you need to do is append a valid language alias to the beginning backticks for the code block:
+## 文件命名规范
 
-**Input**
+ - 文件名以**全小写,多个词用中划线(-)连接**的格式命名
+ - 一个模块对应一个文件目录,一个模块下可以有多个菜单; 一个菜单对应一个文件目录,目录中含有文件如图(**注：统一文件命名**):
 
-````
-```js
-export default {
-  name: 'MyComponent',
-  // ...
-}
-```
-````
+ ![img.png](/front/images/specification-001.png)
 
-**Output**
-
-```js
-export default {
-  name: 'MyComponent'
-  // ...
-}
-```
-
-**Input**
-
-````
-```html
-<ul>
-  <li v-for="todo in todos" :key="todo.id">
-    {{ todo.text }}
-  </li>
-</ul>
-```
-````
-
-**Output**
-
-```html
-<ul>
-  <li v-for="todo in todos" :key="todo.id">{{ todo.text }}</li>
-</ul>
-```
-
-A [list of valid languages](https://prismjs.com/#languages-list) is available on Prism’s site.
-
-## Line Highlighting in Code Blocks
-
-**Input**
-
-````
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
-
-**Output**
-
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-
-In addition to a single line, you can also specify multiple single lines, ranges, or both:
-
-- Line ranges: for example `{5-8}`, `{3-10}`, `{10-17}`
-- Multiple single lines: for example `{4,7,9}`
-- Line ranges and single lines: for example `{4,7-13,16,23-27,40}`
-
-**Input**
-
-````
-```js{1,4,6-7}
-export default { // Highlighted
-  data () {
-    return {
-      msg: `Highlighted!
-      This line isn't highlighted,
-      but this and the next 2 are.`,
-      motd: 'VitePress is awesome',
-      lorem: 'ipsum',
-    }
-  }
-}
-```
-````
-
-**Output**
-
-```js{1,4,6-8}
-export default { // Highlighted
-  data () {
-    return {
-      msg: `Highlighted!
-      This line isn't highlighted,
-      but this and the next 2 are.`,
-      motd: 'VitePress is awesome',
-      lorem: 'ipsum',
-    }
-  }
-}
-```
-
-## Line Numbers
-
-You can enable line numbers for each code blocks via config:
-
-```js
-module.exports = {
-  markdown: {
-    lineNumbers: true
-  }
-}
-```
-
-- Demo:
-
-<picture>
-  <source srcset="../images/line-numbers-mobile.gif" media="(max-width: 719px)">
-  <img class="line-numbers-mobile-snap" src="../images/line-numbers-mobile.gif" alt="Image">
-</picture>
-
-<picture>
-  <source srcset="../images/line-numbers-desktop.png" media="(min-width: 720px)">
-  <img class="line-numbers-desktop-snap" src="../images/line-numbers-desktop.png" alt="Image">
-</picture>
-
-<style>
-  .line-numbers-mobile-snap {
-    margin: 0 -1.5rem;
-    width: 100vw;
-    max-width: none !important;
-  }
-
-  .line-numbers-desktop-snap {
-    display: none;
-  }
-
-  @media (min-width:  720px) {
-    .line-numbers-mobile-snap {
-       display: none;
-    }
-
-    .line-numbers-desktop-snap {
-      display: block;
-    }
-  }
-</style>
-
-## Import Code Snippets
-
-You can import code snippets from existing files via following syntax:
-
-```md
-<<< @/filepath
-```
-
-It also supports [line highlighting](#line-highlighting-in-code-blocks):
-
-```md
-<<< @/filepath{highlightLines}
-```
-
-**Input**
-
-```md
-<<< @/snippets/snippet.js{2}
-```
-
-**Code file**
-
-<!--lint disable strong-marker-->
-
-<<< @/snippets/snippet.js
-
-<!--lint enable strong-marker-->
-
-**Output**
-
-<!--lint disable strong-marker-->
-
-<<< @/snippets/snippet.js{2}
-
-<!--lint enable strong-marker-->
-
-::: tip
-The value of `@` corresponds to the source root. By default it's the VitePress project root, unless `srcDir` is configured.
-:::
-
-You can also use a [VS Code region](https://code.visualstudio.com/docs/editor/codebasics#_folding) to only include the corresponding part of the code file. You can provide a custom region name after a `#` following the filepath (`snippet` by default):
-
-**Input**
-
-```md
-<<< @/snippets/snippet-with-region.js{1}
-```
-
-**Code file**
-
-<!--lint disable strong-marker-->
-
-<<< @/snippets/snippet-with-region.js
-
-<!--lint enable strong-marker-->
-
-**Output**
-
-<!--lint disable strong-marker-->
-
-<<< @/snippets/snippet-with-region.js#snippet{1}
-
-<!--lint enable strong-marker-->
-
-## Advanced Configuration
-
-VitePress uses [markdown-it](https://github.com/markdown-it/markdown-it) as the Markdown renderer. A lot of the extensions above are implemented via custom plugins. You can further customize the `markdown-it` instance using the `markdown` option in `.vitepress/config.js`:
-
-```js
-const anchor = require('markdown-it-anchor')
-
-module.exports = {
-  markdown: {
-    // options for markdown-it-anchor
-    // https://github.com/valeriangalliat/markdown-it-anchor#permalinks
-    anchor: {
-      permalink: anchor.permalink.headerLink()
-    },
-
-    // options for markdown-it-table-of-contents
-    toc: { includeLevel: [1, 2] },
-
-    config: (md) => {
-      // use more markdown-it plugins!
-      md.use(require('markdown-it-xxx'))
-    }
-  }
-}
-```
+更多项目规范可查看友情链接 https://vvbin.cn/doc-next/dep/lint.html
