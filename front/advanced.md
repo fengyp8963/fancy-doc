@@ -1,55 +1,119 @@
-# Asset Handling
+---
+sidebarDepth: 3
+---
 
-All Markdown files are compiled into Vue components and processed by [Vite](https://github.com/vitejs/vite). You can, **and should**, reference any assets using relative URLs:
+# 权限
 
-```md
-![An image](./image.png)
+## 菜单配置
+ 
+1. 系统设置-菜单管理-新增目录,如图:
+
+![img.png](/front/images/advanced-001.png)
+
+ - **目录级的路由地址格式：/+目录名（项目文件目录名保持一致）**
+
+2. 系统设置-菜单管理-新增菜单,如图:
+
+![img.png](/front/images/advanced-002.png)
+
+ - **菜单级的路由地址格式：菜单名（项目文件菜单名保持一致）**
+ - **组件路径格式：/+目录名+菜单名+index**
+
+ ## 按钮配置
+ 
+ 按钮配置统一如图: 
+
+ ![img.png](/front/images/advanced-004.png)
+
+ - **按钮权限标识格式：目录名:菜单名:find/save/update/delete/import/export/print**
+
+## 角色权限配置
+
+ 系统设置-角色管理-菜单分配
+
+ ![img.png](/front/images/advanced-003.png)
+
+ **清空缓存 重新登录**
+
+## 后台动态获取
+
+**实现原理:** 是通过接口动态生成路由表，且遵循一定的数据结构返回。前端根据需要处理该数据为可识别的结构，再通过 `router.addRoutes` 添加到路由实例，实现权限的动态生成。
+
+## 动态更换菜单
+
+```ts
+import { usePermission } from '/@/hooks/web/usePermission';
+import { RoleEnum } from '/@/enums/roleEnum';
+
+export default defineComponent({
+  setup() {
+    let routeList: AppRouteRecordRaw[] = [];
+    // 动态菜单 缓存取
+    routeList = (Persistent.getLocal(USER_INFO_KEY)?.resources ??
+      []) as AppRouteRecordRaw[];
+  },
+});
 ```
 
-You can reference static assets in your markdown files, your `*.vue` components in the theme, styles and plain `.css` files either using absolute public paths (based on project root) or relative paths (based on your file system). The latter is similar to the behavior you are used to if you have used `vue-cli` or webpack's `file-loader`.
+## 细粒度权限
 
-Common image, media, and font filetypes are detected and included as assets automatically.
+**函数方式**
 
-All referenced assets, including those using absolute paths, will be copied to the dist folder with a hashed file name in the production build. Never-referenced assets will not be copied. Similar to `vue-cli`, image assets smaller than 4kb will be base64 inlined.
-
-All **static** path references, including absolute paths, should be based on your working directory structure.
-
-## Public Files
-
-Sometimes you may need to provide static assets that are not directly referenced in any of your Markdown or theme components (for example, favicons and PWA icons). The `public` directory under project root can be used as an escape hatch to provide static assets that either are never referenced in source code (e.g. `robots.txt`), or must retain the exact same file name (without hashing).
-
-Assets placed in `public` will be copied to the root of the dist directory as-is.
-
-Note that you should reference files placed in `public` using root absolute path - for example, `public/icon.png` should always be referenced in source code as `/icon.png`.
-
-## Base URL
-
-If your site is deployed to a non-root URL, you will need to set the `base` option in `.vitepress/config.js`. For example, if you plan to deploy your site to `https://foo.github.io/bar/`, then `base` should be set to `'/bar/'` (it should always start and end with a slash).
-
-All your static asset paths are automatically processed to adjust for different `base` config values. For example, if you have an absolute reference to an asset under `public` in your markdown:
-
-```md
-![An image](/image-inside-public.png)
-```
-
-You do **not** need to update it when you change the `base` config value in this case.
-
-However, if you are authoring a theme component that links to assets dynamically, e.g. an image whose `src` is based on a theme config value:
+[usePermission](https://github.com/anncwb/vue-vben-admin/tree/main/src/hooks/web/usePermission.ts) 还提供了按钮级别的权限控制。
 
 ```vue
-<img :src="theme.logoPath" />
-```
-
-In this case it is recommended to wrap the path with the [`withBase` helper](/front/api.html#withbase) provided by VitePress:
-
-```vue
-<script setup>
-import { withBase, useData } from 'vitepress'
-
-const { theme } = useData()
-</script>
-
 <template>
-  <img :src="withBase(theme.logoPath)" />
+  <a-button v-if="hasPermission(['20000', '2000010'])" color="error" class="mx-4">
+    拥有[20000,2000010]code可见
+  </a-button>
 </template>
+<script lang="ts">
+  import { usePermission } from '/@/hooks/web/usePermission';
+  import { RoleEnum } from '/@/enums/roleEnum';
+
+  export default defineComponent({
+    setup() {
+      const { hasPermission } = usePermission();
+      return { hasPermission };
+    },
+  });
+</script>
 ```
+
+### 如何初始化 code
+
+通常，如需做按钮级别权限，后台会提供相应的 code，或者类型的判断标识。这些编码只需要在登录后获取一次即可。
+
+```ts
+import { useUserStore } from './user';
+
+const userStore = useUserStore();
+const codeList = userStore.getUserInfo?.permissions;
+this.setPermCodeList(codeList);
+
+setPermCodeList(codeList: string[]) {
+  this.permCodeList = codeList;
+},
+```
+
+## 代码生成
+
+开发运维-代码生成-配置 (**找到对应的表名**)
+
+- 生成配置,如图:
+
+  ![img.png](/front/images/advanced-005.png)
+
+- 字段配置,如图:
+
+  ![img.png](/front/images/advanced-006.png)
+
+ 列表只与列表的表格列数据显示有关; 表单、必填、表单类型与弹窗的表单字段有关; 查看弹窗的字段与表单列的配置是否显示同步。
+
+ - 配置完成可预览或下载查看源码并应用到项目中
+
+  **代码生成只提供基础的代码模版,包含: 列表表格,弹框,数据定义,数据类型定义,多语言,api 文件; 可根据需求自行修改生成的代码模版。**
+    
+
+
+
