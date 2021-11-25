@@ -114,6 +114,41 @@ setPermCodeList(codeList: string[]) {
 
   **代码生成只提供基础的代码模版,包含: 列表表格,弹框,数据定义,数据类型定义,多语言,api 文件; 可根据需求自行修改生成的代码模版。**
     
+1.列表页 (index.vue)
+
+![img.png](/front/images/advanced-index.png)
+
+2.弹框
+
+![img.png](/front/images/advanced-drawer.png)
+
+3.数据定义
+
+![img.png](/front/images/advanced-data.png)
+
+4.数据类型定义
+
+![img.png](/front/images/advanced-model.png)
+
+5.多语言 
+
+ - 中文
+
+![img.png](/front/images/advanced-lang.png)
+
+ - 英文
+
+![img.png](/front/images/advanced-langEn.png)
+
+6.api
+
+![img.png](/front/images/advanced-api.png)
+
+7.查看弹框
+
+![img.png](/front/images/advanced-viewDrawer.png)
+
+
 
 
 
