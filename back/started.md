@@ -102,13 +102,14 @@ git clone https://gitlab.vipklm.com/serein/vue-serein-admin.git
   - `SereinCloudGatewayApplication` 网关服务
   - `SereinCloudAuthorizationApplication` 验证服务
   - `SereinCloudSystemApplication` 系统服务
+  - `SereinCloudTenantApplication` 租户服务
 - 其它服务按需要启动
 - 所有服务如下：
 
 ```txt
 SereinCloudAdminApplication 监控服务
 SereinCloudAuthorizationApplication 验证服务
-SereinCloudBusinessApplication 业务服务
+SereinCloudPortalApplication 门户服务
 SereinCloudComponentApplication 组件服务
 SereinCloudConfigApplication 配置中心服务
 SereinCloudEurekaApplication 注册中心服务
@@ -117,9 +118,11 @@ SereinCloudGeneratorApplication 代码生成服务
 SereinCloudPayApplication 支付服务
 SereinCloudSearchApplication 搜索服务
 SereinCloudSystemApplication 系统服务
+SereinCloudTenantApplication 租户服务
 SereinCloudTransactionApplication 分布式事物服务
 SereinCloudWebsocketApplication websocket服务
 SereinCloudWeixinApplication 微信服务
 SereinCloudXxlJobApplication 定时任务服务
 SereinCloudXxlJobExecutorApplication定时任务客户端服务
+··· 业务服务
 ```

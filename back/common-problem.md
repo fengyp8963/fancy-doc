@@ -13,3 +13,7 @@
 3. 从[百度](https://www.百度.com)搜索问题
 4. 在下面列表找不到问题可以到 issue 提问 [issues](https://gitlab.vipklm.com/serein/serein-cloud/issues)
 5. 如果不是问题类型的，需要讨论的，请到 [discussions](https://gitlab.vipklm.com/serein/serein-cloud/discussions) 讨论
+
+## 为什么在本地启动不了？
+
+为什么在本地启动不了!

@@ -1,12 +1,24 @@
 # 进阶
 
-::: info 简介
-VitePress provides a homepage layout. To use it, specify `home: true` plus some other metadata in your root `index.md`'s [YAML frontmatter](/front/frontmatter). This is an example of how it works:
+::: info 简介 构建分布式系统不应该是复杂的，SpringCloud对常见的分布式系统模式提供了简单易用的编程模型，帮助开发者构建弹性、可靠、协调的应用程序；
+SpringCloud是在SpringBoot的基础上构建的，使开发者可以轻松入门并快速提高工作效率。
 :::
+
+## Tenant 租户模式
+
+- 多租户技术，是一种架构模式，是实现如何在多用户环境下共用相同的系统或程序组件，并且达到各用户间数据的“独立”的技术；
+
+```yaml
+serein:
+  login:
+    tenant: true
+```
 
 ## Swagger接口文档
 
 - SwaggerConfiguration 类配置
+- 本文主要讲解serein cloud是如何通过整合Swagger-UI来实现一份相当完善的在线API文档的。
+- Swagger-UI是HTML, Javascript, CSS的一个集合，可以动态地根据注解生成在线API文档。
 
 ```java
 /**
@@ -58,7 +70,6 @@ public class SwaggerConfiguration {
 
 }
 ```
-
 
 ## Oauth2 授权认证
 
@@ -210,4 +221,148 @@ serein:
     bucket-name: serein-cloud #默认的存储桶名称
 ---
 
+```
+
+## Redis 缓存配置
+
+- @EnableCaching注解是spring framework中的注解驱动的缓存管理功能。自spring版本3.1起加入了该注解。如果你使用了这个注解， 那么你就不需要在XML文件中配置cache manager了。
+- 当你在配置类(@Configuration)上使用@EnableCaching注解时，会触发一个post processor，这会扫描每一个spring bean，
+- 查看是否已经存在注解对应的缓存。如果找到了，就会自动创建一个代理拦截方法调用，使用缓存的bean执行处理。
+
+```java
+/**
+ * 设置缓存时间
+ */
+@Configuration
+@EnableCaching
+@ConditionalOnClass(RedisOperations.class)
+@EnableConfigurationProperties(RedisProperties.class)
+@RequiredArgsConstructor
+public class CacheConfig {
+
+    @Bean
+    public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
+        return new RedisCacheManager(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory),
+                this.getRedisCacheConfigurationWithTtl(2 * 60 * 60), // 默认策略，未配置的key会使用这个
+                this.getRedisCacheConfigurationMap() // 指定 key 策略
+        );
+    }
+
+    private Map<String, RedisCacheConfiguration> getRedisCacheConfigurationMap() {
+        Map<String, RedisCacheConfiguration> redisCacheConfigurationMap = new HashMap<>();
+        // DefaultCache和EnterpriseApiCache进行过期时间配置
+        redisCacheConfigurationMap.put("DefaultCache", this.getRedisCacheConfigurationWithTtl(24 * 60 * 60));
+        return redisCacheConfigurationMap;
+    }
+
+    private RedisCacheConfiguration getRedisCacheConfigurationWithTtl(Integer seconds) {
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(
+                Object.class);
+        jackson2JsonRedisSerializer.setObjectMapper(JsonUtil.getInstance());
+        RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
+        redisCacheConfiguration = redisCacheConfiguration
+                .serializeValuesWith(
+                        RedisSerializationContext.SerializationPair.fromSerializer(jackson2JsonRedisSerializer))
+                .entryTtl(Duration.ofSeconds(seconds)).computePrefixWith(cacheKeyPrefix());
+        return redisCacheConfiguration;
+    }
+
+    @Bean
+    public CacheKeyPrefix cacheKeyPrefix() {
+        return cacheName -> {
+            String headerTenantId = String.valueOf(TenantContextHolder.getTenantId());
+            if (headerTenantId.equals("null")) {
+                headerTenantId = SereinConstant.SEREIN_TENANT_ID_DEFAULT;
+            }
+            StringBuilder sBuilder = new StringBuilder(100);
+            // 此方法需要自己实现，获取租户编码
+            sBuilder.append("serein").append(":").append(headerTenantId).append(":")
+                    .append(SereinConstant.SEREIN_CACHE_NAMES_PREFIX);
+            sBuilder.append(cacheName).append(":");
+            return sBuilder.toString();
+        };
+    }
+
+    @Bean
+    public KeyGenerator keyGenerator() {
+        return (target, method, params) -> {
+            if (params.length == 0 || params[0] == null) {
+                return "";
+            }
+            String join = Arrays.stream(params).map(param -> {
+                try {
+                    return JsonUtil.writeValueAsString(param);
+                }
+                catch (JsonProcessingException e) {
+                    return param.toString();
+                }
+            }).collect(Collectors.joining("&"));
+            String format = String.format("%s{%s}", target.getClass().getName() + "." + method.getName(), join);
+            return DigestUtils.sha256Hex(format);
+        };
+    }
+
+}
+```
+
+- 缓存使用方法
+
+```java
+/**
+ * <p>
+ * 部门表 服务实现类
+ * </p>
+ */
+@RequiredArgsConstructor
+@Service
+@CacheConfig(cacheNames = "depart", keyGenerator = "keyGenerator")
+@Transactional(rollbackFor = Exception.class)
+public class DepartService implements IDepartService {
+
+	private final DepartRepository departRepository;
+
+	private final DepartMapper departMapper;
+
+	@Override
+	public Handle<Depart, DepartDto, DepartTreeNode, DepartPOI, Long> getHandle() {
+		return new Handle<>(departRepository, departMapper);
+	}
+
+	@Cacheable
+	@Override
+	public DepartDto get(Long aLong) {
+		return IDepartService.super.get(aLong);
+	}
+
+	@CacheEvict(allEntries = true)
+	@Override
+	public DepartDto save(DepartDto dto) {
+		return IDepartService.super.save(dto);
+	}
+
+	@CacheEvict(allEntries = true)
+	@Override
+	public DepartDto update(DepartDto dto) {
+		return IDepartService.super.update(dto);
+	}
+
+	@CacheEvict(allEntries = true)
+	@Override
+	public void updateDeletedTrue(Long aLong) {
+		IDepartService.super.updateDeletedTrue(aLong);
+	}
+
+	@Cacheable
+	@Override
+	public Page<DepartDto> findAll(Specification<Depart> spec, Pageable pageable) {
+		return IDepartService.super.findAll(spec, pageable);
+	}
+
+	@Cacheable
+	@Override
+	public List<DepartTreeNode> trees(Specification<Depart> spec, Sort sort, boolean lazied) {
+		return IDepartService.super.trees(spec, sort, lazied);
+	}
+
+}
 ```
