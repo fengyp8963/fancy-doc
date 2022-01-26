@@ -63,7 +63,7 @@ interface Router {
 
 - **Type**: `(path: string) => string`
 
-  Appends the configured [`base`](/back/basics.html#base) to a given URL path. Also see [Base URL](/front/assets.html#base-url).
+  Appends the configured [`base`] to a given URL path. Also see [Base URL]).
 
 ## Global Components
 
