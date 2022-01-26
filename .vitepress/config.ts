@@ -9,6 +9,7 @@ export default {
   // 添加图标
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
   themeConfig: {
+    logo: "/images/logo.png",
     repo: "https://gitlab.vipklm.com/serein/",
     docsDir: "docs",
     editLinks: false,
