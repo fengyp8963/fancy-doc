@@ -6,7 +6,7 @@ services:
     image: serein-cloud/serein-cloud-doc:latest
     restart: always
     ports:
-      - '3100:80'
+      - '3000:80'
     networks:
       - app_serein_net
     environment:
