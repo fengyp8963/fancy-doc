@@ -22,8 +22,7 @@ build:
     - yarn && yarn build #打包
     - tar -zcvf .vitepress/dist/serein-cloud-doc.tar.gz -C .vitepress/dist/ . --warning=no-file-changed && true=0 || false=1 #打包
     - cp .vitepress/dist/serein-cloud-doc.tar.gz docker/app #把内容到docker目录下
-    - cd docker/app #切换到docker目录下
-    - docker build -t serein-cloud/serein-cloud-doc:latest .
+    - docker build -f docker/app/Dockerfile -t serein-cloud/serein-cloud-doc:latest .
     - echo "docker done"
 
 run:
@@ -33,8 +32,7 @@ run:
   tags:
     - node
   script:
-    - cd docker/app # 移动到docker-compose.yml文件夹下面
-    - docker-compose up -d # 启动容器
+    - docker-compose -f docker/app/docker-compose.yml up -d # 启动容器
     - echo "run done"
 
 clean:
