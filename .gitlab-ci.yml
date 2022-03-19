@@ -21,7 +21,6 @@ build:
     - pwd #打印当前目录
     - yarn && yarn build #打包
     - tar -zcvf .vitepress/dist/serein-cloud-doc.tar.gz -C .vitepress/dist/ . --warning=no-file-changed && true=0 || false=1 #打包
-    - cp .vitepress/dist/serein-cloud-doc.tar.gz docker/app #把内容到docker目录下
     - docker build -f docker/app/Dockerfile -t serein-cloud/serein-cloud-doc:latest .
     - echo "docker done"
 
