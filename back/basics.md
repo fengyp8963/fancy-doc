@@ -3,14 +3,14 @@ sidebarDepth: 2
 ---
 # Serein Cloud 框架
 
-![SpringCloud](https://img.shields.io/badge/Spring%20Cloud%202020.0.4-blue)&nbsp;
-![SpringBoot](https://img.shields.io/badge/Spring%20Boot-2.5.5.RELEASE-green)&nbsp;
+![SpringCloud](https://img.shields.io/badge/Spring%20Cloud%202021.0.2-blue)&nbsp;
+![SpringBoot](https://img.shields.io/badge/Spring%20Boot-2.6.7.RELEASE-green)&nbsp;
 ![MySql](https://img.shields.io/badge/Database-MySql8-orange.svg)&nbsp;
 ![JDK](https://img.shields.io/badge/JDK-11.0.8-blue.svg)&nbsp;
 ![Author](https://img.shields.io/badge/Author-fengyp-blue.svg)&nbsp;
 
 ::: info 简介
-`Serein Cloud`是一套基于微服务后台管理系统，使用现阶段主流技术实现；涵盖了Spring Cloud 2020.0.4、Spring Boot 2.5.5、Spring JPA 2.5.5、Elasticsearch
+`Serein Cloud`是一套基于微服务后台管理系统，使用现阶段主流技术实现；涵盖了Spring Cloud 2021.0.2、Spring Boot 2.6.7、Spring JPA 2.6.7、Elasticsearch
 7.9.0、RocketMQ 4.7.1、Redis 5.0.5、MySQL 8.0.22 等技术，采用Docker容器化部署，同时提供了基于Vue3.0的管理后台方便快速搭建系统，集成了注册中心、配置中心、监控中心、服务网关等系统功能；
 后台管理系统包含部门管理、用户管理、角色管理、菜单管理、岗位管理、字典管理、权限管理、系统设置等模块。
 :::
