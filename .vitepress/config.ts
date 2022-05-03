@@ -37,6 +37,11 @@ export default {
         activeMatch: "^/app/",
       },
       {
+        text: "数据大屏",
+        link: "/datav/basics",
+        activeMatch: "^/datav/",
+      },
+      {
         text: "相关链接",
         link: "https://gitlab.vipklm.com/serein/",
         items: [
@@ -53,8 +58,16 @@ export default {
             link: "https://gitlab.vipklm.com/serein/serein-cloud-config.git",
           },
           {
+            text: "大屏源码",
+            link: "https://gitlab.vipklm.com/serein/serein-datav-vue.git",
+          },
+          {
             text: "文档源码",
             link: "https://gitlab.vipklm.com/serein/serein-cloud-doc.git",
+          },
+          {
+            text: "小程序源码",
+            link: "https://gitlab.vipklm.com/serein/serein-uni-app.git",
           },
         ],
       },

@@ -1,7 +1,7 @@
 ---
 sidebarDepth: 2
 ---
-# Serein Cloud 框架
+# 后端框架
 
 ![SpringCloud](https://img.shields.io/badge/Spring%20Cloud%202021.0.2-blue)&nbsp;
 ![SpringBoot](https://img.shields.io/badge/Spring%20Boot-2.6.7.RELEASE-green)&nbsp;

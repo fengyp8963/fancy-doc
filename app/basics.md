@@ -2,7 +2,7 @@
 sidebarDepth: 2
 ---
 
-# 小程序简介
+# 小程序框架
 
 ![Vue](https://img.shields.io/badge/Vue3.0-blue)&nbsp;
 ![Vite](https://img.shields.io/badge/Vite-green)&nbsp;
