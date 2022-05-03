@@ -32,6 +32,11 @@ export default {
         activeMatch: "^/back/",
       },
       {
+        text: "小程序",
+        link: "/app/basics",
+        activeMatch: "^/app/",
+      },
+      {
         text: "相关链接",
         link: "https://gitlab.vipklm.com/serein/",
         items: [
@@ -58,6 +63,7 @@ export default {
     sidebar: {
       "/front/": getFrontSidebar(),
       "/back/": getBackSidebar(),
+      "/app/": getAppSidebar(),
       "/": getFrontSidebar(),
     },
   },
@@ -122,6 +128,40 @@ function getBackSidebar() {
         { text: "名词参考", link: "/back/noun-reference" },
         { text: "常见问题", link: "/back/common-problem" },
         { text: "常见疑点", link: "/back/common-doubts" },
+      ],
+    },
+    {
+      text: "版本",
+      children: [{ text: "更新日志", link: "/back/version" }],
+    },
+  ];
+}
+
+function getAppSidebar() {
+  return [
+    {
+      text: "介绍",
+      children: [
+        { text: "简介", link: "/app/basics" },
+        { text: "入门", link: "/app/started" },
+        { text: "配置", link: "/app/configuration" },
+        { text: "部署", link: "/app/deploy" },
+      ],
+    },
+    {
+      text: "深入",
+      children: [
+        { text: "进阶", link: "/app/advanced" },
+        { text: "规范", link: "/app/specification" },
+        { text: "API 参考", link: "/app/api-reference" },
+      ],
+    },
+    {
+      text: "其它",
+      children: [
+        { text: "名词参考", link: "/app/noun-reference" },
+        { text: "常见问题", link: "/app/common-problem" },
+        { text: "常见疑点", link: "/app/common-doubts" },
       ],
     },
     {
