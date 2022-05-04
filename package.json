@@ -6,9 +6,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "vitepress dev --host='0.0.0.0' --port=3000",
+    "dev": "vitepress dev",
     "build": "vitepress build",
-    "serve": "vitepress serve --port=5000",
+    "serve": "vitepress serve",
     "pages": "npm run build && bash scripts/deploy-gh.sh"
   },
   "dependencies": {
@@ -17,6 +17,8 @@
   "devDependencies": {
     "@vuepress/plugin-search": "^1.9.7",
     "stylus": "^0.57.0",
-    "stylus-loader": "^6.2.0"
+    "stylus-loader": "^6.2.0",
+    "dotenv": "^16.0.0",
+    "vite-plugin-mkcert": "^1.6.0"
   }
 }
