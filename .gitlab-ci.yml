@@ -43,4 +43,6 @@ clean:
     - node
   script:
     - docker image prune -f # 删除为none的虚悬镜像
+    - docker volume prune -f # 删除无用的卷
+    - docker network prune -f # 删除无用的网络
     - echo "clean done"
