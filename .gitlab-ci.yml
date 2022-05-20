@@ -19,7 +19,7 @@ build:
     - node
   script:
     - pwd #打印当前目录
-    - yarn && yarn build #打包
+    - pnpm i && pnpm build #打包
     - tar -zcvf .vitepress/dist/serein-cloud-doc.tar.gz -C .vitepress/dist/ . --warning=no-file-changed && true=0 || false=1 #打包
     - version=`grep "\"version\":" package.json | cut -d"\"" -f4`
     - docker build -f docker/app/Dockerfile -t serein-cloud/serein-cloud-doc:$version -t serein-cloud/serein-cloud-doc:latest .
