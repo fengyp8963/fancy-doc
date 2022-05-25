@@ -14,59 +14,84 @@ serein:
     tenant: true
 ```
 
-## Swagger接口文档
+## Springdoc接口文档
 
-- SwaggerConfiguration 类配置
+- SpringdocAutoConfiguration 类配置。
 - 本文主要讲解serein cloud是如何通过整合Swagger-UI来实现一份相当完善的在线API文档的。
 - Swagger-UI是HTML, Javascript, CSS的一个集合，可以动态地根据注解生成在线API文档。
 
 ```java
 /**
- * Swagger配置类，提供给WEB服务使用
+ * Springdoc自动配置
+ *
+ * @author fengyp
+ * @since 2022-3-14
  */
-@RequiredArgsConstructor
 @Configuration
-@EnableOpenApi
-@Profile({ "!prod" })
-@ConditionalOnProperty(prefix = "serein.swagger", name = "enabled", havingValue = "true", matchIfMissing = true)
-@Import(BeanValidatorPluginsConfiguration.class)
-public class SwaggerConfiguration {
+@Profile({"!prod"})
+@PropertySource(factory = YamlPropertySourceFactory.class, value = "classpath:serein-springdoc.yml")
+@ConditionalOnProperty(name = "serein.springdoc.enabled", havingValue = "true", matchIfMissing = true)
+// @EnableConfigurationProperties(SpringdocProperties.class)
+public class SpringdocAutoConfiguration {
 
-	private final SereinProperties sereinProperties;
+    @Value("${spring.cloud.client.ip-address}")
+    private String serverIp;
 
-	@Bean(value = "userApi")
-	@Order(value = 1)
-	public Docket createRestApi() {
-		return new Docket(DocumentationType.OAS_30).directModelSubstitute(LocalDate.class, String.class)
-				.directModelSubstitute(LocalTime.class, String.class)
-				.directModelSubstitute(LocalDateTime.class, String.class)
-				.directModelSubstitute(ZonedDateTime.class, String.class)
-				// 通过swagger 的host 配置手动维护一个前缀
-				// .host("主机名：端口：服务前缀") //注意这里的主机名：端口是网关的地址和端口
-				.apiInfo(groupApiInfo())
-				// 支持的通讯协议集合
-				.protocols(Set.of("https", "http"))
-				.securitySchemes(Collections.singletonList(HttpAuthenticationScheme.JWT_BEARER_BUILDER
-						// 显示用
-						.name("JWT").build()))
-				.securityContexts(Collections.singletonList(SecurityContext.builder()
-						.securityReferences(Collections.singletonList(
-								SecurityReference.builder().scopes(new AuthorizationScope[0]).reference("JWT").build()))
-						// 声明作用域
-						.operationSelector(o -> o.requestMappingPattern().matches("/.*")).build()))
-				.select().apis(RequestHandlerSelectors.basePackage("com.serein"))
-				// .apis(RequestHandlerSelectors.any())
-				// .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
-				.paths(PathSelectors.any()).build().pathMapping("/");
-	}
+    @Value("${server.port:8080}")
+    private int serverPort;
 
-	private ApiInfo groupApiInfo() {
-		SwaggerProperties swagger = sereinProperties.getSwagger();
-		return new ApiInfoBuilder().title(swagger.getTitle()).description(swagger.getDescription())
-				.license(swagger.getLicense()).licenseUrl(swagger.getLicenseUrl())
-				.termsOfServiceUrl(swagger.getTermsOfServiceUrl()).version(swagger.getVersion())
-				.contact(new Contact(swagger.getName(), swagger.getUrl(), swagger.getEmail())).build();
-	}
+    @Value("${spring.mvc.servlet.path:/}")
+    private String servletPath;
+
+    @Bean
+    public OpenAPI springDocOpenApi(SereinProperties sereinProperties) {
+        SpringdocProperties springdoc = sereinProperties.getSpringdoc();
+        if (springdoc == null) {
+            return new OpenAPI();
+        }
+        // 配置认证、请求头参数
+        Components components = new Components();
+        springdoc.getSecuritySchemes().forEach(components::addSecuritySchemes);
+        springdoc.getHeaderParameters().forEach(components::addParameters);
+        List<SecurityRequirement> security = springdoc.getSecuritySchemes().keySet().stream()
+                .map(securityScheme -> new SecurityRequirement().addList(securityScheme)).collect(Collectors.toList());
+
+        Info info = new Info();
+        SpringdocProperties.Info sereinInfo = springdoc.getInfo();
+        if (sereinInfo != null) {
+            License license = new License();
+            SpringdocProperties.License sereinLicense = sereinInfo.getLicense();
+            if (sereinLicense != null) {
+                license.name(sereinLicense.getName()).url(sereinLicense.getUrl());
+            }
+            Contact contact = new Contact();
+            SpringdocProperties.Contact sereinContact = sereinInfo.getContact();
+            if (sereinContact != null) {
+                contact.email(sereinContact.getEmail()).name(sereinContact.getName()).url(sereinContact.getUrl());
+            }
+            info.title(sereinInfo.getTitle()).description(sereinInfo.getDescription())
+                    .termsOfService(sereinInfo.getTermsOfService())
+                    .version(StringUtils.isEmpty(sereinInfo.getVersion()) ? version() : sereinInfo.getVersion())
+                    .contact(contact).license(license);
+        }
+        // 接口调试路径
+        List<Server> servers = localServer();
+        servers.addAll(Optional.ofNullable(springdoc.getServers()).orElse(Lists.newArrayList()));
+        return new OpenAPI().components(components).servers(servers).info(info).externalDocs(springdoc.getExternal())
+                .security(security);
+    }
+
+    private List<Server> localServer() {
+        // 本地接口调试路径
+        return Lists.newArrayList(serverIp, "localhost").stream().filter(Objects::nonNull)
+                .map(address -> new Server().url(String.format("http://%s:%d%s", address, serverPort, servletPath))
+                        .description(DEFAULT_SERVER_DESCRIPTION))
+                .collect(Collectors.toList());
+    }
+
+    private String version() {
+        return "Spring Boot Version: " + SpringBootVersion.getVersion();
+    }
 
 }
 ```
@@ -76,94 +101,100 @@ public class SwaggerConfiguration {
 - UserPrincipalService 配置
 
 ```java
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
 @Transactional
 public class UserPrincipalService implements IUserPrincipalService {
 
-	private final IUserProvider userProvider;
+    private final IUserProvider userProvider;
 
-	private final IMemberProvider memberProvider;
+    private final IMemberProvider memberProvider;
 
-	@Override
-	public UserPrincipal loadUserByUsername(String username) {
-		PrincipalDto principalDto;
-		String clientId = OAuth2ClientAuthenticationUtil.getClientId();
-		if (Oauth2Constant.SEREIN_CLIENT_ID.equals(clientId)) {
-			principalDto = userProvider.getByUsername(username).getData();
-		}
-		else {
-			principalDto = memberProvider.getByUsername(username).getData();
-		}
-		if (principalDto == null) {
-			throw new UsernameNotFoundException("该用户：" + username + "不存在");
-		}
-		principalDto.setClientId(clientId);
-		principalDto.setLoginType(Oauth2Constant.LOGIN_USERNAME_TYPE);
-		principalDto.setPassword("{bcrypt}" + principalDto.getPassword());
-		return getUserDetails(principalDto);
-	}
+    @Override
+    public UserPrincipal loadUserByUsername(String username) throws UsernameNotFoundException {
+        PrincipalDto principalDto;
+        String clientId = OAuth2ClientAuthenticationUtil.getClientId();
+        if (Oauth2Constant.SEREIN_CLIENT_ID.equals(clientId)) {
+            principalDto = userProvider.findByUsername(username).getData();
+        } else {
+            principalDto = memberProvider.findByUsername(username).getData();
+        }
+        if (principalDto == null) {
+            throw new UsernameNotFoundException("该用户：" + username + "不存在");
+        }
+        principalDto.setClientId(clientId);
+        principalDto.setLoginType(Oauth2Constant.LOGIN_USERNAME_TYPE);
+        principalDto.setPassword("{bcrypt}" + principalDto.getPassword());
+        return getUserDetails(principalDto);
+    }
 
-	@Override
-	public UserPrincipal loadUserByMobile(String mobile) throws UsernameNotFoundException {
-		PrincipalDto principalDto;
-		String clientId = OAuth2ClientAuthenticationUtil.getClientId();
-		if (Oauth2Constant.SEREIN_CLIENT_ID.equals(clientId)) {
-			principalDto = userProvider.getByMobile(mobile).getData();
-		}
-		else {
-			principalDto = memberProvider.getByMobile(mobile).getData();
-		}
-		if (principalDto == null) {
-			throw new UsernameNotFoundException("该用户：" + mobile + "不存在");
-		}
-		principalDto.setClientId(clientId);
-		principalDto.setLoginType(Oauth2Constant.LOGIN_MOBILE_TYPE);
-		return getUserDetails(principalDto);
-	}
+    @Override
+    public UserPrincipal loadUserByMobile(String mobile) throws UsernameNotFoundException {
+        PrincipalDto principalDto;
+        String clientId = OAuth2ClientAuthenticationUtil.getClientId();
+        if (Oauth2Constant.SEREIN_CLIENT_ID.equals(clientId)) {
+            principalDto = userProvider.findByMobile(mobile).getData();
+        } else {
+            principalDto = memberProvider.findByMobile(mobile).getData();
+        }
+        if (principalDto == null) {
+            throw new UsernameNotFoundException("该用户：" + mobile + "不存在");
+        }
+        principalDto.setClientId(clientId);
+        principalDto.setLoginType(Oauth2Constant.LOGIN_MOBILE_TYPE);
+        return getUserDetails(principalDto);
+    }
 
-	@Override
-	public UserPrincipal loadUserBySocial(String openId) throws UsernameNotFoundException {
-		PrincipalDto principalDto;
-		String clientId = OAuth2ClientAuthenticationUtil.getClientId();
-		if (Oauth2Constant.SEREIN_CLIENT_ID.equals(clientId)) {
-			principalDto = userProvider.getByOpenId(openId).getData();
-		}
-		else {
-			principalDto = memberProvider.getByOpenId(openId).getData();
-		}
-		if (principalDto == null) {
-			throw new UsernameNotFoundException("该用户：" + openId + "不存在");
-		}
-		principalDto.setClientId(clientId);
-		principalDto.setLoginType(Oauth2Constant.LOGIN_OPENID_TYPE);
-		return getUserDetails(principalDto);
-	}
+    @Override
+    public UserPrincipal loadUserBySocial(String openId) throws UsernameNotFoundException {
+        PrincipalDto principalDto;
+        String clientId = OAuth2ClientAuthenticationUtil.getClientId();
+        if (Oauth2Constant.SEREIN_CLIENT_ID.equals(clientId)) {
+            principalDto = userProvider.findByOpenId(openId).getData();
+        } else {
+            principalDto = memberProvider.findByOpenId(openId).getData();
+        }
+        if (principalDto == null) {
+            throw new UsernameNotFoundException("该用户：" + openId + "不存在");
+        }
+        principalDto.setClientId(clientId);
+        principalDto.setLoginType(Oauth2Constant.LOGIN_OPENID_TYPE);
+        return getUserDetails(principalDto);
+    }
 
-	private UserPrincipal getUserDetails(PrincipalDto principalDto) {
-		principalDto.setTenantId(100000L);
-		if (ObjectUtils.isEmpty(principalDto)) {
-			log.info("该用户：{} 不存在！", principalDto.getUsername());
-			throw new UsernameNotFoundException("该用户：" + principalDto.getUsername() + "不存在");
-		}
-		else if (!Boolean.TRUE.equals(principalDto.getEnabled())) {
-			log.info("该用户：{} 已被停用!", principalDto.getUsername());
-			throw new ApiException("对不起，您的账号：" + principalDto.getUsername() + " 已停用");
-		}
-		log.info("用户名：{}", principalDto.getUsername());
-		// 保存到redis中，网关统一认证需要用到
-		List<String> roles = principalDto.getRoles().stream().map(CommonDto::getCode).collect(Collectors.toList());
-		Collection<? extends GrantedAuthority> authorities = AuthorityUtils
-				.createAuthorityList(roles.toArray(String[]::new));
-		log.info("authorities: {}", authorities);
-		Map<String, Object> auths = Map.of("auths", List.of());
-		// 授权认证额外参数
-		return new UserPrincipal(principalDto.getId(), principalDto.getClientId(), principalDto.getAvatar(),
-				principalDto.getLoginType(), principalDto.getTenantId(), auths, principalDto.getUsername(),
-				principalDto.getPassword(), Boolean.TRUE.equals(principalDto.getEnabled()), Boolean.TRUE, Boolean.TRUE,
-				Boolean.TRUE, authorities);
-	}
+    private UserPrincipal getUserDetails(PrincipalDto principalDto) {
+        if (principalDto.getTenantId() == null) {
+            // principalDto.setTenantId(100000L);
+            throw new UsernameNotFoundException("该用户：" + principalDto.getUsername() + "不存在");
+        }
+        if (ObjectUtils.isEmpty(principalDto)) {
+            log.info("该用户：{} 不存在！", principalDto.getUsername());
+            throw new UsernameNotFoundException("该用户：" + principalDto.getUsername() + "不存在");
+        } else if (!principalDto.isEnabled()) {
+            log.info("该用户：{} 已被停用!", principalDto.getUsername());
+            throw new DisabledException("对不起，您的账号：" + principalDto.getUsername() + " 已停用");
+        }
+        log.info("用户名：{}", principalDto.getUsername());
+        // 保存到redis中，网关统一认证需要用到
+        if (principalDto.getRoles() == null) {
+            principalDto.setRoles(List.of(CommonDto.builder().code("*").build()));
+            // throw new ApiException("对不起，您的账号：" + principalDto.getUsername() + "
+            // 没权限登录");
+        }
+        List<String> roles = principalDto.getRoles().stream().map(CommonDto::getCode).collect(Collectors.toList());
+        Collection<? extends GrantedAuthority> authorities = AuthorityUtils
+                .createAuthorityList(roles.toArray(String[]::new));
+        log.info("authorities: {}", authorities);
+        Map<String, Object> attrs = Map.of("auths", List.of());
+        // 授权认证额外参数
+        return new UserPrincipal(principalDto.getId(), principalDto.getClientId(),
+                principalDto.getAvatar() != null ? principalDto.getAvatar().getId() : null, principalDto.getLoginType(),
+                principalDto.getTenantId(), principalDto.getOpenId(), attrs, principalDto.getUsername(),
+                principalDto.getPassword(), principalDto.isEnabled(), Boolean.TRUE, Boolean.TRUE, Boolean.TRUE,
+                authorities);
+    }
 
 }
 ```
