@@ -87,16 +87,15 @@ sidebarDepth: 2
 后端技术
 :::
 
-| 技术                   | 说明                  | 官网                           |
+| 技术                   | 说明                  | 官网                            |
 | --------------------- | --------------------- | ------------------------------ |
-| Vue                   | 前端框架               | https://vuejs.org/             |
-| Vue-router            | 路由框架               | https://router.vuejs.org/      |
-| Vuex                  | 全局状态管理框架        | https://vuex.vuejs.org/        |
-| Ant design            | 前端UI框架             | https://www.antdv.com/         |
-| Ant design vue pro    | 前端UI框架             | https://www.antdv.com/         |
-| Axios                 | 前端HTTP框架           | https://github.com/axios/axios |
-| v-charts              | 基于Echarts的图表框架   | https://v-charts.js.org/       |
-
+| Vue                   | 前端框架               | https://vuejs.org/              |
+| Vue-router            | 路由框架               | https://router.vuejs.org/       |
+| Vuex                  | 全局状态管理框架        | https://vuex.vuejs.org/         |
+| Ant design            | 前端UI框架             | https://www.antdv.com/          |
+| Vben Admin            | 一个开箱即用的前端框架   | https://vvbin.cn/doc-next/      |
+| Axios                 | 前端HTTP框架           | https://github.com/axios/axios/ |
+| v-charts              | 基于Echarts的图表框架   | https://v-charts.js.org/        |
 
 ##  学习所需知识点
 
