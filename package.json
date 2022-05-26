@@ -11,9 +11,6 @@
     "serve": "vitepress serve",
     "pages": "npm run build && bash scripts/deploy-gh.sh"
   },
-  "dependencies": {
-    "vitepress": "0.22.4"
-  },
   "devDependencies": {
     "vitepress": "0.22.4",
     "@vuepress/plugin-search": "^1.9.7",
