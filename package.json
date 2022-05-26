@@ -12,13 +12,14 @@
     "pages": "npm run build && bash scripts/deploy-gh.sh"
   },
   "dependencies": {
-    "vitepress": "0.22.3"
+    "vitepress": "0.22.4"
   },
   "devDependencies": {
+    "vitepress": "0.22.4",
     "@vuepress/plugin-search": "^1.9.7",
     "stylus": "^0.57.0",
-    "stylus-loader": "^6.2.0",
-    "dotenv": "^16.0.0",
-    "vite-plugin-mkcert": "^1.6.0"
+    "stylus-loader": "^7.0.0",
+    "dotenv": "^16.0.1",
+    "vite-plugin-mkcert": "^1.6.4"
   }
 }
