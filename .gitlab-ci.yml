@@ -6,7 +6,9 @@ cache:
 
 stages:
   - build
+  - build_on_failure
   - run
+  - run_on_failure
   - clean
 
 build:
@@ -23,6 +25,16 @@ build:
     - docker build -f docker/app/Dockerfile -t serein-cloud/serein-cloud-doc:$version -t serein-cloud/serein-cloud-doc:latest .
     - echo "docker done"
 
+build_on_failure:
+  stage: build_on_failure
+  only:
+    - master #哪个分支触发
+  tags:
+    - java
+  script:
+    - build when failed
+  when: on_failure # 前一阶段任务故障时才执行
+
 run:
   stage: run
   only:
@@ -32,6 +44,16 @@ run:
   script:
     - docker-compose -f docker/app/docker-compose.yml up -d # 启动容器
     - echo "run done"
+
+run_on_failure:
+  stage: run_on_failure
+  only:
+    - master #哪个分支触发
+  tags:
+    - java
+  script:
+    - run when failed
+  when: on_failure # 前一阶段任务故障时才执行
 
 clean:
   stage: clean
