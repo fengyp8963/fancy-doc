@@ -168,7 +168,7 @@ networks:
 
 - 查看系统核心服务是否启动
 ```shell
-docker-compose ps
+docker compose ps
 ```
 ![img.png](/back/images/deploy-001.png)
 
