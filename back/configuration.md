@@ -121,7 +121,15 @@ serein:
 ```yaml
 serein:
   oss:
-    enabled: true
+    endpoint: oss-cn-shenzhen.aliyuncs.com #对象存储服务的URL
+    custom-domain: #自定义域名
+    path-style-access: true #反向代理和S3默认支持
+    enabled: false #是否启用
+    endpoints-web-enabled: false #是否暴露web端口
+    region: shenzhen #区域
+    access-key-id: Access-key-Id #Access key Id 就像用户ID，可以唯一标识你的账户
+    access-key-secret: Access-key-Secret  #Access key Secret 是你账户的密码
+    bucket-name: serein-cloud #默认的存储桶名称
 ```
 
 ## 短信配置
