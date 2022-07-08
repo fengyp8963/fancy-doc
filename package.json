@@ -19,6 +19,7 @@
     "stylus": "^0.57.0",
     "stylus-loader": "^7.0.0",
     "dotenv": "^16.0.1",
+    "vite": "^2.9.8",
     "vite-plugin-mkcert": "^1.6.4",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
