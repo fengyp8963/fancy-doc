@@ -119,7 +119,7 @@ __第三步__
 
 ![img.png](/back/images/deploy-012.png)
 
-2，拉取镜像输入`docker pull hub.vipklm.com/serein/adoptopenjdk/openjdk11/libreoffice:latest`；
+2，拉取镜像输入`docker pull hub.vipklm.com/serein/libreoffice:latest`；
 
 ![img.png](/back/images/deploy-013.png)
 

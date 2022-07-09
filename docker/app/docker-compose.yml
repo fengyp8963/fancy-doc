@@ -3,7 +3,7 @@ version: '3.6'
 services:
   serein-cloud-doc:
     container_name: serein-cloud-doc
-    image: serein-cloud/serein-cloud-doc:latest
+    image: serein/serein-cloud-doc:latest
     restart: always
     ports:
       - '3000:80'
