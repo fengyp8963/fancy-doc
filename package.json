@@ -15,7 +15,7 @@
     "@vuepress/plugin-search": "^1.9.7",
     "@algolia/client-search": "^4.9.1",
     "@types/react": "^16.8.0",
-    "@octokit/rest": "19.0.3",
+    "@octokit/core": "4.0.4",
     "vitepress": "0.22.4",
     "stylus": "^0.57.0",
     "stylus-loader": "^7.0.0",
