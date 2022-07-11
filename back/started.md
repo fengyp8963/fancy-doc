@@ -80,6 +80,10 @@ export PATH=$PATH:$M2_HOME/bin
         </developer>
     </developers>
 
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+
 </project>
 ```
 

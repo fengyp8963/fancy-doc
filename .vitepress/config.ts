@@ -74,10 +74,10 @@ export default {
     ],
 
     sidebar: {
-        "/front/": getFrontSidebar(),
-        "/back/": getBackSidebar(),
-        "/app/": getAppSidebar(),
-        "/datav/": getDatavSidebar(),
+      "/front/": getFrontSidebar(),
+      "/back/": getBackSidebar(),
+      "/app/": getAppSidebar(),
+      "/datav/": getDatavSidebar(),
     },
   },
 };
@@ -169,51 +169,51 @@ function getAppSidebar() {
         { text: "API 参考", link: "/app/api-reference" },
       ],
     },
-      {
-          text: "其它",
-          children: [
-              {text: "名词参考", link: "/app/noun-reference"},
-              {text: "常见问题", link: "/app/common-problem"},
-              {text: "常见疑点", link: "/app/common-doubts"},
-          ],
-      },
-      {
-          text: "版本",
-          children: [{text: "更新日志", link: "/back/version"}],
-      },
+    {
+      text: "其它",
+      children: [
+        {text: "名词参考", link: "/app/noun-reference"},
+        {text: "常见问题", link: "/app/common-problem"},
+        {text: "常见疑点", link: "/app/common-doubts"},
+      ],
+    },
+    {
+      text: "版本",
+      children: [{text: "更新日志", link: "/back/version"}],
+    },
   ];
 }
 
 function getDatavSidebar() {
-    return [
-        {
-            text: "介绍",
-            children: [
-                {text: "简介", link: "/datav/basics"},
-                {text: "入门", link: "/datav/started"},
-                {text: "配置", link: "/datav/configuration"},
-                {text: "部署", link: "/datav/deploy"},
-            ],
-        },
-        {
-            text: "深入",
-            children: [
-                {text: "进阶", link: "/datav/advanced"},
-                {text: "规范", link: "/datav/specification"},
-                {text: "API 参考", link: "/datav/api-reference"},
-            ],
-        },
-        {
-            text: "其它",
-            children: [
-                {text: "名词参考", link: "/datav/noun-reference"},
-                {text: "常见问题", link: "/datav/common-problem"},
-                {text: "常见疑点", link: "/datav/common-doubts"},
-            ],
-        },
-        {
-            text: "版本",
-            children: [{text: "更新日志", link: "/back/version"}],
-        },
-    ];
+  return [
+    {
+      text: "介绍",
+      children: [
+        {text: "简介", link: "/datav/basics"},
+        {text: "入门", link: "/datav/started"},
+        {text: "配置", link: "/datav/configuration"},
+        {text: "部署", link: "/datav/deploy"},
+      ],
+    },
+    {
+      text: "深入",
+      children: [
+        {text: "进阶", link: "/datav/advanced"},
+        {text: "规范", link: "/datav/specification"},
+        {text: "API 参考", link: "/datav/api-reference"},
+      ],
+    },
+    {
+      text: "其它",
+      children: [
+        {text: "名词参考", link: "/datav/noun-reference"},
+        {text: "常见问题", link: "/datav/common-problem"},
+        {text: "常见疑点", link: "/datav/common-doubts"},
+      ],
+    },
+    {
+      text: "版本",
+      children: [{text: "更新日志", link: "/back/version"}],
+    },
+  ];
 }

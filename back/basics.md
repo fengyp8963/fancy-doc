@@ -56,6 +56,7 @@ sidebarDepth: 2
 │   ├── serein-cloud-transaction -- 分布式事务
 │   ├── serein-cloud-xxl-job -- 定时任务
 └── └── serein-cloud-xxl-job-executor
+......
 ```
 
 ## 技术选型
@@ -84,7 +85,7 @@ sidebarDepth: 2
 | Nginx                  | 反向代理web服务器     | http://nginx.org/                                     |
 
 ::: tip 提示
-后端技术
+前端技术
 :::
 
 | 技术                   | 说明                  | 官网                            |
