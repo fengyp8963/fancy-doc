@@ -48,7 +48,7 @@ sidebarDepth: 2
 │   ├── serein-cloud-websocket-api
 │   ├── serein-cloud-weixin -- 微信服务
 │   └── serein-cloud-weixin-api
-└── serein-cloud-support -- 支持服务
+└── serein-cloud-plugin -- 插件服务
 │   ├── serein-cloud-generator -- 代码生成
 │   ├── serein-cloud-generator-api
 │   ├── serein-cloud-search -- 搜索引擎
