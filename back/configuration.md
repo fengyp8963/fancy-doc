@@ -23,6 +23,10 @@
 127.0.0.1 logstashs
 #elasticsearch
 127.0.0.1 elasticsearch
+#rabbitmq
+127.0.0.1 rabbitmq
+#seate
+127.0.0.1 seata-server
 ```
 
 #### Dev Hosts
@@ -37,6 +41,10 @@
 127.0.0.1 logstashs
 #elasticsearch
 127.0.0.1 elasticsearch
+#rabbitmq
+127.0.0.1 rabbitmq
+#seate
+127.0.0.1 seata-server
 ```
 
 #### Test Hosts
@@ -51,6 +59,10 @@
 127.0.0.1 logstashs
 #elasticsearch
 127.0.0.1 elasticsearch
+#rabbitmq
+127.0.0.1 rabbitmq
+#seate
+127.0.0.1 seata-server
 ```
 
 ## 项目配置

@@ -1,6 +1,7 @@
 ---
 sidebarDepth: 2
 ---
+
 # 后端框架
 
 ![SpringCloud](https://img.shields.io/badge/Spring%20Cloud%202021.0.2-blue)&nbsp;
@@ -15,13 +16,45 @@ sidebarDepth: 2
 后台管理系统包含部门管理、用户管理、角色管理、菜单管理、岗位管理、字典管理、权限管理、系统设置等模块。
 :::
 
+## 业务架构
+
+![业务架构图](/back/images/basics-000.png)
+
 ## 系统架构
 
 ![系统架构图](/back/images/basics-001.png)
 
-## 业务架构
+## 技术架构
 
-![业务架构图](/back/images/basics-002.png)
+![系统架构图](/back/images/basics-002.png)
+
+## 功能特点
+
+- 主体框架：采用最新的Spring Cloud 2021.0.2, Spring Boot 2.6.4, Spring Cloud Alibaba 2021.1版本进行系统设计；
+
+- 统一注册：支持eureka作为注册中心，实现多配置、分群组、分命名空间、多业务模块的注册和发现功能；
+
+- 统一认证：统一Oauth2认证协议，采用jwt的方式，实现统一认证，并支持自定义grant_type实现手机号码登录，第三方登录集成JustAuth实现微信、支付宝等多种登录模式；
+
+- 业务监控：利用Spring Boot Admin来监控各个独立Service的运行状态。
+
+- 内部调用：集成了Feign模式支持内部调用，并且可以实现无缝切换，适合新老程序员，快速熟悉项目；
+
+- 身份注入：通过注解的方式，实现用户登录信息的快速注入；
+
+- 在线文档：通过接入springdoc，实现在线API文档的查看与调试;
+
+- 代码生成：基于jpa-generator自动生成代码，提升开发效率，生成模式不断优化中，暂不支持前端代码生成；
+
+- 消息中心：集成消息中间件RocketMQ和RabbitMQ，对业务进行异步处理;
+
+- 业务分离：采用前后端分离的框架设计，前端采用vue3、antd
+
+- 链路追踪：自定义traceId的方式，实现简单的链路追踪功能
+
+- 多租户功能：集成spring data jpa，实现SAAS多租户功能
+
+#
 
 ## 模块说明
 
@@ -30,16 +63,26 @@ sidebarDepth: 2
 ├── serein-cloud-admin -- 监控服务
 ├── serein-cloud-authorization -- 验证服务
 ├── serein-cloud-business -- 业务服务
-│   ├── serein-cloud-portal -- 门户服务
-│   └── serein-cloud-portal-api
 ├── serein-cloud-config -- 配置服务
 ├── serein-cloud-eureka -- 注册服务
 ├── serein-cloud-gateway -- 网关服务
 ├── serein-cloud-platform -- 平台服务
+│   ├── serein-cloud-bigdata -- 大数据服务
+│   ├── serein-cloud-bigdata-api
 │   ├── serein-cloud-component -- 组件服务
 │   ├── serein-cloud-component-api
+│   ├── serein-cloud-datav -- 数据大屏服务
+│   ├── serein-cloud-datav-api
+│   ├── serein-cloud-member -- 会员服务
+│   ├── serein-cloud-member-api
+│   ├── serein-cloud-online
+│   ├── serein-cloud-online-api
+│   ├── serein-cloud-page -- 页面服务
+│   ├── serein-cloud-page-api
 │   ├── serein-cloud-pay -- 支付服务
 │   ├── serein-cloud-pay-api
+│   ├── serein-cloud-process -- 流程服务
+│   ├── serein-cloud-process-api
 │   ├── serein-cloud-system -- 系统服务
 │   ├── serein-cloud-system-api
 │   ├── serein-cloud-tenant -- 租户服务
@@ -49,13 +92,13 @@ sidebarDepth: 2
 │   ├── serein-cloud-weixin -- 微信服务
 │   └── serein-cloud-weixin-api
 └── serein-cloud-plugin -- 插件服务
+│   ├── serein-cloud-flyway
 │   ├── serein-cloud-generator -- 代码生成
 │   ├── serein-cloud-generator-api
 │   ├── serein-cloud-search -- 搜索引擎
 │   ├── serein-cloud-search-api
-│   ├── serein-cloud-transaction -- 分布式事务
-│   ├── serein-cloud-xxl-job -- 定时任务
-└── └── serein-cloud-xxl-job-executor
+│   ├── serein-cloud-xxljob -- 定时任务
+└── └── serein-cloud-xxljob-executor
 ......
 ```
 
@@ -98,9 +141,16 @@ sidebarDepth: 2
 | Axios                 | 前端HTTP框架           | https://github.com/axios/axios/ |
 | v-charts              | 基于Echarts的图表框架   | https://v-charts.js.org/        |
 
-##  学习所需知识点
+## 学习所需知识点
 
-> 由于Serein Cloud项目涉及到很多知识点，比如SpringBoot、ElasticSearch、Redis、 Mysql等，本教程不会详细讲述这些，只会讲述本项目相关部分，所以推荐以下资料。对其中一些知识点并不熟悉的同学，可以看下下面推荐的资料。
+> 由于Serein Cloud项目涉及到很多知识点，比如SpringBoot、ElasticSearch、Redis、
+> Mysql等，本教程不会详细讲述这些，只会讲述本项目相关部分，所以推荐以下资料。对其中一些知识点并不熟悉的同学，可以看下下面推荐的资料。
+
+## 团队名单
+
+欢迎提交PR一起完善项目，以下为项目贡献的战友（排名不分先后）：
+
+`@fengyp` `@zhouj` `@lify` `@chengb` `@huyue`
 
 ## 推荐资料
 

@@ -47,7 +47,7 @@ export PATH=$PATH:$M2_HOME/bin
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.serein.cloud</groupId>
     <artifactId>serein</artifactId>
-    <version>2021.11.01-SNAPSHOT</version>
+    <version>2022.06.01-SNAPSHOT</version>
     <name>serein</name>
     <packaging>pom</packaging>
     <description>serein-cloud</description>
@@ -99,12 +99,14 @@ git clone https://gitlab.vipklm.com/serein/vue-serein-admin.git
 ![img.png](/back/images/basics-007.png)
 - 启动服务如下：
 ![img.png](/back/images/basics-008.png)
-- 必须服务先启动
+- 先启服务
   - `SereinCloudConfigApplication` 配置中心服务
   - `SereinCloudEurekaApplication` 注册中心服务
-- 核心服务再启动
-  - `SereinCloudGatewayApplication` 网关服务
+- 必须服务
   - `SereinCloudAuthorizationApplication` 验证服务
+  - `SereinCloudComponentApplication` 组件服务
+  - `SereinCloudGatewayApplication` 网关服务
+  - `SereinCloudMemberApplication` 会员服务
   - `SereinCloudSystemApplication` 系统服务
   - `SereinCloudTenantApplication` 租户服务
 - 其它服务按需要启动
@@ -112,21 +114,19 @@ git clone https://gitlab.vipklm.com/serein/vue-serein-admin.git
 
 ```txt
 SereinCloudAdminApplication 监控服务
-SereinCloudAuthorizationApplication 验证服务
-SereinCloudPortalApplication 门户服务
-SereinCloudComponentApplication 组件服务
-SereinCloudConfigApplication 配置中心服务
-SereinCloudEurekaApplication 注册中心服务
-SereinCloudGatewayApplication 网关服务
+SereinCloudBigdataApplication 大数据服务
+SereinCloudDatavApplication 数据大屏门户服务
+SereinCloudFlywayApplication 数据库版本服务
+SereinCloudFormApplication 表单设计服务
 SereinCloudGeneratorApplication 代码生成服务
+SereinCloudOnlineApplication 在线服务
 SereinCloudPayApplication 支付服务
-SereinCloudSearchApplication 搜索服务
-SereinCloudSystemApplication 系统服务
-SereinCloudTenantApplication 租户服务
-SereinCloudTransactionApplication 分布式事物服务
-SereinCloudWebsocketApplication websocket服务
+SereinCloudPortalApplication 门户服务
+SereinCloudProcessApplication  流程服务
+SereinCloudSearchApplication  搜索服务
+SereinCloudWebsocketApplication Websocket服务
 SereinCloudWeixinApplication 微信服务
 SereinCloudXxlJobApplication 定时任务服务
-SereinCloudXxlJobExecutorApplication定时任务客户端服务
+SereinCloudXxlJobExecutorApplication 定时任务客户端服务
 ··· 业务服务
 ```
