@@ -20,11 +20,11 @@ sidebarDepth: 2
 
 ![业务架构图](/back/images/basics-000.png)
 
-## 系统架构
-
-![系统架构图](/back/images/basics-001.png)
-
 ## 技术架构
+
+![技术架构图](/back/images/basics-001.png)
+
+## 部署架构
 
 ![系统架构图](/back/images/basics-002.png)
 
