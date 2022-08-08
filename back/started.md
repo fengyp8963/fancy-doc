@@ -114,7 +114,7 @@ git clone https://gitlab.vipklm.com/serein/vue-serein-admin.git
 
 ```txt
 SereinCloudAdminApplication 监控服务
-SereinCloudBigdataApplication 大数据服务
+SereinCloudFlinkApplication 数据分析服务
 SereinCloudDatavApplication 数据大屏门户服务
 SereinCloudFlywayApplication 数据库版本服务
 SereinCloudFormApplication 表单设计服务

@@ -67,8 +67,8 @@ sidebarDepth: 2
 ├── serein-cloud-eureka -- 注册服务
 ├── serein-cloud-gateway -- 网关服务
 ├── serein-cloud-platform -- 平台服务
-│   ├── serein-cloud-bigdata -- 大数据服务
-│   ├── serein-cloud-bigdata-api
+│   ├── serein-cloud-flink -- 数据分析服务
+│   ├── serein-cloud-flink-api
 │   ├── serein-cloud-component -- 组件服务
 │   ├── serein-cloud-component-api
 │   ├── serein-cloud-datav -- 数据大屏服务
