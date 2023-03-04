@@ -10,7 +10,7 @@ sidebarDepth: 2
 ![TypeScript](https://img.shields.io/badge/TypeScript-blue.svg)&nbsp;
 
 ::: info 简介
-`Serein Uni App` 是一个使用 Vue3.0 (opens new window)开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、Web（响应式）、以及微信小程序。
+`Fancy Uni App` 是一个使用 Vue3.0 (opens new window)开发所有前端应用的框架，开发者编写一套代码，可发布到iOS、Android、Web（响应式）、以及微信小程序。
 :::
 
 ## 需要掌握的基础知识

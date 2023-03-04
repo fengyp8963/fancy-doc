@@ -11,7 +11,8 @@ sidebarDepth: 2
 ![Author](https://img.shields.io/badge/Author-fengyp-blue.svg)&nbsp;
 
 ::: info 简介
-`Serein Cloud`是一套基于微服务后台管理系统，使用现阶段主流技术实现；涵盖了Spring Cloud 2021.0.2、Spring Boot 2.6.4、Spring JPA 2.6.4、Elasticsearch
+`Fancy`是一套基于微服务后台管理系统，使用现阶段主流技术实现；涵盖了Spring Cloud 2021.0.2、Spring Boot 2.6.4、Spring
+JPA 2.6.4、Elasticsearch
 7.9.0、RocketMQ 4.7.1、Redis 5.0.5、MySQL 8.0.22 等技术，采用Docker容器化部署，同时提供了基于Vue3.0的管理后台方便快速搭建系统，集成了注册中心、配置中心、监控中心、服务网关等系统功能；
 后台管理系统包含部门管理、用户管理、角色管理、菜单管理、岗位管理、字典管理、权限管理、系统设置等模块。
 :::
@@ -59,46 +60,46 @@ sidebarDepth: 2
 ## 模块说明
 
 ``` lua
-.Serein Cloud
-├── serein-cloud-admin -- 监控服务
-├── serein-cloud-authorization -- 验证服务
-├── serein-cloud-business -- 业务服务
-├── serein-cloud-config -- 配置服务
-├── serein-cloud-eureka -- 注册服务
-├── serein-cloud-gateway -- 网关服务
-├── serein-cloud-platform -- 平台服务
-│   ├── serein-cloud-flink -- 数据分析服务
-│   ├── serein-cloud-flink-api
-│   ├── serein-cloud-component -- 组件服务
-│   ├── serein-cloud-component-api
-│   ├── serein-cloud-datav -- 数据大屏服务
-│   ├── serein-cloud-datav-api
-│   ├── serein-cloud-member -- 会员服务
-│   ├── serein-cloud-member-api
-│   ├── serein-cloud-online
-│   ├── serein-cloud-online-api
-│   ├── serein-cloud-page -- 页面服务
-│   ├── serein-cloud-page-api
-│   ├── serein-cloud-pay -- 支付服务
-│   ├── serein-cloud-pay-api
-│   ├── serein-cloud-process -- 流程服务
-│   ├── serein-cloud-process-api
-│   ├── serein-cloud-system -- 系统服务
-│   ├── serein-cloud-system-api
-│   ├── serein-cloud-tenant -- 租户服务
-│   ├── serein-cloud-tenant-api
-│   ├── serein-cloud-websocket -- websocket服务
-│   ├── serein-cloud-websocket-api
-│   ├── serein-cloud-weixin -- 微信服务
-│   └── serein-cloud-weixin-api
-└── serein-cloud-plugin -- 插件服务
-│   ├── serein-cloud-flyway
-│   ├── serein-cloud-generator -- 代码生成
-│   ├── serein-cloud-generator-api
-│   ├── serein-cloud-search -- 搜索引擎
-│   ├── serein-cloud-search-api
-│   ├── serein-cloud-xxljob -- 定时任务
-└── └── serein-cloud-xxljob-executor
+.Fancy
+├── fancy-admin -- 监控服务
+├── fancy-authorization -- 验证服务
+├── fancy-mms -- 业务服务
+├── fancy-config -- 配置服务
+├── fancy-eureka -- 注册服务
+├── fancy-gateway -- 网关服务
+├── fancy-platform -- 平台服务
+│   ├── fancy-flink -- 数据分析服务
+│   ├── fancy-flink-api
+│   ├── fancy-component -- 组件服务
+│   ├── fancy-component-api
+│   ├── fancy-datav -- 数据大屏服务
+│   ├── fancy-datav-api
+│   ├── fancy-member -- 会员服务
+│   ├── fancy-member-api
+│   ├── fancy-online
+│   ├── fancy-online-api
+│   ├── fancy-page -- 页面服务
+│   ├── fancy-page-api
+│   ├── fancy-pay -- 支付服务
+│   ├── fancy-pay-api
+│   ├── fancy-process -- 流程服务
+│   ├── fancy-process-api
+│   ├── fancy-system -- 系统服务
+│   ├── fancy-system-api
+│   ├── fancy-tenant -- 租户服务
+│   ├── fancy-tenant-api
+│   ├── fancy-websocket -- websocket服务
+│   ├── fancy-websocket-api
+│   ├── fancy-weixin -- 微信服务
+│   └── fancy-weixin-api
+└── fancy-plugin -- 插件服务
+│   ├── fancy-flyway
+│   ├── fancy-generator -- 代码生成
+│   ├── fancy-generator-api
+│   ├── fancy-search -- 搜索引擎
+│   ├── fancy-search-api
+│   ├── fancy-xxljob -- 定时任务
+└── └── fancy-xxljob-executor
 ......
 ```
 
@@ -143,7 +144,7 @@ sidebarDepth: 2
 
 ## 学习所需知识点
 
-> 由于Serein Cloud项目涉及到很多知识点，比如SpringBoot、ElasticSearch、Redis、
+> 由于Fancy项目涉及到很多知识点，比如SpringBoot、ElasticSearch、Redis、
 > Mysql等，本教程不会详细讲述这些，只会讲述本项目相关部分，所以推荐以下资料。对其中一些知识点并不熟悉的同学，可以看下下面推荐的资料。
 
 ## 团队名单
@@ -200,4 +201,4 @@ sidebarDepth: 2
 
 ## 结语
 
-> 如果你按照我的推荐看了以上部分的资料，或者你已经有了以上部分的基础，那么你学习Serein Cloud的时候会非常顺利。
+> 如果你按照我的推荐看了以上部分的资料，或者你已经有了以上部分的基础，那么你学习Fancy的时候会非常顺利。

@@ -9,7 +9,7 @@ SpringCloud是在SpringBoot的基础上构建的，使开发者可以轻松入�
 - 多租户技术，是一种架构模式，是实现如何在多用户环境下共用相同的系统或程序组件，并且达到各用户间数据的“独立”的技术；
 
 ```yaml
-serein:
+fancy:
   login:
     tenant: true
 ```
@@ -17,7 +17,7 @@ serein:
 ## Springdoc接口文档
 
 - SpringdocAutoConfiguration 类配置。
-- 本文主要讲解serein cloud是如何通过整合Swagger-UI来实现一份相当完善的在线API文档的。
+- 本文主要讲解fancy cloud是如何通过整合Swagger-UI来实现一份相当完善的在线API文档的。
 - Swagger-UI是HTML, Javascript, CSS的一个集合，可以动态地根据注解生成在线API文档。
 
 ```java
@@ -29,8 +29,8 @@ serein:
  */
 @Configuration
 @Profile({"!prod"})
-@PropertySource(factory = YamlPropertySourceFactory.class, value = "classpath:serein-springdoc.yml")
-@ConditionalOnProperty(name = "serein.springdoc.enabled", havingValue = "true", matchIfMissing = true)
+@PropertySource(factory = YamlPropertySourceFactory.class, value = "classpath:fancy-springdoc.yml")
+@ConditionalOnProperty(name = "fancy.springdoc.enabled", havingValue = "true", matchIfMissing = true)
 // @EnableConfigurationProperties(SpringdocProperties.class)
 public class SpringdocAutoConfiguration {
 
@@ -44,8 +44,8 @@ public class SpringdocAutoConfiguration {
     private String servletPath;
 
     @Bean
-    public OpenAPI springDocOpenApi(SereinProperties sereinProperties) {
-        SpringdocProperties springdoc = sereinProperties.getSpringdoc();
+    public OpenAPI springDocOpenApi(FancyProperties fancyProperties) {
+        SpringdocProperties springdoc = fancyProperties.getSpringdoc();
         if (springdoc == null) {
             return new OpenAPI();
         }
@@ -57,21 +57,21 @@ public class SpringdocAutoConfiguration {
                 .map(securityScheme -> new SecurityRequirement().addList(securityScheme)).collect(Collectors.toList());
 
         Info info = new Info();
-        SpringdocProperties.Info sereinInfo = springdoc.getInfo();
-        if (sereinInfo != null) {
+        SpringdocProperties.Info fancyInfo = springdoc.getInfo();
+        if (fancyInfo != null) {
             License license = new License();
-            SpringdocProperties.License sereinLicense = sereinInfo.getLicense();
-            if (sereinLicense != null) {
-                license.name(sereinLicense.getName()).url(sereinLicense.getUrl());
+            SpringdocProperties.License fancyLicense = fancyInfo.getLicense();
+            if (fancyLicense != null) {
+                license.name(fancyLicense.getName()).url(fancyLicense.getUrl());
             }
             Contact contact = new Contact();
-            SpringdocProperties.Contact sereinContact = sereinInfo.getContact();
-            if (sereinContact != null) {
-                contact.email(sereinContact.getEmail()).name(sereinContact.getName()).url(sereinContact.getUrl());
+            SpringdocProperties.Contact fancyContact = fancyInfo.getContact();
+            if (fancyContact != null) {
+                contact.email(fancyContact.getEmail()).name(fancyContact.getName()).url(fancyContact.getUrl());
             }
-            info.title(sereinInfo.getTitle()).description(sereinInfo.getDescription())
-                    .termsOfService(sereinInfo.getTermsOfService())
-                    .version(StringUtils.isEmpty(sereinInfo.getVersion()) ? version() : sereinInfo.getVersion())
+            info.title(fancyInfo.getTitle()).description(fancyInfo.getDescription())
+                    .termsOfService(fancyInfo.getTermsOfService())
+                    .version(StringUtils.isEmpty(fancyInfo.getVersion()) ? version() : fancyInfo.getVersion())
                     .contact(contact).license(license);
         }
         // 接口调试路径
@@ -116,7 +116,7 @@ public class UserPrincipalService implements IUserPrincipalService {
     public UserPrincipal loadUserByUsername(String username) throws UsernameNotFoundException {
         PrincipalDto principalDto;
         String clientId = OAuth2ClientAuthenticationUtil.getClientId();
-        if (Oauth2Constant.SEREIN_CLIENT_ID.equals(clientId)) {
+        if (Oauth2Constant.FANCY_CLIENT_ID.equals(clientId)) {
             principalDto = userProvider.findByUsername(username).getData();
         } else {
             principalDto = memberProvider.findByUsername(username).getData();
@@ -134,7 +134,7 @@ public class UserPrincipalService implements IUserPrincipalService {
     public UserPrincipal loadUserByMobile(String mobile) throws UsernameNotFoundException {
         PrincipalDto principalDto;
         String clientId = OAuth2ClientAuthenticationUtil.getClientId();
-        if (Oauth2Constant.SEREIN_CLIENT_ID.equals(clientId)) {
+        if (Oauth2Constant.FANCY_CLIENT_ID.equals(clientId)) {
             principalDto = userProvider.findByMobile(mobile).getData();
         } else {
             principalDto = memberProvider.findByMobile(mobile).getData();
@@ -151,7 +151,7 @@ public class UserPrincipalService implements IUserPrincipalService {
     public UserPrincipal loadUserBySocial(String openId) throws UsernameNotFoundException {
         PrincipalDto principalDto;
         String clientId = OAuth2ClientAuthenticationUtil.getClientId();
-        if (Oauth2Constant.SEREIN_CLIENT_ID.equals(clientId)) {
+        if (Oauth2Constant.FANCY_CLIENT_ID.equals(clientId)) {
             principalDto = userProvider.findByOpenId(openId).getData();
         } else {
             principalDto = memberProvider.findByOpenId(openId).getData();
@@ -201,7 +201,7 @@ public class UserPrincipalService implements IUserPrincipalService {
 
 ## XxlJob 定时任务
 
-- serein-cloud-xxljob 配置
+- fancy-xxljob 配置
 
 ```yaml
 xxl:
@@ -216,7 +216,7 @@ xxl:
         max: 100
 ```
 
-- serein-cloud-xxljob 配置
+- fancy-xxljob 配置
 
 ```yaml
 server:
@@ -225,10 +225,10 @@ xxl:
   job:
     accessToken: ''
     admin:
-      addresses: http://${serein.host}:8099
+      addresses: http://${fancy.host}:8099
     executor:
       address: ''
-      appname: serein-cloud-xxljob-executor
+      appname: fancy-xxljob-executor
       ip: ''
       logpath: ./logs/app/${spring.application.name}
       logretentiondays: 30
@@ -239,7 +239,7 @@ xxl:
 
 ```yaml
 ---
-serein:
+fancy:
   oss:
     endpoint: oss-cn-shenzhen.aliyuncs.com #对象存储服务的URL
     custom-domain: #自定义域名
@@ -249,7 +249,7 @@ serein:
     region: shenzhen #区域
     access-key-id: LTAI5tA9jRsfTiZFN1k2PCy5 #Access key Id 就像用户ID，可以唯一标识你的账户
     access-key-secret: h4tZ4xH8M74rVhNaC0dJ6H49jN5Hnz  #Access key Secret 是你账户的密码
-    bucket-name: serein-cloud #默认的存储桶名称
+    bucket-name: fancy #默认的存储桶名称
 ---
 
 ```
@@ -303,12 +303,12 @@ public class CacheConfig {
         return cacheName -> {
             String headerTenantId = String.valueOf(TenantContextHolder.getTenantId());
             if (headerTenantId.equals("null")) {
-                headerTenantId = SereinConstant.SEREIN_TENANT_ID_DEFAULT;
+                headerTenantId = FancyConstant.FANCY_TENANT_ID_DEFAULT;
             }
             StringBuilder sBuilder = new StringBuilder(100);
             // 此方法需要自己实现，获取租户编码
-            sBuilder.append("serein").append(":").append(headerTenantId).append(":")
-                    .append(SereinConstant.SEREIN_CACHE_NAMES_PREFIX);
+            sBuilder.append("fancy").append(":").append(headerTenantId).append(":")
+                    .append(FancyConstant.FANCY_CACHE_NAMES_PREFIX);
             sBuilder.append(cacheName).append(":");
             return sBuilder.toString();
         };

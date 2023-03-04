@@ -2,7 +2,7 @@ FROM nginx:latest
 # 维护者信息
 MAINTAINER fengyp
 # 添加上下文目录下的内容 到容器里 自动解压
-ADD .vitepress/dist/serein-cloud-doc.tar.gz /etc/nginx/html
+ADD .vitepress/dist/fancy-doc.tar.gz /etc/nginx/html
 # 复制上下文目录下的内容 到容器里
 COPY docker/app/nginx.conf /etc/nginx
 # 指定时区

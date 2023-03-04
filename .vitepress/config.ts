@@ -1,26 +1,26 @@
 export default {
-  lang: "zh-CN",
-  // 网站标题
-  title: "Serein Cloud",
-  // 网站描述
-  description: "Serein Cloud 开发文档",
-  // 打包目录
-  dest: "./dist",
-  // 添加图标
-  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
-  themeConfig: {
-    logo: "/images/logo.png",
-    repo: "https://gitlab.vipklm.com/serein/",
-    docsDir: "docs",
-    editLinks: false,
-    editLinkText: "为此页提供修改建议",
-    // 获取每个文件最后一次 git 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部
-    lastUpdated: "Last Updated",
-    // 启动页面丝滑滚动
-    smoothScroll: true,
-    algolia: {
-      appId: "8J64VVRP8K",
-      apiKey: "a18e2f4cc5665f6602c5631fd868adfd",
+    lang: "zh-CN",
+    // 网站标题
+    title: "Fancy",
+    // 网站描述
+    description: "Fancy 开发文档",
+    // 打包目录
+    dest: "./dist",
+    // 添加图标
+    head: [["link", {rel: "icon", href: "/favicon.ico"}]],
+    themeConfig: {
+        logo: "/images/logo.png",
+        repo: "https://gitlab.junyue.com/fancy/",
+        docsDir: "docs",
+        editLinks: false,
+        editLinkText: "为此页提供修改建议",
+        // 获取每个文件最后一次 git 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部
+        lastUpdated: "Last Updated",
+        // 启动页面丝滑滚动
+        smoothScroll: true,
+        algolia: {
+            appId: "8J64VVRP8K",
+            apiKey: "a18e2f4cc5665f6602c5631fd868adfd",
       indexName: "vitepress",
     },
     // 导航栏配置
@@ -41,34 +41,34 @@ export default {
         link: "/datav/basics",
         activeMatch: "^/datav/",
       },
-      {
-        text: "相关链接",
-        link: "https://gitlab.vipklm.com/serein/",
-        items: [
-          {
-            text: "前端源码",
-            link: "https://gitlab.vipklm.com/serein/vue-serein-admin.git",
-          },
-          {
-            text: "后端源码",
-            link: "https://gitlab.vipklm.com/serein/serein-cloud.git",
-          },
-          {
-            text: "配置源码",
-            link: "https://gitlab.vipklm.com/serein/serein-cloud-config.git",
-          },
-          {
-            text: "大屏源码",
-            link: "https://gitlab.vipklm.com/serein/serein-datav-vue.git",
-          },
-          {
-            text: "文档源码",
-            link: "https://gitlab.vipklm.com/serein/serein-cloud-doc.git",
-          },
-          {
-            text: "小程序源码",
-            link: "https://gitlab.vipklm.com/serein/serein-uni-app.git",
-          },
+        {
+            text: "相关链接",
+            link: "https://gitlab.junyue.com/fancy/",
+            items: [
+                {
+                    text: "前端源码",
+                    link: "https://gitlab.junyue.com/fancy/fancy-vue-admin.git",
+                },
+                {
+                    text: "后端源码",
+                    link: "https://gitlab.junyue.com/fancy/fancy.git",
+                },
+                {
+                    text: "配置源码",
+                    link: "https://gitlab.junyue.com/fancy/fancy-config.git",
+                },
+                {
+                    text: "大屏源码",
+                    link: "https://gitlab.junyue.com/fancy/fancy-datav-vue.git",
+                },
+                {
+                    text: "文档源码",
+                    link: "https://gitlab.junyue.com/fancy/fancy-doc.git",
+                },
+                {
+                    text: "小程序源码",
+                    link: "https://gitlab.junyue.com/fancy/fancy-uni-app.git",
+                },
         ],
       },
     ],

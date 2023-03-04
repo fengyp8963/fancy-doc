@@ -8,11 +8,11 @@
 
 遇到问题,可以先从以下几个方面查找
 
-1. 对应模块的 GitHub 仓库 [issue](https://gitlab.vipklm.com/serein/serein-cloud/issues) 搜索
+1. 对应模块的 GitHub 仓库 [issue](https://gitlab.junyue.com/fancy/fancy/issues) 搜索
 2. 从[google](https://www.google.com)搜索问题
 3. 从[百度](https://www.百度.com)搜索问题
-4. 在下面列表找不到问题可以到 issue 提问 [issues](https://gitlab.vipklm.com/serein/serein-cloud/issues)
-5. 如果不是问题类型的，需要讨论的，请到 [discussions](https://gitlab.vipklm.com/serein/serein-cloud/discussions) 讨论
+4. 在下面列表找不到问题可以到 issue 提问 [issues](https://gitlab.junyue.com/fancy/fancy/issues)
+5. 如果不是问题类型的，需要讨论的，请到 [discussions](https://gitlab.junyue.com/fancy/fancy/discussions) 讨论
 
 ## 为什么在本地启动不了？
 

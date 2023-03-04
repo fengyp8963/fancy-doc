@@ -41,9 +41,9 @@ console.log(import.meta.env.VITE_PROT);
 # 端口号
 VITE_PORT=3100
 # 网站标题
-VITE_GLOB_APP_TITLE=Serein admin
+VITE_GLOB_APP_TITLE=Fancy admin
 # 简称，用于配置文件名字 不要出现空格、数字开头等特殊字符
-VITE_GLOB_APP_SHORT_NAME=Serein_admin
+VITE_GLOB_APP_SHORT_NAME=Fancy_admin
 ```
 
 ### .env.development
@@ -118,9 +118,9 @@ VITE_LEGACY = false
 ```js
 // _app.config.js
 // 变量名命名规则  __PRODUCTION__xxx_CONF__   xxx：为.env配置的VITE_GLOB_APP_SHORT_NAME
-window.__PRODUCTION__VUE_SEREIN_ADMIN__CONF__ = {
-  VITE_GLOB_APP_TITLE: 'serein admin',
-  VITE_GLOB_APP_SHORT_NAME: 'vue_serein_admin',
+window.__PRODUCTION__VUE_FANCY_ADMIN__CONF__ = {
+  VITE_GLOB_APP_TITLE: 'fancy admin',
+  VITE_GLOB_APP_SHORT_NAME: 'vue_fancy_admin',
   VITE_GLOB_API_URL: '/app',
   VITE_GLOB_API_URL_PREFIX: '/',
   VITE_GLOB_UPLOAD_URL: '/upload',

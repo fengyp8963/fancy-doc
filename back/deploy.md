@@ -95,7 +95,7 @@ sudo systemctl start docker
 sudo systemctl enable docker
 ```
 __第一步__
-- 1、进入/root/serein目录。上传install.sh文件，acme.sh、runner目录 到服务器上。输入"ls";
+- 1、进入/root/fancy目录。上传install.sh文件，acme.sh、runner目录 到服务器上。输入"ls";
 
 ![img.png](/back/images/deploy-007.png)
 
@@ -114,12 +114,12 @@ __第三步__
 
 ![img.png](/back/images/deploy-011.png)
 
-如果提示：network app_serein_net declared as external, but could not be found
-执行"docker network create app_serein_net"创建docker网卡，"docker compose up -d"；
+如果提示：network app_fancy_net declared as external, but could not be found
+执行"docker network create app_fancy_net"创建docker网卡，"docker compose up -d"；
 
 ![img.png](/back/images/deploy-012.png)
 
-2，拉取镜像输入`docker pull hub.vipklm.com/serein/libreoffice:latest`；
+2，拉取镜像输入`docker pull hub.junyue.com/fancy/libreoffice:latest`；
 
 ![img.png](/back/images/deploy-013.png)
 
@@ -130,7 +130,7 @@ __第三步__
 - 启动系统所需要的服务
 
 ```shell
-cd ~/serein/runner
+cd ~/fancy/runner
 docker compose ps
 ```
 
@@ -167,18 +167,18 @@ rm -rf /var/lib/docker
 
 ### Nginx证书配置
 
-- 第1步：进入 /root/serein/acme.sh 目录生成证书；
+- 第1步：进入 /root/fancy/acme.sh 目录生成证书；
 ```shell
 docker compose up -d
 docker compose exec acme.sh --set-default-ca --server letsencrypt
-docker compose exec acme.sh --issue --dns dns_ali -d vipklm.com -d *.vipklm.com
+docker compose exec acme.sh --issue --dns dns_ali -d junyue.com -d *.junyue.com
 ## 创建证书路径
-mkdir -p ./nginx/ssl/vipklm.com
+mkdir -p ./nginx/ssl/junyue.com
 #运行下面命令，在上面的位置存入证书
 #请一定使用以上语法acme.sh --install-cert进行拷贝，这样证书才能保证在新的位置也能自动更新
-docker compose exec acme.sh --install-cert -d vipklm.com \
-    --key-file /etc/nginx/ssl/vipklm.com/key.pem \
-    --fullchain-file /etc/nginx/ssl/vipklm.com/fullchain.pem # --reloadcmd "service nginx force-reload"
+docker compose exec acme.sh --install-cert -d junyue.com \
+    --key-file /etc/nginx/ssl/junyue.com/key.pem \
+    --fullchain-file /etc/nginx/ssl/junyue.com/fullchain.pem # --reloadcmd "service nginx force-reload"
 ```
 
 ### Gitlab-runner的配置
@@ -202,11 +202,11 @@ docker compose exec acme.sh --install-cert -d vipklm.com \
 - 需要申请的域名
 
 ```text
-admin.serein.vipklm.com #监控服务
-eureka.serein.vipklm.com #注册中心服务
-portainer.vipklm.com #容器服务
-serein.vipklm.com #系统服务
-xxljob.serein.vipklm.com #定时任务服务
+admin.fancy.junyue.com #监控服务
+eureka.fancy.junyue.com #注册中心服务
+portainer.junyue.com #容器服务
+fancy.junyue.com #系统服务
+xxljob.fancy.junyue.com #定时任务服务
 ```
 
 ## 非容器

@@ -19,9 +19,9 @@ build:
   script:
     - pwd #打印当前目录
     - pnpm i && pnpm build #打包
-    - tar -zcvf .vitepress/dist/serein-cloud-doc.tar.gz -C .vitepress/dist/ . --warning=no-file-changed && true=0 || false=1 #打包
+    - tar -zcvf .vitepress/dist/fancy-doc.tar.gz -C .vitepress/dist/ . --warning=no-file-changed && true=0 || false=1 #打包
     - version=`grep "\"version\":" package.json | cut -d"\"" -f4`
-    - docker build -f docker/app/Dockerfile -t serein/serein-cloud-doc:$version -t serein/serein-cloud-doc:latest .
+    - docker build -f docker/app/Dockerfile -t fancy/fancy-doc:$version -t fancy/fancy-doc:latest .
     - echo "docker done"
 
 run:
@@ -45,7 +45,7 @@ clean:
     - docker volume prune -f # 删除无用的卷
     - docker network prune -f # 删除无用的网络
     - echo "clean done"
-    - curl -d "name=serein服务发版成功" "https://serein.vipklm.com/api/send"
+    - curl -d "name=fancy服务发版成功" "https://fancy.junyue.com/api/send"
 
 failure:
   stage: failure
@@ -55,5 +55,5 @@ failure:
     - java
   script:
     - run when failed
-    - curl -d "name=serein服务发版失败" "https://serein.vipklm.com/api/send"
+    - curl -d "name=fancy服务发版失败" "https://fancy.junyue.com/api/send"
   when: on_failure # 前一阶段任务故障时才执行

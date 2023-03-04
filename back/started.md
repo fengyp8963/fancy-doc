@@ -38,19 +38,19 @@ export PATH=$PATH:$M2_HOME/bin
 - 关于IDEA的安装与使用请参考：https://github.com/judasn/IntelliJ-IDEA-Tutorial
 - 搜索插件仓库，安装相关插件：`Translation` `GitToolBox` `Maven Helper`
 
-创建项目serein目录；创建pom.xml文件，文件内容如下
+创建项目fancy目录；创建pom.xml文件，文件内容如下
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.serein.cloud</groupId>
-    <artifactId>serein</artifactId>
+    <groupId>com.junyue.fancy</groupId>
+    <artifactId>fancy</artifactId>
     <version>2022.06.01-SNAPSHOT</version>
-    <name>serein</name>
+    <name>fancy</name>
     <packaging>pom</packaging>
-    <description>serein-cloud</description>
+    <description>fancy</description>
 
     <properties>
         <java.version>17</java.version>
@@ -61,7 +61,7 @@ export PATH=$PATH:$M2_HOME/bin
     </properties>
 
     <modules>
-        <module>serein-cloud</module>
+        <module>fancy</module>
     </modules>
 
     <licenses>
@@ -75,8 +75,8 @@ export PATH=$PATH:$M2_HOME/bin
         <developer>
             <name>fengyp</name>
             <email>fengyp8963@hotmail.com</email>
-            <organizationUrl>https://gitlab.vipklm.com/</organizationUrl>
-            <url>https://gitlab.vipklm.com/</url>
+            <organizationUrl>https://gitlab.junyue.com/</organizationUrl>
+            <url>https://gitlab.junyue.com/</url>
         </developer>
     </developers>
 
@@ -90,43 +90,43 @@ export PATH=$PATH:$M2_HOME/bin
 项目Gitlab地址路径
 
 ```shell
-git clone https://gitlab.vipklm.com/serein/serein-cloud.git
-git clone https://gitlab.vipklm.com/serein/serein-cloud-config.git
-git clone https://gitlab.vipklm.com/serein/vue-serein-admin.git
+git clone https://gitlab.junyue.com/fancy/fancy.git
+git clone https://gitlab.junyue.com/fancy/fancy-config.git
+git clone https://gitlab.junyue.com/fancy/fancy-vue-admin.git
 ```
 
 - 将项目下载到本地，然后直接打开：
 ![img.png](/back/images/basics-007.png)
 - 启动服务如下：
-![img.png](/back/images/basics-008.png)
+  ![img.png](/back/images/basics-008.png)
 - 先启服务
-  - `SereinCloudConfigApplication` 配置中心服务
-  - `SereinCloudEurekaApplication` 注册中心服务
+    - `FancyCloudConfigApplication` 配置中心服务
+    - `FancyCloudEurekaApplication` 注册中心服务
 - 必须服务
-  - `SereinCloudAuthorizationApplication` 验证服务
-  - `SereinCloudComponentApplication` 组件服务
-  - `SereinCloudGatewayApplication` 网关服务
-  - `SereinCloudMemberApplication` 会员服务
-  - `SereinCloudSystemApplication` 系统服务
-  - `SereinCloudTenantApplication` 租户服务
+    - `FancyCloudAuthorizationApplication` 验证服务
+    - `FancyCloudComponentApplication` 组件服务
+    - `FancyCloudGatewayApplication` 网关服务
+    - `FancyCloudMemberApplication` 会员服务
+    - `FancyCloudSystemApplication` 系统服务
+    - `FancyCloudTenantApplication` 租户服务
 - 其它服务按需要启动
 - 所有服务如下：
 
 ```txt
-SereinCloudAdminApplication 监控服务
-SereinCloudFlinkApplication 数据分析服务
-SereinCloudDatavApplication 数据大屏门户服务
-SereinCloudFlywayApplication 数据库版本服务
-SereinCloudFormApplication 表单设计服务
-SereinCloudGeneratorApplication 代码生成服务
-SereinCloudOnlineApplication 在线服务
-SereinCloudPayApplication 支付服务
-SereinCloudPortalApplication 门户服务
-SereinCloudProcessApplication  流程服务
-SereinCloudSearchApplication  搜索服务
-SereinCloudWebsocketApplication Websocket服务
-SereinCloudWeixinApplication 微信服务
-SereinCloudXxlJobApplication 定时任务服务
-SereinCloudXxlJobExecutorApplication 定时任务客户端服务
+FancyCloudAdminApplication 监控服务
+FancyCloudFlinkApplication 数据分析服务
+FancyCloudDatavApplication 数据大屏门户服务
+FancyCloudFlywayApplication 数据库版本服务
+FancyCloudFormApplication 表单设计服务
+FancyCloudGeneratorApplication 代码生成服务
+FancyCloudOnlineApplication 在线服务
+FancyCloudPayApplication 支付服务
+FancyCloudPortalApplication 门户服务
+FancyCloudProcessApplication  流程服务
+FancyCloudSearchApplication  搜索服务
+FancyCloudWebsocketApplication Websocket服务
+FancyCloudWeixinApplication 微信服务
+FancyCloudXxlJobApplication 定时任务服务
+FancyCloudXxlJobExecutorApplication 定时任务客户端服务
 ··· 业务服务
 ```

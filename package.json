@@ -1,8 +1,8 @@
 {
-  "name": "serein-cloud-doc",
+  "name": "fancy-doc",
   "version": "1.0.0",
-  "repository": "https://gitlab.vipklm.com/serein/serein-cloud-doc.git",
-  "author": "serein <fengyp8963@hotmail.com>",
+  "repository": "https://gitlab.junyue.com/fancy/fancy-doc.git",
+  "author": "fancy <fengyp8963@hotmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {

@@ -5,7 +5,7 @@ actionText: 快速开始 →
 actionLink: /front/basics
 
 altActionText: 在线预览
-altActionLink: https://serein.vipklm.com/
+altActionLink: https://fancy.junyue.com/
 
 features:
   - title: 💡 最新技术栈
@@ -20,5 +20,5 @@ features:
     details: 信息管理系统(MIS)、内部办公系统(OA)、企业资源计划系统(ERP)、客户关系管理系统(CRM)等
   - title: 🔑 服务模式权限管理
     details: 支持SAAS服务模式，提供SaaS多租户架构方案；权限控制采用 RBAC(基于角色的访问控制)
-footer: MIT Licensed | Copyright © 2021-present Serein
+    footer: MIT Licensed | Copyright © 2021-present Fancy
 ---
