@@ -16,17 +16,17 @@
 ```text
 #fancy项目
 #redis
-127.0.0.1 fancy-redis
+127.0.0.1 outside-agent-redis
 #mysql
-127.0.0.1 fancy-mysql
+127.0.0.1 outside-agent-mysql
 #logstashs
-127.0.0.1 logstashs
+127.0.0.1 outside-agent-elk
 #elasticsearch
-127.0.0.1 elasticsearch
+127.0.0.1 outside-agent-elk
 #rabbitmq
-127.0.0.1 rabbitmq
+127.0.0.1 outside-agent-rabbitmq
 #seate
-127.0.0.1 seata-server
+127.0.0.1 outside-agent-seata-server
 ```
 
 #### Dev Hosts
@@ -34,17 +34,17 @@
 ```text
 #fancy项目
 #redis
-127.0.0.1 fancy-redis
+127.0.0.1 outside-agent-redis
 #mysql
-127.0.0.1 fancy-mysql
+127.0.0.1 outside-agent-mysql
 #logstashs
-127.0.0.1 logstashs
+127.0.0.1 outside-agent-elk
 #elasticsearch
-127.0.0.1 elasticsearch
+127.0.0.1 outside-agent-elk
 #rabbitmq
-127.0.0.1 rabbitmq
+127.0.0.1 outside-agent-rabbitmq
 #seate
-127.0.0.1 seata-server
+127.0.0.1 outside-agent-seata-server
 ```
 
 #### Test Hosts
@@ -52,17 +52,17 @@
 ```text
 #fancy项目
 #redis
-127.0.0.1 fancy-redis
+127.0.0.1 outside-agent-redis
 #mysql
-127.0.0.1 fancy-mysql
+127.0.0.1 outside-agent-mysql
 #logstashs
-127.0.0.1 logstashs
+127.0.0.1 outside-agent-elk
 #elasticsearch
-127.0.0.1 elasticsearch
+127.0.0.1 outside-agent-elk
 #rabbitmq
-127.0.0.1 rabbitmq
+127.0.0.1 outside-agent-rabbitmq
 #seate
-127.0.0.1 seata-server
+127.0.0.1 outside-agent-seata-server
 ```
 
 ## 项目配置
@@ -76,7 +76,7 @@
 ```text
 spring:
   redis:
-    host: fancy-redis
+    host: outside-agent-redis
     password: ${fancy.password}
   data:
     elasticsearch:
@@ -84,7 +84,7 @@ spring:
         enabled: true
   elasticsearch:
     rest:
-      uris: elasticsearch:9200
+      uris: outside-agent-elk:9200
       username: ${fancy.username}
       password: ${fancy.password}
 tx-lcn:
@@ -106,7 +106,7 @@ fancy:
   password: ******
   datasource:
     default:
-      url: jdbc:mysql://fancy-mysql:3306/fancy?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://outside-agent-mysql:3306/fancy?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: ${fancy.username}
       password: ${fancy.password}
