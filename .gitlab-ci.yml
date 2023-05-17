@@ -18,7 +18,7 @@ build:
     - node
   script:
     - pwd #打印当前目录
-    - pnpm i && pnpm build #打包
+    - pnpm i && pnpm docs:build #打包
     - tar -zcvf .vitepress/dist/fancy-doc.tar.gz -C .vitepress/dist/ . --warning=no-file-changed && true=0 || false=1 #打包
     - version=`grep "\"version\":" package.json | cut -d"\"" -f4`
     - docker build -f docker/app/Dockerfile -t fancy/fancy-doc:$version -t fancy/fancy-doc:latest .

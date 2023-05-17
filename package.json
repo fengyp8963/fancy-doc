@@ -1,29 +1,10 @@
 {
-  "name": "fancy-doc",
-  "version": "1.0.0",
-  "repository": "https://gitlab.junyue.com/fancy/fancy-doc.git",
-  "author": "fancy <fengyp8963@hotmail.com>",
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "dev": "vitepress dev",
-    "build": "vitepress build",
-    "serve": "vitepress serve",
-    "pages": "npm run build && bash scripts/deploy-gh.sh"
-  },
   "devDependencies": {
-    "@vuepress/plugin-search": "^1.9.7",
-    "@algolia/client-search": "^4.13.1",
-    "@types/react": "^16.8.0",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "vitepress": "0.22.4",
-    "stylus": "^0.58.1",
-    "stylus-loader": "^7.0.0",
-    "dotenv": "^16.0.1",
-    "vue": "^3.2.37",
-    "vite": "^2.9.14",
-    "vite-plugin-mkcert": "^1.6.0",
-    "webpack": "^5.73.0"
+    "vitepress": "1.0.0-alpha.75"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   }
 }

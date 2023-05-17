@@ -1,0 +1,17 @@
+version: '3.6'
+
+services:
+  fancy-doc:
+    container_name: fancy-doc
+    image: fancy/fancy-doc:latest
+    restart: always
+    ports:
+      - '3000:80'
+    networks:
+      - app_fancy_net
+    environment:
+      - TZ=Asia/Shanghai
+# docker network create app_fancy_net
+networks:
+  app_fancy_net:
+    external: true

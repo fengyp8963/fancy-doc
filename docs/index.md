@@ -1,11 +1,21 @@
 ---
-home: true
-heroImage: /images/logo.png
-actionText: 快速开始 →
-actionLink: /front/basics
+# https://vitepress.dev/reference/default-theme-home-page
+layout: home
 
-altActionText: 在线预览
-altActionLink: https://fancy.junyue.com/
+hero:
+  name: Fancy1.0
+  text: Fancy 开发文档
+  tagline: Fancy Development Documents
+  image:
+    src: /public/images/logo.png
+    alt: VitePress
+  actions:
+    - theme: brand
+      text: 快速开始
+      link: /front/basics
+    - theme: alt
+      text: 在线预览
+      link: https://fancy.junyue.com/
 
 features:
   - title: 💡 最新技术栈
@@ -22,3 +32,4 @@ features:
     details: 支持SAAS服务模式，提供SaaS多租户架构方案；权限控制采用 RBAC(基于角色的访问控制)
     footer: MIT Licensed | Copyright © 2021-present Fancy
 ---
+
