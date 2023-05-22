@@ -1,8 +1,8 @@
 # 配置
 
 ::: tip 提示
-`fancy-config`配置中心服务，系统所有服务都通过它进行配置，`serien-cloud-common-*.yml`为公共配置文件；配置文件分为：
-`local`、`dev`、`test`、`prod` 四个环境。
+`fancy-config`配置中心服务，系统所有服务都通过它进行配置，`fancy-common-*.yml`为公共配置文件；配置文件分为：
+`dev`、`test`、`prod` 四个环境。
 :::
 
 ## Host文件
@@ -73,7 +73,7 @@
 
 ### local.yml示例
 
-```text
+```yml
 spring:
   redis:
     host: outside-agent-redis
@@ -87,13 +87,6 @@ spring:
       uris: outside-agent-elk:9200
       username: ${fancy.username}
       password: ${fancy.password}
-tx-lcn:
-  client:
-    manager-address: fancy-transaction:8070
-  ribbon:
-    loadbalancer:
-      dtx:
-        enabled: true
   logger:
     enabled: true
     driver-class-name: ${fancy.datasource.default.driver-class-name}

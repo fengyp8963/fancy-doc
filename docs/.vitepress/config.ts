@@ -29,21 +29,16 @@ export default defineConfig({
     nav: [
       // { text: 'Home', link: '/' },
       // { text: 'Examples', link: '/markdown-examples' }
-      { text: "前端", link: "/front/basics", activeMatch: "^/$|^/front/" },
+      { text: "前端", link: "/front/about", activeMatch: "^/$|^/front/" },
       {
         text: "后端",
-        link: "/back/basics",
+        link: "/back/about",
         activeMatch: "^/back/",
       },
       {
         text: "小程序",
-        link: "/app/basics",
+        link: "/app/about",
         activeMatch: "^/app/",
-      },
-      {
-        text: "数据大屏",
-        link: "/datav/basics",
-        activeMatch: "^/datav/",
       },
       {
         text: "相关链接",
@@ -56,22 +51,18 @@ export default defineConfig({
             text: "后端源码",
             link: "https://gitlab.junyue.com/fancy/fancy.git",
           },
-          {
-            text: "配置源码",
-            link: "https://gitlab.junyue.com/fancy/fancy-config.git",
-          },
-          {
-            text: "大屏源码",
-            link: "https://gitlab.junyue.com/fancy/fancy-datav-vue.git",
-          },
-          {
-            text: "文档源码",
-            link: "https://gitlab.junyue.com/fancy/fancy-doc.git",
-          },
+          // {
+          //   text: "配置源码",
+          //   link: "https://gitlab.junyue.com/fancy/fancy-config.git",
+          // },
           {
             text: "小程序源码",
             link: "https://gitlab.junyue.com/fancy/fancy-uni-app.git",
           },
+          // {
+          //   text: "文档源码",
+          //   link: "https://gitlab.junyue.com/fancy/fancy-doc.git",
+          // },
         ],
       },
     ],
@@ -80,22 +71,38 @@ export default defineConfig({
       {
         text: "前端",
         collapsed: true,
-        items: getFrontSidebar(),
+        items:  [
+          { text: "关于我们", link: "/front/about" },
+          { text: "开始上手", link: "/front/started" },
+          { text: "线上部署", link: "/front/deploy" },
+          { text: "常见问题", link: "/front/issue" },
+          { text: "更新日志", link: "/front/version" },
+        ]
       },
       {
         text: "后端",
         collapsed: true,
-        items: getBackSidebar(),
+        items:  [
+          { text: "关于我们", link: "/back/about" },
+          { text: "开始上手", link: "/back/started" },
+          { text: "核心配置", link: "/back/config" },
+          { text: "线上部署", link: "/back/deploy" },
+          { text: "项目规范", link: "/back/spec" },
+          { text: "名词参考", link: "/back/reference" },
+          { text: "常见问题", link: "/back/issue" },
+          { text: "更新日志", link: "/back/version" },
+        ]
       },
       {
         text: "小程序",
         collapsed: true,
-        items: getAppSidebar(),
-      },
-      {
-        text: "数据大屏",
-        collapsed: true,
-        items: getDatavSidebar(),
+        items:   [
+          { text: "关于我们", link: "/app/about" },
+          { text: "开始上手", link: "/app/started" },
+          { text: "线上部署", link: "/app/deploy" },
+          { text: "常见问题", link: "/app/issue" },
+          { text: "更新日志", link: "/app/version" },
+        ]
       },
     ],
 
@@ -120,139 +127,3 @@ export default defineConfig({
     // },
   },
 });
-
-function getFrontSidebar() {
-  return [
-    {
-      text: "介绍",
-      items: [
-        { text: "简介", link: "/front/basics" },
-        { text: "入门", link: "/front/started" },
-        { text: "配置", link: "/front/configuration" },
-        { text: "部署", link: "/front/deploy" },
-      ],
-    },
-    {
-      text: "深入",
-      items: [
-        { text: "进阶", link: "/front/advanced" },
-        { text: "规范", link: "/front/specification" },
-        { text: "API 参考", link: "/front/api-reference" },
-      ],
-    },
-    {
-      text: "其它",
-      items: [
-        { text: "名词参考", link: "/front/noun-reference" },
-        { text: "常见问题", link: "/front/common-problem" },
-        { text: "常见疑点", link: "/front/common-doubts" },
-      ],
-    },
-    {
-      text: "版本",
-      items: [{ text: "更新日志", link: "/back/version" }],
-    },
-  ];
-}
-
-function getBackSidebar() {
-  return [
-    {
-      text: "介绍",
-      items: [
-        { text: "简介", link: "/back/basics" },
-        { text: "入门", link: "/back/started" },
-        { text: "配置", link: "/back/configuration" },
-        { text: "部署", link: "/back/deploy" },
-      ],
-    },
-    {
-      text: "深入",
-      items: [
-        { text: "进阶", link: "/back/advanced" },
-        { text: "规范", link: "/back/specification" },
-        { text: "API 参考", link: "/back/api-reference" },
-      ],
-    },
-    {
-      text: "其它",
-      items: [
-        { text: "名词参考", link: "/back/noun-reference" },
-        { text: "常见问题", link: "/back/common-problem" },
-        { text: "常见疑点", link: "/back/common-doubts" },
-      ],
-    },
-    {
-      text: "版本",
-      items: [{ text: "更新日志", link: "/back/version" }],
-    },
-  ];
-}
-
-function getAppSidebar() {
-  return [
-    {
-      text: "介绍",
-      items: [
-        { text: "简介", link: "/app/basics" },
-        { text: "入门", link: "/app/started" },
-        { text: "配置", link: "/app/configuration" },
-        { text: "部署", link: "/app/deploy" },
-      ],
-    },
-    {
-      text: "深入",
-      items: [
-        { text: "进阶", link: "/app/advanced" },
-        { text: "规范", link: "/app/specification" },
-        { text: "API 参考", link: "/app/api-reference" },
-      ],
-    },
-    {
-      text: "其它",
-      items: [
-        { text: "名词参考", link: "/app/noun-reference" },
-        { text: "常见问题", link: "/app/common-problem" },
-        { text: "常见疑点", link: "/app/common-doubts" },
-      ],
-    },
-    {
-      text: "版本",
-      items: [{ text: "更新日志", link: "/back/version" }],
-    },
-  ];
-}
-
-function getDatavSidebar() {
-  return [
-    {
-      text: "介绍",
-      items: [
-        { text: "简介", link: "/datav/basics" },
-        { text: "入门", link: "/datav/started" },
-        { text: "配置", link: "/datav/configuration" },
-        { text: "部署", link: "/datav/deploy" },
-      ],
-    },
-    {
-      text: "深入",
-      items: [
-        { text: "进阶", link: "/datav/advanced" },
-        { text: "规范", link: "/datav/specification" },
-        { text: "API 参考", link: "/datav/api-reference" },
-      ],
-    },
-    {
-      text: "其它",
-      items: [
-        { text: "名词参考", link: "/datav/noun-reference" },
-        { text: "常见问题", link: "/datav/common-problem" },
-        { text: "常见疑点", link: "/datav/common-doubts" },
-      ],
-    },
-    {
-      text: "版本",
-      items: [{ text: "更新日志", link: "/back/version" }],
-    },
-  ];
-}

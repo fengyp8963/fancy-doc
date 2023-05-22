@@ -3,16 +3,16 @@
 layout: home
 
 hero:
-  name: Fancy1.0
-  text: Fancy 开发文档
-  tagline: Fancy Development Documents
+  name: Fancy
+  text: Fancy 文档
+  tagline: 开箱即用，所见所得
   image:
     src: /public/images/logo.png
     alt: VitePress
   actions:
     - theme: brand
       text: 快速开始
-      link: /front/basics
+      link: /front/about
     - theme: alt
       text: 在线预览
       link: https://fancy.junyue.com/

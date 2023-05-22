@@ -1,44 +1,114 @@
 ---
-sidebarDepth: 3
+outline: deep
 ---
-# 快速上手
 
-::: info 前言
-本文主要以图文的形式讲解项目所需环境在windows/mac下的安装，主要包括IDEA、Docker安装。
-:::
+# 后端框架
 
-## 依赖环境
+简介Fancy`是一套基于微服务后台管理系统，使用现阶段主流技术实现；涵盖了Spring Cloud 2021.0.2、Spring Boot 2.6.4、Spring
+JPA 2.6.4、Elasticsearch
+7.9.0、RocketMQ 4.7.1、Redis 5.0.5、MySQL 8.0.22 等技术，采用Docker容器化部署，同时提供了基于Vue3.0的管理后台方便快速搭建系统，集成了注册中心、配置中心、监控中心、服务网关等系统功能；
+后台管理系统包含部门管理、用户管理、角色管理、菜单管理、岗位管理、字典管理、权限管理、系统设置等模块。
 
-::: tip 提示
-项目java环境基于JDK11或以上，插件Lombok；以下以Mac系统举例：
-:::
+## 业务架构
 
-### Mac下Java的安装与配置
-- 从官网下载需要的JDK版本：[下载](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
-![img.png](/back/images/basics-003.png)
+![业务架构图](/back/images/started-000.png)
 
-- 执行：`java -version`，看看是否安装成功
-![img.png](/back/images/basics-004.png)
+## 技术架构
 
-### Mac下Maven的安装与配置
-- 从官网下载需要的Maven版本：[下载](http://maven.apache.org/download.cgi)
-![img.png](/back/images/basics-005.png)
-- 解压配置环境变量
-```shell
-export M2_HOME=/Users/apache-maven-3.6.3
-export PATH=$PATH:$M2_HOME/bin
+![技术架构图](/back/images/started-001.png)
+
+## 部署架构
+
+![系统架构图](/back/images/started-002.png)
+
+## 功能特点
+
+- 主体框架：采用最新的Spring Cloud 2021.0.2, Spring Boot 2.6.4, Spring Cloud Alibaba 2021.1版本进行系统设计；
+- 统一注册：支持eureka作为注册中心，实现多配置、分群组、分命名空间、多业务模块的注册和发现功能；
+- 统一认证：统一Oauth2认证协议，采用jwt的方式，实现统一认证，并支持自定义grant_type实现手机号码登录，第三方登录集成JustAuth实现微信、支付宝等多种登录模式；
+- 业务监控：利用Spring Boot Admin来监控各个独立Service的运行状态。
+- 内部调用：集成了Feign模式支持内部调用，并且可以实现无缝切换，适合新老程序员，快速熟悉项目；
+- 身份注入：通过注解的方式，实现用户登录信息的快速注入；
+- 在线文档：通过接入springdoc，实现在线API文档的查看与调试;
+- 代码生成：基于jpa-generator自动生成代码，提升开发效率，生成模式不断优化中，暂不支持前端代码生成；
+- 消息中心：集成消息中间件RocketMQ和RabbitMQ，对业务进行异步处理;
+- 业务分离：采用前后端分离的框架设计，前端采用vue3、antd
+- 链路追踪：自定义traceId的方式，实现简单的链路追踪功能
+- 多租户功能：集成spring data jpa，实现SAAS多租户功能
+
+#
+
+## 模块说明
+
+``` text
+.Fancy
+├── fancy-base -- 平台服务
+│   ├── fancy-admin -- 监控服务
+│   ├── fancy-authorization -- 验证服务
+│   ├── fancy-config -- 配置服务
+│   ├── fancy-eureka -- 注册服务
+│   ├── fancy-gateway -- 网关服务
+├── fancy-custom -- 自定义服务
+│   ├── fancy-demo -- 示例服务
+│   ├── fancy-poratl -- 门户服务
+├── fancy-platform -- 平台服务
+│   ├── fancy-flink -- 数据分析服务
+│   ├── fancy-component -- 组件服务
+│   ├── fancy-datav -- 数据大屏服务
+│   ├── fancy-member -- 会员服务
+│   ├── fancy-online -- 在线表单
+│   ├── fancy-page -- 页面服务
+│   ├── fancy-pay -- 支付服务
+│   ├── fancy-process -- 流程服务
+│   ├── fancy-system -- 系统服务
+│   ├── fancy-tenant -- 租户服务
+│   ├── fancy-websocket -- websocket服务
+│   ├── fancy-weixin -- 微信服务
+└── fancy-plugin -- 插件服务
+│   ├── fancy-flyway -- 数据库版本管理
+│   ├── fancy-generator -- 代码生成
+│   ├── fancy-search -- 搜索引擎
+│   ├── fancy-xxljob -- 定时任务
+└── └── fancy-xxljob-executor -- 定时任务执行器
 ```
-- 执行：`mvn -v`，看看是否安装成功
-![img.png](/back/images/basics-006.png)
 
+## 技术选型
 
-## 本地运行
-### IDEA
+| 技术                   | 说明                 | 官网                                                 |
+| ---------------------- | -------------------- | ---------------------------------------------------- |
+| Spring Cloud           | 微服务框架           | https://spring.io/projects/spring-cloud              |
+| Spring Boot            | 容器+MVC框架         | https://spring.io/projects/spring-boot               |
+| Spring Security Oauth2 | 认证和授权框架       | https://spring.io/projects/spring-security-oauth     |
+| Swagger                | 文档生产工具         | https://github.com/swagger-api/swagger-ui            |
+| Elasticsearch          | 搜索引擎             | https://github.com/elastic/elasticsearch             |
+| RocketMq               | 消息队列             | https://github.com/apache/rocketmq                       |
+| Redis                  | 分布式缓存           | https://redis.io/                                    |
+| Docker                 | 应用容器引擎         | https://www.docker.com/                              |
+| OSS                    | 对象存储             | https://github.com/aliyun/aliyun-oss-java-sdk        |
+| JWT                    | JWT登录支持          | https://github.com/jwtk/jjwt                         |
+| LogStash               | 日志收集             | https://github.com/logstash/logstash-logback-encoder |
+| Lombok                 | 简化对象封装工具     | https://github.com/rzwitserloot/lombok               |
+| Seata                  | 全局事务管理框架     | https://github.com/seata/seata                       |
+| Portainer              | 可视化Docker容器管理 | https://github.com/portainer/portainer               |
+| Gitlab CICD            | 自动化部署工具       | https://about.gitlab.com/                            |
+| Nginx                  | 反向代理web服务器     | http://nginx.org/                                     |
 
-- 关于IDEA的安装与使用请参考：https://github.com/judasn/IntelliJ-IDEA-Tutorial
-- 搜索插件仓库，安装相关插件：`Translation` `GitToolBox` `Maven Helper`
+| 技术                   | 说明                  | 官网                            |
+| --------------------- | --------------------- | ------------------------------ |
+| Vue                   | 前端框架               | https://vuejs.org/              |
+| Vue-router            | 路由框架               | https://router.vuejs.org/       |
+| Vuex                  | 全局状态管理框架        | https://vuex.vuejs.org/         |
+| Ant design            | 前端UI框架             | https://www.antdv.com/          |
+| Vben Admin            | 一个开箱即用的前端框架   | https://vvbin.cn/doc-next/      |
+| Axios                 | 前端HTTP框架           | https://github.com/axios/axios/ |
+| v-charts              | 基于Echarts的图表框架   | https://v-charts.js.org/        |
 
-创建项目fancy目录；创建pom.xml文件，文件内容如下
+## 快速上手
+
+本文主要以图文的形式讲解项目所需环境在windows/mac下的安装，主要包括IDEA、Docker安装。
+项目java环境基于JDK17或以上，插件Lombok；
+
+1、创建项目fancy-cloud目录；创建pom.xml文件，文件内容如下
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -87,46 +157,21 @@ export PATH=$PATH:$M2_HOME/bin
 </project>
 ```
 
-项目Gitlab地址路径
-
+2、拉取代码
 ```shell
-git clone https://gitlab.junyue.com/fancy/fancy.git
-git clone https://gitlab.junyue.com/fancy/fancy-config.git
-git clone https://gitlab.junyue.com/fancy/fancy-vue-admin.git
+git clone https://github.com/fengyp8963/fancy.git
+git clone https://github.com/fengyp8963/fancy-config.git
+git clone https://github.com/fengyp8963/fancy-vue-admin.git
 ```
 
-- 将项目下载到本地，然后直接打开：
-![img.png](/back/images/basics-007.png)
-- 启动服务如下：
-  ![img.png](/back/images/basics-008.png)
-- 先启服务
-    - `FancyCloudConfigApplication` 配置中心服务
-    - `FancyCloudEurekaApplication` 注册中心服务
-- 必须服务
-    - `FancyCloudAuthorizationApplication` 验证服务
-    - `FancyCloudComponentApplication` 组件服务
-    - `FancyCloudGatewayApplication` 网关服务
-    - `FancyCloudMemberApplication` 会员服务
-    - `FancyCloudSystemApplication` 系统服务
-    - `FancyCloudTenantApplication` 租户服务
-- 其它服务按需要启动
-- 所有服务如下：
-
-```txt
-FancyCloudAdminApplication 监控服务
-FancyCloudFlinkApplication 数据分析服务
-FancyCloudDatavApplication 数据大屏门户服务
-FancyCloudFlywayApplication 数据库版本服务
-FancyCloudFormApplication 表单设计服务
-FancyCloudGeneratorApplication 代码生成服务
-FancyCloudOnlineApplication 在线服务
-FancyCloudPayApplication 支付服务
-FancyCloudPortalApplication 门户服务
-FancyCloudProcessApplication  流程服务
-FancyCloudSearchApplication  搜索服务
-FancyCloudWebsocketApplication Websocket服务
-FancyCloudWeixinApplication 微信服务
-FancyCloudXxlJobApplication 定时任务服务
-FancyCloudXxlJobExecutorApplication 定时任务客户端服务
-··· 业务服务
+3、将项目下载到本地，打开项目，启动服务如下：
+```
+FancyConfigApplication 配置中心服务 先启动
+FancyEurekaApplication 注册中心服务 先启动
+FancyAuthorizationApplication 验证服务
+FancyComponentApplication 组件服务
+FancyGatewayApplication 网关服务
+FancyMemberApplication 会员服务
+FancySystemApplication 系统服务
+FancyTenantApplication 租户服务
 ```
