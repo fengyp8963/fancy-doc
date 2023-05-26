@@ -4,8 +4,8 @@ outline: deep
 
 # 后端框架
 
-简介Fancy`是一套基于微服务后台管理系统，使用现阶段主流技术实现；涵盖了Spring Cloud 2021.0.2、Spring Boot 2.6.4、Spring
-JPA 2.6.4、Elasticsearch
+简介Fancy`是一套基于微服务后台管理系统，使用现阶段主流技术实现；涵盖了Spring Cloud 2022.0.2、Spring Boot 3.1.0、Spring
+JPA 3.1.0、Elasticsearch
 7.9.0、RocketMQ 4.7.1、Redis 5.0.5、MySQL 8.0.22 等技术，采用Docker容器化部署，同时提供了基于Vue3.0的管理后台方便快速搭建系统，集成了注册中心、配置中心、监控中心、服务网关等系统功能；
 后台管理系统包含部门管理、用户管理、角色管理、菜单管理、岗位管理、字典管理、权限管理、系统设置等模块。
 
@@ -23,7 +23,7 @@ JPA 2.6.4、Elasticsearch
 
 ## 功能特点
 
-- 主体框架：采用最新的Spring Cloud 2021.0.2, Spring Boot 2.6.4, Spring Cloud Alibaba 2021.1版本进行系统设计；
+- 主体框架：采用最新的Spring Cloud 2022.0.2, Spring Boot 3.1.0, Spring Cloud Alibaba 2021.1版本进行系统设计；
 - 统一注册：支持eureka作为注册中心，实现多配置、分群组、分命名空间、多业务模块的注册和发现功能；
 - 统一认证：统一Oauth2认证协议，采用jwt的方式，实现统一认证，并支持自定义grant_type实现手机号码登录，第三方登录集成JustAuth实现微信、支付宝等多种登录模式；
 - 业务监控：利用Spring Boot Admin来监控各个独立Service的运行状态。
@@ -74,34 +74,34 @@ JPA 2.6.4、Elasticsearch
 
 ## 技术选型
 
-| 技术                   | 说明                 | 官网                                                 |
-| ---------------------- | -------------------- | ---------------------------------------------------- |
-| Spring Cloud           | 微服务框架           | https://spring.io/projects/spring-cloud              |
-| Spring Boot            | 容器+MVC框架         | https://spring.io/projects/spring-boot               |
+| 技术                     | 说明            | 官网                                                   |
+|------------------------|---------------|------------------------------------------------------|
+| Spring Cloud           | 微服务框架         | https://spring.io/projects/spring-cloud              |
+| Spring Boot            | 容器+MVC框架      | https://spring.io/projects/spring-boot               |
 | Spring Security Oauth2 | 认证和授权框架       | https://spring.io/projects/spring-security-oauth     |
-| Swagger                | 文档生产工具         | https://github.com/swagger-api/swagger-ui            |
-| Elasticsearch          | 搜索引擎             | https://github.com/elastic/elasticsearch             |
-| RocketMq               | 消息队列             | https://github.com/apache/rocketmq                       |
-| Redis                  | 分布式缓存           | https://redis.io/                                    |
-| Docker                 | 应用容器引擎         | https://www.docker.com/                              |
-| OSS                    | 对象存储             | https://github.com/aliyun/aliyun-oss-java-sdk        |
-| JWT                    | JWT登录支持          | https://github.com/jwtk/jjwt                         |
-| LogStash               | 日志收集             | https://github.com/logstash/logstash-logback-encoder |
-| Lombok                 | 简化对象封装工具     | https://github.com/rzwitserloot/lombok               |
-| Seata                  | 全局事务管理框架     | https://github.com/seata/seata                       |
+| Swagger                | 文档生产工具        | https://github.com/swagger-api/swagger-ui            |
+| Elasticsearch          | 搜索引擎          | https://github.com/elastic/elasticsearch             |
+| RocketMq               | 消息队列          | https://github.com/apache/rocketmq                   |
+| Redis                  | 分布式缓存         | https://redis.io/                                    |
+| Docker                 | 应用容器引擎        | https://www.docker.com/                              |
+| OSS                    | 对象存储          | https://github.com/aliyun/aliyun-oss-java-sdk        |
+| JWT                    | JWT登录支持       | https://github.com/jwtk/jjwt                         |
+| LogStash               | 日志收集          | https://github.com/logstash/logstash-logback-encoder |
+| Lombok                 | 简化对象封装工具      | https://github.com/rzwitserloot/lombok               |
+| Seata                  | 全局事务管理框架      | https://github.com/seata/seata                       |
 | Portainer              | 可视化Docker容器管理 | https://github.com/portainer/portainer               |
 | Gitlab CICD            | 自动化部署工具       | https://about.gitlab.com/                            |
-| Nginx                  | 反向代理web服务器     | http://nginx.org/                                     |
+| Nginx                  | 反向代理web服务器    | http://nginx.org/                                    |
 
-| 技术                   | 说明                  | 官网                            |
-| --------------------- | --------------------- | ------------------------------ |
-| Vue                   | 前端框架               | https://vuejs.org/              |
-| Vue-router            | 路由框架               | https://router.vuejs.org/       |
-| Vuex                  | 全局状态管理框架        | https://vuex.vuejs.org/         |
-| Ant design            | 前端UI框架             | https://www.antdv.com/          |
-| Vben Admin            | 一个开箱即用的前端框架   | https://vvbin.cn/doc-next/      |
-| Axios                 | 前端HTTP框架           | https://github.com/axios/axios/ |
-| v-charts              | 基于Echarts的图表框架   | https://v-charts.js.org/        |
+| 技术         | 说明             | 官网                              |
+|------------|----------------|---------------------------------|
+| Vue        | 前端框架           | https://vuejs.org/              |
+| Vue-router | 路由框架           | https://router.vuejs.org/       |
+| Vuex       | 全局状态管理框架       | https://vuex.vuejs.org/         |
+| Ant design | 前端UI框架         | https://www.antdv.com/          |
+| Vben Admin | 一个开箱即用的前端框架    | https://vvbin.cn/doc-next/      |
+| Axios      | 前端HTTP框架       | https://github.com/axios/axios/ |
+| v-charts   | 基于Echarts的图表框架 | https://v-charts.js.org/        |
 
 ## 快速上手
 
@@ -117,7 +117,7 @@ JPA 2.6.4、Elasticsearch
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.junyue.fancy</groupId>
     <artifactId>fancy</artifactId>
-    <version>2022.06.01-SNAPSHOT</version>
+    <version>2023.06.01-SNAPSHOT</version>
     <name>fancy</name>
     <packaging>pom</packaging>
     <description>fancy</description>
@@ -158,6 +158,7 @@ JPA 2.6.4、Elasticsearch
 ```
 
 2、拉取代码
+
 ```shell
 git clone https://github.com/fengyp8963/fancy.git
 git clone https://github.com/fengyp8963/fancy-config.git
@@ -165,6 +166,7 @@ git clone https://github.com/fengyp8963/fancy-vue-admin.git
 ```
 
 3、将项目下载到本地，打开项目，启动服务如下：
+
 ```
 FancyConfigApplication 配置中心服务 先启动
 FancyEurekaApplication 注册中心服务 先启动
