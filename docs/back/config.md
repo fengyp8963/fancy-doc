@@ -69,8 +69,6 @@
 
 ### 各环境配置示图
 
-![img.png](/back/images/setting-001.png)
-
 ### local.yml示例
 
 ```yml
