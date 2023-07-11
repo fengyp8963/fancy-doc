@@ -5,17 +5,17 @@ layout: home
 hero:
   name: Fancy
   text: Fancy 文档
-tagline: 开箱即用，所见所得
-image:
-src: /public/images/logo.png
-alt: VitePress
-actions:
-- theme: brand
-text: 快速开始
-link: /front/about
-- theme: alt
-text: 在线预览
-link: https://www.fancy8963.com/
+  tagline: 开箱即用，所见所得
+  image:
+    src: /public/images/logo.png
+    alt: VitePress
+  actions:
+    - theme: brand
+      text: 快速开始
+      link: /front/about
+    - theme: alt
+      text: 在线预览
+      link: https://fancy.junyue.com/
 
 features:
   - title: 💡 最新技术栈
