@@ -55,5 +55,5 @@ failure:
     - java
   script:
     - run when failed
-    - curl -d "name=fancy服务发版失败" "https://www.fancy8963.cn/api/send"
+    - echo "服务部署失败"
   when: on_failure # 前一阶段任务故障时才执行
