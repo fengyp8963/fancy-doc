@@ -15,7 +15,7 @@ hero:
       link: /front/about
     - theme: alt
       text: 在线预览
-      link: https://www.fancy8963.com/
+      link: https://www.fancy8963.cn/
 
 features:
   - title: 💡 最新技术栈

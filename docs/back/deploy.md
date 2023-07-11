@@ -130,7 +130,7 @@ __第三步__
 
 ![img.png](/back/images/deploy-012.png)
 
-2，拉取镜像输入`docker pull hub.fancy8963.com/fancy/libreoffice:latest`；
+2，拉取镜像输入`docker pull hub.fancy8963.cn/fancy/libreoffice:latest`；
 
 ![img.png](/back/images/deploy-013.png)
 
@@ -184,14 +184,14 @@ rm -rf /var/lib/docker
 ```shell
 docker compose up -d
 docker compose exec acme.sh --set-default-ca --server letsencrypt
-docker compose exec acme.sh --issue --dns dns_ali -d fancy8963.com -d *.fancy8963.com
+docker compose exec acme.sh --issue --dns dns_ali -d fancy8963.cn -d *.fancy8963.cn
 ## 创建证书路径
-mkdir -p ./nginx/ssl/fancy8963.com
+mkdir -p ./nginx/ssl/fancy8963.cn
 #运行下面命令，在上面的位置存入证书
 #请一定使用以上语法acme.sh --install-cert进行拷贝，这样证书才能保证在新的位置也能自动更新
-docker compose exec acme.sh --install-cert -d fancy8963.com \
-    --key-file /etc/nginx/ssl/fancy8963.com/key.pem \
-    --fullchain-file /etc/nginx/ssl/fancy8963.com/fullchain.pem # --reloadcmd "service nginx force-reload"
+docker compose exec acme.sh --install-cert -d fancy8963.cn \
+    --key-file /etc/nginx/ssl/fancy8963.cn/key.pem \
+    --fullchain-file /etc/nginx/ssl/fancy8963.cn/fullchain.pem # --reloadcmd "service nginx force-reload"
 ```
 
 ### Gitlab-runner的配置
@@ -216,11 +216,11 @@ docker compose exec acme.sh --install-cert -d fancy8963.com \
 - 需要申请的域名
 
 ```text
-admin.fancy8963.com #监控服务
-eureka.fancy8963.com #注册中心服务
-portainer.fancy8963.com #容器服务
-api.fancy8963.com #系统服务
-xxljob.fancy8963.com #定时任务服务
+admin.fancy8963.cn #监控服务
+eureka.fancy8963.cn #注册中心服务
+portainer.fancy8963.cn #容器服务
+api.fancy8963.cn #系统服务
+xxljob.fancy8963.cn #定时任务服务
 ```
 
 ## 非容器
