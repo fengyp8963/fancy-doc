@@ -1,10 +1,12 @@
 ---
-outline: deep
+sidebarDepth: 4
 ---
 
 # 开始上手
 
-Fancy Admin是一个基于 [Vben](https://doc.vvbin.cn/) 前端框架二次开发，其中蕴含 [Vue3.0](https://github.com/vuejs/vue-next)、[Vite](https://github.com/vitejs/vite)、 [Ant-Design-Vue](https://2x.antdv.com/docs/vue/introduce-cn/)、[TypeScript](https://www.typescriptlang.org/)等技术
+Fancy Admin是一个基于 [Vben](https://doc.vvbin.cn/)
+前端框架二次开发，其中蕴含 [Vue3.0](https://github.com/vuejs/vue-next)、[Vite](https://github.com/vitejs/vite)、 [Ant-Design-Vue](https://2x.antdv.com/docs/vue/introduce-cn/)、[TypeScript](https://www.typescriptlang.org/)
+等技术
 的后台解决方案，该项目会持续跟进最新技术，并将其应用在项目中。
 
 ## 需要掌握的基础知识
@@ -38,7 +40,12 @@ Fancy Admin是一个基于 [Vben](https://doc.vvbin.cn/) 前端框架二次开�
 
 **生产环境**支持现代浏览器，不支持 IE。
 
-| [<img src="/front/images/about-ie.png" alt="IE" width="24px" height="24px"  />](http://godban.github.io/browsers-support-badges/)IE | [<img src="/front/images/about-edge.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)Edge | [<img src="/front/images/about-firefox.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)Firefox | [<img src="/front/images/about-chrome.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)Chrome | [<img src="/front/images/about-safari.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)Safari |
+| [<img src="/front/images/about-ie.png" alt="IE" width="24px" height="24px"  />](http://godban.github.io/browsers-support-badges/)
+IE | [<img src="/front/images/about-edge.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)
+Edge | [<img src="/front/images/about-firefox.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)
+Firefox | [<img src="/front/images/about-chrome.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)
+Chrome | [<img src="/front/images/about-safari.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)
+Safari |
 | :-: | :-: | :-: | :-: | :-: |
 | not support | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
 
@@ -58,9 +65,11 @@ Fancy Admin是一个基于 [Vben](https://doc.vvbin.cn/) 前端框架二次开�
 如果您使用的 IDE 是[vscode](https://code.visualstudio.com/)(推荐)的话，可以安装以下工具来提高开发效率及代码格式化
 
 - [Iconify IntelliSense](https://marketplace.visualstudio.com/items?itemName=antfu.iconify) - Iconify 图标插件
-- [windicss IntelliSense](https://marketplace.visualstudio.com/items?itemName=voorjaar.windicss-intellisense) - windicss 提示插件
+- [windicss IntelliSense](https://marketplace.visualstudio.com/items?itemName=voorjaar.windicss-intellisense) - windicss
+  提示插件
 - [I18n-ally](https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally) - i18n 插件
-- [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) - vue 开发必备 （也可以选择 Volar,如果使用的是新的语法糖语法，则要禁用Vetur,启用Volar才能识别）
+- [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) - vue 开发必备 （也可以选择
+  Volar,如果使用的是新的语法糖语法，则要禁用Vetur,启用Volar才能识别）
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - 脚本代码检查
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - 代码格式化
 - [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) - css 格式化
@@ -80,7 +89,6 @@ node -v
 ```
 
 如果你需要同时存在多个 node 版本，可以使用 [Nvm](https://github.com/nvm-sh/nvm) 或者其他工具进行 Node.js 进行版本管理。
-
 
 ## 包管理工具
 

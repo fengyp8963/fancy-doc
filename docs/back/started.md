@@ -1,5 +1,5 @@
 ---
-outline: deep
+sidebarDepth: 4
 ---
 
 # 后端框架
@@ -55,7 +55,7 @@ JPA 2.6.4、Elasticsearch
 │   ├── fancy-flink -- 数据分析服务
 │   ├── fancy-component -- 组件服务
 │   ├── fancy-datav -- 数据大屏服务
-│   ├── fancy-member -- 会员服务
+│   ├── fancy-user -- 用户服务
 │   ├── fancy-online -- 在线表单
 │   ├── fancy-page -- 页面服务
 │   ├── fancy-pay -- 支付服务
@@ -108,7 +108,7 @@ JPA 2.6.4、Elasticsearch
 本文主要以图文的形式讲解项目所需环境在windows/mac下的安装，主要包括IDEA、Docker安装。
 项目java环境基于JDK17或以上，插件Lombok；
 
-1、创建项目fancy-cloud目录；创建pom.xml文件，文件内容如下
+### 创建项目fancy-cloud目录；创建pom.xml文件，文件内容如下
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -157,7 +157,7 @@ JPA 2.6.4、Elasticsearch
 </project>
 ```
 
-2、拉取代码
+### 拉取代码
 
 ```shell
 git clone https://github.com/fengyp8963/fancy.git
@@ -165,15 +165,15 @@ git clone https://github.com/fengyp8963/fancy-config.git
 git clone https://github.com/fengyp8963/fancy-vue-admin.git
 ```
 
-3、将项目下载到本地，打开项目，启动服务如下：
+### 将项目下载到本地，打开项目，启动服务
 
-```
+```text
 FancyConfigApplication 配置中心服务 先启动
 FancyEurekaApplication 注册中心服务 先启动
-FancyAuthorizationApplication 验证服务
-FancyComponentApplication 组件服务
 FancyGatewayApplication 网关服务
-FancyMemberApplication 会员服务
+FancyAuthorizationApplication 验证服务
+FancyCompApplication 组件服务
+FancyUserApplication 用户服务
 FancySystemApplication 系统服务
 FancyTenantApplication 租户服务
 ```

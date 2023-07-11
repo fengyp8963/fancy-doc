@@ -9,12 +9,14 @@ sidebarDepth: 3
 :::
 
 ## 开发工具强制统一
+
 - 前端: VS Code
 - 后端: IntelliJ IDEA
 - 数据库设计: CHINER
 - 数据库客户端: DataGrip
 
 ## IDEA 推荐安装插件
+
 - Lombok：自动生成get set等方法
 - Maven Helper： maven 依赖排查
 - Free Mybatis plugin: mybatis xml 快速切换
@@ -24,6 +26,7 @@ sidebarDepth: 3
 - GitToolBox： Git工具
 
 ## VS Code 推荐安装插件
+
 - Iconify IntelliSense- Iconify 图标插件
 - windicss IntelliSense- windicss 提示插件
 - I18n-ally- i18n 插件
@@ -34,12 +37,15 @@ sidebarDepth: 3
 - DotENV- .env 文件 高亮
 
 ## 项目约定（规范命名）
+
 - 源码、jdk、mysql、redis、rabbitmq、seata等存放路径禁止包含中文、空格、特殊字符等。
 
 ## 数据库设计 (参考sys_user表)
+
 - 使用CHINER来设计表结构
 - 必须显式指定主键, 勿用复合主键. 主键的命名统一为: id
-- 任何表至少包含3个字段： bigint id、 varchar createdBy、varchar lastModifiedBy、datetime createdDate、datetime lastModifiedDate (可以自行修改 EntityType)
+- 任何表至少包含3个字段： bigint id、 varchar createdBy、varchar lastModifiedBy、datetime createdDate、datetime
+  lastModifiedDate (可以自行修改 EntityType)
 - 关于状态字段根据业务含义命名为: enabled
 - 如（隐藏、显示），（是、否），（可用、不可用）、(启用、禁用) 等字段用 enabled
 - 界面上要显示成树形结构的表, 至少需要3个字段: id、parent_id、sort
@@ -53,7 +59,8 @@ sidebarDepth: 3
 - 不得使用外键与级联，一切外键概念必须在应用层解决
 - 不用存储过程
 - 数据库名、表名、字段名统一使用小写 + _
-- varchar 是可变长字符串，不预先分配存储空间，长度不要超过 5000，如果存储长 度大于此值，定义字段类型为 text，独立出来- 一张表，用主键来对应，避免影响其它字段索 引效率。
+- varchar 是可变长字符串，不预先分配存储空间，长度不要超过 5000，如果存储长 度大于此值，定义字段类型为 text，独立出来-
+  一张表，用主键来对应，避免影响其它字段索 引效率。
 - 表名命名规则: “b_业务名称_表的作用” 、 “c_业务名称_表的作用” . b_ 表示业务表, c_表示核心表(权限系统的一整套)
 - 表、字段 必须加注释
 - 表名注释支持换行，第一行会被视为表名。 表的介绍请换行填写。
@@ -75,6 +82,7 @@ sidebarDepth: 3
 ```
 
 ### 六、Git 提交规范
+
 - 每次提交尽量按功能点或bug提交代码，哪怕是只修改了一行代码，一个字母，尽量不要一次性提交过多的功能和bug等；
 - 及时拉取、及时提交、及时推送、及时合并；
 - 提交代码前,记得勾选IDEA提交框中的Reformat code、Rearrage code、Optimize imports选项；

@@ -6,7 +6,6 @@ sidebarDepth: 3
 
 代码提交到gitlab上，基于Jenkins进行自动部署
 
-
 ## Docker 部署
 - 未完善，待有时间写剩下的。
 

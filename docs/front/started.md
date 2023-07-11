@@ -4,7 +4,9 @@ sidebarDepth: 4
 
 # 开始上手
 
-Fancy Admin是一个基于 [Vben](https://doc.vvbin.cn/) 前端框架二次开发，其中蕴含 [Vue3.0](https://github.com/vuejs/vue-next)、[Vite](https://github.com/vitejs/vite)、 [Ant-Design-Vue](https://2x.antdv.com/docs/vue/introduce-cn/)、[TypeScript](https://www.typescriptlang.org/)等技术
+Fancy Admin是一个基于 [Vben](https://doc.vvbin.cn/)
+前端框架二次开发，其中蕴含 [Vue3.0](https://github.com/vuejs/vue-next)、[Vite](https://github.com/vitejs/vite)、 [Ant-Design-Vue](https://2x.antdv.com/docs/vue/introduce-cn/)、[TypeScript](https://www.typescriptlang.org/)
+等技术
 的后台解决方案，该项目会持续跟进最新技术，并将其应用在项目中。
 
 ## 需要掌握的基础知识
@@ -22,16 +24,6 @@ Fancy Admin是一个基于 [Vben](https://doc.vvbin.cn/) 前端框架二次开�
 - [Vitejs](https://vitejs.dev/)
 - [WindiCss](https://windicss.netlify.app/)
 
-## vite 插件推荐
-
-- [vite-plugin-mock](https://github.com/anncwb/vite-plugin-mock) - 用于本地及开发环境数据 `mock`
-- [vite-plugin-html](https://github.com/anncwb/vite-plugin-html) - 用于 `html` 模版转换，可以在`html`文件内进行书写模版语法
-- [vite-plugin-style-import](https://github.com/anncwb/vite-plugin-style-import) - 用于组件库样式按需引入
-- [vite-plugin-imagemin](https://github.com/anncwb/vite-plugin-imagemin) - 用于打包压缩图片资源
-- [vite-plugin-theme](https://github.com/anncwb/vite-plugin-theme) - 用于在线切换主题色/黑暗主题适配等主题相关配置
-- [vite-plugin-compression](https://github.com/anncwb/vite-plugin-compression) - 用于打包输出`.gz`|`.br`文件
-- [vite-plugin-svg-icons](https://github.com/anncwb/vite-plugin-svg-icons) - 快速生成 `svg sprite`
-
 ## 浏览器支持
 
 **本地开发**推荐使用`Chrome 最新版`浏览器，**不支持**`Chrome 80`以下版本。
@@ -44,11 +36,11 @@ Fancy Admin是一个基于 [Vben](https://doc.vvbin.cn/) 前端框架二次开�
 
 ## 环境准备
 
-本地环境需要安装 [Yarn1.x](https://yarnpkg.com/)、[Node.js](http://nodejs.org/) 和 [Git](https://git-scm.com/)
+本地环境需要安装 [pnpm](https://pnpm.io/)、[Node.js](http://nodejs.org/) 和 [Git](https://git-scm.com/)
 
 ::: warning 注意
 
-- 必须使用[Yarn1.x](https://yarnpkg.com/)，否则依赖可能安装不上。
+- 推荐使用[pnpm](https://pnpm.io/)，否则依赖可能安装不上。
 - [Node.js](http://nodejs.org/) 版本要求`12.x`以上，且不能为`13.x`版本，这里推荐 `14.x` 及以上。
 
 :::
@@ -58,21 +50,40 @@ Fancy Admin是一个基于 [Vben](https://doc.vvbin.cn/) 前端框架二次开�
 如果您使用的 IDE 是[vscode](https://code.visualstudio.com/)(推荐)的话，可以安装以下工具来提高开发效率及代码格式化
 
 - [Iconify IntelliSense](https://marketplace.visualstudio.com/items?itemName=antfu.iconify) - Iconify 图标插件
-- [windicss IntelliSense](https://marketplace.visualstudio.com/items?itemName=voorjaar.windicss-intellisense) - windicss 提示插件
+- [windicss IntelliSense](https://marketplace.visualstudio.com/items?itemName=voorjaar.windicss-intellisense) - windicss
+  提示插件
 - [I18n-ally](https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally) - i18n 插件
-- [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) - vue 开发必备 （也可以选择 Volar,如果使用的是新的语法糖语法，则要禁用Vetur,启用Volar才能识别）
+- [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) - vue 开发必备 （也可以选择
+  Volar,如果使用的是新的语法糖语法，则要禁用Vetur,启用Volar才能识别）
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - 脚本代码检查
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - 代码格式化
 - [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) - css 格式化
 - [DotENV](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv) - .env 文件 高亮
 
-## 安装 Node.js
+## 代码获取
 
-如果您电脑未安装[Node.js](https://nodejs.org/en/)，请安装它。
+::: warning 注意
+
+- 注意存放代码的目录及所有父级目录不能存在中文、韩文、日文以及空格，否则安装依赖后启动会出错。
+
+:::
+
+### 从 GitHub 获取代码
+
+```shell
+# clone 代码
+git clone https://github.com/fengyp8963/fancy-vue-admin.git
+```
+
+## 安装
+
+### 安装 Node.js
+
+如果您电脑未安装[Node.js](http://nodejs.org/)，请安装它。
 
 **验证**
 
-```bash
+```shell
 # 出现相应npm版本即可
 npm -v
 # 出现相应node版本即可
@@ -81,36 +92,35 @@ node -v
 
 如果你需要同时存在多个 node 版本，可以使用 [Nvm](https://github.com/nvm-sh/nvm) 或者其他工具进行 Node.js 进行版本管理。
 
+## 安装依赖
 
-## 包管理工具
+### pnpm 安装
 
-依赖包管理工具，也可安装到现有项目中。这两种情况下，你都可以用：
+必须使用 [pnpm](https://pnpm.io/) 进行依赖安装（若其他包管理器安装不了需要自行处理）。
 
-::: code-group
+如果未安装pnpm，可以用下面命令来进行全局安装
 
-```sh [pnpm]
-# 全局安装yarn
-npm i -g pnpm
+```shell
+# 全局安装pnpm
+npm install -g pnpm
 # 验证
 pnpm -v # 出现对应版本号即代表安装成功
 ```
 
-```sh [yarn]
-# 全局安装yarn
-npm i -g yarn
-# 验证
-yarn -v # 出现对应版本号即代表安装成功
-```
+### 依赖安装命令
 
-:::
+在项目根目录下，打开命令窗口执行，耐心等待安装完成即可
+
+```shell
+# 安装依赖
+pnpm i
+```
 
 ## 启动项目
 
 在项目根目录下，打开命令窗口执行，耐心等待安装完成即可
 
-```bash
-# 安装依赖
-pnpm i
+```shell
 # 运行项目
 pnpm serve
 ```
