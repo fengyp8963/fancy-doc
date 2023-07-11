@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+import {defineConfig} from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -45,23 +45,23 @@ export default defineConfig({
         items: [
           {
             text: "前端源码",
-            link: "https://gitlab.junyue.com/fancy/fancy-vue-admin.git",
+            link: "https://github.com/fengyp8963/fancy-vue-admin.git",
           },
           {
             text: "后端源码",
-            link: "https://gitlab.junyue.com/fancy/fancy.git",
+            link: "https://github.com/fengyp8963/fancy.git",
           },
           // {
           //   text: "配置源码",
-          //   link: "https://gitlab.junyue.com/fancy/fancy-config.git",
+          //   link: "https://github.com/fengyp8963/fancy-config.git",
           // },
           {
             text: "小程序源码",
-            link: "https://gitlab.junyue.com/fancy/fancy-uni-app.git",
+            link: "https://github.com/fengyp8963/fancy-uni-app.git",
           },
           // {
           //   text: "文档源码",
-          //   link: "https://gitlab.junyue.com/fancy/fancy-doc.git",
+          //   link: "https://github.com/fengyp8963/fancy-doc.git",
           // },
         ],
       },

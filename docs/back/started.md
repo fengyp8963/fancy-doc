@@ -74,34 +74,34 @@ JPA 2.6.4、Elasticsearch
 
 ## 技术选型
 
-| 技术                   | 说明                 | 官网                                                 |
-| ---------------------- | -------------------- | ---------------------------------------------------- |
-| Spring Cloud           | 微服务框架           | https://spring.io/projects/spring-cloud              |
-| Spring Boot            | 容器+MVC框架         | https://spring.io/projects/spring-boot               |
+| 技术                     | 说明            | 官网                                                   |
+|------------------------|---------------|------------------------------------------------------|
+| Spring Cloud           | 微服务框架         | https://spring.io/projects/spring-cloud              |
+| Spring Boot            | 容器+MVC框架      | https://spring.io/projects/spring-boot               |
 | Spring Security Oauth2 | 认证和授权框架       | https://spring.io/projects/spring-security-oauth     |
-| Swagger                | 文档生产工具         | https://github.com/swagger-api/swagger-ui            |
-| Elasticsearch          | 搜索引擎             | https://github.com/elastic/elasticsearch             |
-| RocketMq               | 消息队列             | https://github.com/apache/rocketmq                       |
-| Redis                  | 分布式缓存           | https://redis.io/                                    |
-| Docker                 | 应用容器引擎         | https://www.docker.com/                              |
-| OSS                    | 对象存储             | https://github.com/aliyun/aliyun-oss-java-sdk        |
-| JWT                    | JWT登录支持          | https://github.com/jwtk/jjwt                         |
-| LogStash               | 日志收集             | https://github.com/logstash/logstash-logback-encoder |
-| Lombok                 | 简化对象封装工具     | https://github.com/rzwitserloot/lombok               |
-| Seata                  | 全局事务管理框架     | https://github.com/seata/seata                       |
+| Swagger                | 文档生产工具        | https://github.com/swagger-api/swagger-ui            |
+| Elasticsearch          | 搜索引擎          | https://github.com/elastic/elasticsearch             |
+| RocketMq               | 消息队列          | https://github.com/apache/rocketmq                   |
+| Redis                  | 分布式缓存         | https://redis.io/                                    |
+| Docker                 | 应用容器引擎        | https://www.docker.com/                              |
+| OSS                    | 对象存储          | https://github.com/aliyun/aliyun-oss-java-sdk        |
+| JWT                    | JWT登录支持       | https://github.com/jwtk/jjwt                         |
+| LogStash               | 日志收集          | https://github.com/logstash/logstash-logback-encoder |
+| Lombok                 | 简化对象封装工具      | https://github.com/rzwitserloot/lombok               |
+| Seata                  | 全局事务管理框架      | https://github.com/seata/seata                       |
 | Portainer              | 可视化Docker容器管理 | https://github.com/portainer/portainer               |
 | Gitlab CICD            | 自动化部署工具       | https://about.gitlab.com/                            |
-| Nginx                  | 反向代理web服务器     | http://nginx.org/                                     |
+| Nginx                  | 反向代理web服务器    | http://nginx.org/                                    |
 
-| 技术                   | 说明                  | 官网                            |
-| --------------------- | --------------------- | ------------------------------ |
-| Vue                   | 前端框架               | https://vuejs.org/              |
-| Vue-router            | 路由框架               | https://router.vuejs.org/       |
-| Vuex                  | 全局状态管理框架        | https://vuex.vuejs.org/         |
-| Ant design            | 前端UI框架             | https://www.antdv.com/          |
-| Vben Admin            | 一个开箱即用的前端框架   | https://vvbin.cn/doc-next/      |
-| Axios                 | 前端HTTP框架           | https://github.com/axios/axios/ |
-| v-charts              | 基于Echarts的图表框架   | https://v-charts.js.org/        |
+| 技术         | 说明             | 官网                              |
+|------------|----------------|---------------------------------|
+| Vue        | 前端框架           | https://vuejs.org/              |
+| Vue-router | 路由框架           | https://router.vuejs.org/       |
+| Vuex       | 全局状态管理框架       | https://vuex.vuejs.org/         |
+| Ant design | 前端UI框架         | https://www.antdv.com/          |
+| Vben Admin | 一个开箱即用的前端框架    | https://vvbin.cn/doc-next/      |
+| Axios      | 前端HTTP框架       | https://github.com/axios/axios/ |
+| v-charts   | 基于Echarts的图表框架 | https://v-charts.js.org/        |
 
 ## 快速上手
 
@@ -145,8 +145,8 @@ JPA 2.6.4、Elasticsearch
         <developer>
             <name>fengyp</name>
             <email>fengyp8963@hotmail.com</email>
-            <organizationUrl>https://gitlab.junyue.com/</organizationUrl>
-            <url>https://gitlab.junyue.com/</url>
+            <organizationUrl>https://github.com/fengyp8963/</organizationUrl>
+            <url>https://github.com/fengyp8963/</url>
         </developer>
     </developers>
 
@@ -158,6 +158,7 @@ JPA 2.6.4、Elasticsearch
 ```
 
 2、拉取代码
+
 ```shell
 git clone https://github.com/fengyp8963/fancy.git
 git clone https://github.com/fengyp8963/fancy-config.git
@@ -165,6 +166,7 @@ git clone https://github.com/fengyp8963/fancy-vue-admin.git
 ```
 
 3、将项目下载到本地，打开项目，启动服务如下：
+
 ```
 FancyConfigApplication 配置中心服务 先启动
 FancyEurekaApplication 注册中心服务 先启动

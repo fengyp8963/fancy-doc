@@ -45,7 +45,7 @@ clean:
     - docker volume prune -f # 删除无用的卷
     - docker network prune -f # 删除无用的网络
     - echo "clean done"
-    - curl -d "name=fancy服务发版成功" "https://fancy.junyue.com/api/send"
+    - curl -d "name=fancy服务发版成功" "https://www.fancy8963.com/api/send"
 
 failure:
   stage: failure
@@ -55,5 +55,5 @@ failure:
     - java
   script:
     - run when failed
-    - curl -d "name=fancy服务发版失败" "https://fancy.junyue.com/api/send"
+    - curl -d "name=fancy服务发版失败" "https://www.fancy8963.com/api/send"
   when: on_failure # 前一阶段任务故障时才执行
