@@ -21,6 +21,7 @@ export default defineConfig({
     ],
   ],
   themeConfig: {
+    outline: {label: "大纲", level: [2, 3]},
     logo: "/images/logo.png",
     search: {
       provider: "local",
