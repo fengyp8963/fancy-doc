@@ -1,25 +1,36 @@
-name: CI Github Pages
+name: Main
 on:
-  #监听push操作
+  workflow_dispatch: { }
   push:
     branches:
-      - main # 这里只配置了main分支，所以只有推送main分支才会触发以下任务
+      - main
 jobs:
-  # 任务ID
-  build-and-deploy:
-    # 运行环境
+  deploy:
     runs-on: ubuntu-latest
-    # 步骤
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      # 官方action，将代码拉取到虚拟机
       - name: Checkout  ️
         uses: actions/checkout@v3
-
-      - name: Install and Build   # 安装依赖、打包，如果提前已打包好无需这一步
+        with:
+          fetch-depth: 0
+      - name: Use pnpm 8.6.0
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.6.0
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: pnpm
+      - name: Build
         run: |
-          npm install
-          npm run docs:build
-
+          pnpm install --frozen-lockfile
+          pnpm docs:build
       - name: Deploy   # 部署
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
