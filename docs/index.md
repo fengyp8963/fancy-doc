@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /front/about
+      link: /开发指南/关于我们
     - theme: alt
       text: 在线预览
       link: https://www.fancy8963.cn/
