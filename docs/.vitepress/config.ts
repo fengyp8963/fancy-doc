@@ -30,9 +30,9 @@ export default defineConfig({
     nav: [
       // { text: 'Home', link: '/' },
       // { text: 'Examples', link: '/markdown-examples' }
-      { text: "开发指南", link: "/开发指南/关于我们", activeMatch: "^/$|^/开发指南/" },
-      { text: "前端框架", link: "/前端框架/开始上手", activeMatch: "^/前端框架/" },
-      { text: "后端框架", link: "/后端框架/开始上手", activeMatch: "^/后端框架/" },
+      { text: "开发指南", link: "/开发指南/1、项目介绍", activeMatch: "^/$|^/开发指南/" },
+      { text: "前端框架", link: "/前端框架/1、开始上手", activeMatch: "^/前端框架/" },
+      { text: "后端框架", link: "/后端框架/1、开始上手", activeMatch: "^/后端框架/" },
       // { text: "小程序", link: "/小程序/开始上手", activeMatch: "^/小程序/" },
       { text: "相关链接",
         items: [
@@ -65,40 +65,41 @@ export default defineConfig({
         text: "开发指南",
         collapsed: true,
         items:  [
-          { text: "关于我们", link: "/开发指南/关于我们" },
+          { text: "项目介绍", link: "/开发指南/1、项目介绍" },
+          { text: "关于我们", link: "/开发指南/2、关于我们" },
         ]
       },
       {
         text: "前端框架",
         collapsed: true,
         items:  [
-          { text: "开始上手", link: "/前端框架/开始上手" },
-          { text: "线上部署", link: "/前端框架/线上部署" },
-          { text: "常见问题", link: "/前端框架/常见问题" },
-          { text: "更新日志", link: "/前端框架/更新日志" },
+          { text: "开始上手", link: "/前端框架/1、开始上手" },
+          { text: "线上部署", link: "/前端框架/2、线上部署" },
+          { text: "常见问题", link: "/前端框架/3、常见问题" },
+          { text: "更新日志", link: "/前端框架/4、更新日志" },
         ]
       },
       {
         text: "后端框架",
         collapsed: true,
         items:  [
-          { text: "开始上手", link: "/后端框架/开始上手" },
-          { text: "核心配置", link: "/后端框架/核心配置" },
-          { text: "线上部署", link: "/后端框架/线上部署" },
-          { text: "项目规范", link: "/后端框架/项目规范" },
-          { text: "名词参考", link: "/后端框架/名词参考" },
-          { text: "常见问题", link: "/后端框架/常见问题" },
-          { text: "更新日志", link: "/后端框架/更新日志" },
+          { text: "开始上手", link: "/后端框架/1、开始上手" },
+          { text: "核心配置", link: "/后端框架/2、核心配置" },
+          { text: "线上部署", link: "/后端框架/3、线上部署" },
+          { text: "项目规范", link: "/后端框架/4、项目规范" },
+          { text: "名词参考", link: "/后端框架/5、名词参考" },
+          { text: "常见问题", link: "/后端框架/6、常见问题" },
+          { text: "更新日志", link: "/后端框架/7、更新日志" },
         ]
       },
       // {
       //   text: "小程序",
       //   collapsed: true,
       //   items:   [
-      //     { text: "开始上手", link: "/小程序/开始上手" },
-      //     { text: "线上部署", link: "/小程序/线上部署" },
-      //     { text: "常见问题", link: "/小程序/常见问题" },
-      //     { text: "更新日志", link: "/小程序/更新日志" },
+      //     { text: "开始上手", link: "/小程序/1、开始上手" },
+      //     { text: "线上部署", link: "/小程序/2、线上部署" },
+      //     { text: "常见问题", link: "/小程序/3、常见问题" },
+      //     { text: "更新日志", link: "/小程序/4、更新日志" },
       //   ]
       // },
     ],
