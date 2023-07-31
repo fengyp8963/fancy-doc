@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+import {defineConfig} from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -8,7 +8,7 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: true,
   head: [
-    ["link", { rel: "icon", href: "/public/favicon.ico" }],
+    ["link", { rel: "icon", href: "/favicon.ico" }],
     ["meta", { name: "theme-color", content: "#3c8772" }],
     [
       "script",
@@ -21,6 +21,7 @@ export default defineConfig({
     ],
   ],
   themeConfig: {
+    outline: {label: "大纲", level: [2, 3]},
     logo: "/images/logo.png",
     search: {
       provider: "local",
@@ -29,81 +30,78 @@ export default defineConfig({
     nav: [
       // { text: 'Home', link: '/' },
       // { text: 'Examples', link: '/markdown-examples' }
-      { text: "前端", link: "/front/about", activeMatch: "^/$|^/front/" },
-      {
-        text: "后端",
-        link: "/back/about",
-        activeMatch: "^/back/",
-      },
-      {
-        text: "小程序",
-        link: "/app/about",
-        activeMatch: "^/app/",
-      },
-      {
-        text: "相关链接",
+      { text: "开发指南", link: "/开发指南/1、项目介绍", activeMatch: "^/$|^/开发指南/" },
+      { text: "前端框架", link: "/前端框架/1、开始上手", activeMatch: "^/前端框架/" },
+      { text: "后端框架", link: "/后端框架/1、开始上手", activeMatch: "^/后端框架/" },
+      // { text: "小程序", link: "/小程序/开始上手", activeMatch: "^/小程序/" },
+      { text: "相关链接",
         items: [
           {
             text: "前端源码",
-            link: "https://gitlab.junyue.com/fancy/fancy-vue-admin.git",
+            link: "https://github.com/fengyp8963/fancy-vue-admin.git",
           },
           {
             text: "后端源码",
-            link: "https://gitlab.junyue.com/fancy/fancy.git",
+            link: "https://github.com/fengyp8963/fancy.git",
           },
-          // {
-          //   text: "配置源码",
-          //   link: "https://gitlab.junyue.com/fancy/fancy-config.git",
-          // },
+          /*{
+            text: "配置源码",
+            link: "https://github.com/fengyp8963/fancy-config.git",
+          },
           {
             text: "小程序源码",
-            link: "https://gitlab.junyue.com/fancy/fancy-uni-app.git",
+            link: "https://github.com/fengyp8963/fancy-uni-app.git",
           },
-          // {
-          //   text: "文档源码",
-          //   link: "https://gitlab.junyue.com/fancy/fancy-doc.git",
-          // },
+          {
+            text: "文档源码",
+            link: "https://github.com/fengyp8963/fancy-doc.git",
+          },*/
         ],
       },
     ],
 
     sidebar: [
       {
-        text: "前端",
+        text: "开发指南",
         collapsed: true,
         items:  [
-          { text: "关于我们", link: "/front/about" },
-          { text: "开始上手", link: "/front/started" },
-          { text: "线上部署", link: "/front/deploy" },
-          { text: "常见问题", link: "/front/issue" },
-          { text: "更新日志", link: "/front/version" },
+          { text: "项目介绍", link: "/开发指南/1、项目介绍" },
+          { text: "关于我们", link: "/开发指南/2、关于我们" },
         ]
       },
       {
-        text: "后端",
+        text: "前端框架",
         collapsed: true,
         items:  [
-          { text: "关于我们", link: "/back/about" },
-          { text: "开始上手", link: "/back/started" },
-          { text: "核心配置", link: "/back/config" },
-          { text: "线上部署", link: "/back/deploy" },
-          { text: "项目规范", link: "/back/spec" },
-          { text: "名词参考", link: "/back/reference" },
-          { text: "常见问题", link: "/back/issue" },
-          { text: "更新日志", link: "/back/version" },
+          { text: "开始上手", link: "/前端框架/1、开始上手" },
+          { text: "线上部署", link: "/前端框架/2、线上部署" },
+          { text: "常见问题", link: "/前端框架/3、常见问题" },
+          { text: "更新日志", link: "/前端框架/4、更新日志" },
         ]
       },
       {
-        text: "小程序",
+        text: "后端框架",
         collapsed: true,
-        items:   [
-          { text: "关于我们", link: "/app/about" },
-          { text: "开始上手", link: "/app/started" },
-          { text: "线上部署", link: "/app/deploy" },
-          { text: "常见问题", link: "/app/issue" },
-          { text: "更新日志", link: "/app/version" },
+        items:  [
+          { text: "开始上手", link: "/后端框架/1、开始上手" },
+          { text: "核心配置", link: "/后端框架/2、核心配置" },
+          { text: "线上部署", link: "/后端框架/3、线上部署" },
+          { text: "项目规范", link: "/后端框架/4、项目规范" },
+          { text: "名词参考", link: "/后端框架/5、名词参考" },
+          { text: "常见问题", link: "/后端框架/6、常见问题" },
+          { text: "更新日志", link: "/后端框架/7、更新日志" },
         ]
       },
+      // {
+      //   text: "小程序",
+      //   collapsed: true,
+      //   items:   [
+      //     { text: "开始上手", link: "/小程序/1、开始上手" },
+      //     { text: "线上部署", link: "/小程序/2、线上部署" },
+      //     { text: "常见问题", link: "/小程序/3、常见问题" },
+      //     { text: "更新日志", link: "/小程序/4、更新日志" },
+      //   ]
+      // },
     ],
 
     editLink: {

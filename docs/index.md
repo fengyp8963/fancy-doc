@@ -7,15 +7,15 @@ hero:
   text: Fancy 文档
   tagline: 开箱即用，所见所得
   image:
-    src: /public/images/logo.png
+    src: /images/logo.png
     alt: VitePress
   actions:
     - theme: brand
       text: 快速开始
-      link: /front/about
+      link: /开发指南/1、项目介绍
     - theme: alt
       text: 在线预览
-      link: https://fancy.junyue.com/
+      link: https://www.fancy8963.cn/
 
 features:
   - title: 💡 最新技术栈
